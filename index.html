@@ -4,31 +4,30 @@
 # ###################################################################
 install_vim() {
    # Delete Existing
-   #rm -rf ~/.vimrc
-   #rm -rf ~/.vim/snippets
+   rm -rf ~/.vimrc
+   rm -rf ~/.vim/snippets
 
    # Symlink New
-   #ln -s ~/dotfiles/vimrc/.vimrc ~/.vimrc
-   #ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
+   ln -s ~/dotfiles/vimrc/.vimrc ~/.vimrc
+   ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
 
    # Install Vundle if Needed
-   #sudo apt-get install curl vim -y
-   #if [ ! -d ~/.vim/bundle/vundle/ ]; then
-   #  git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-   #fi
+   sudo apt-get install curl vim -y
+   if [ ! -d ~/.vim/bundle/vundle/ ]; then
+     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+   fi
 
    # Create colors directory
-   #if [ ! -d ~/.vim/colors ]; then
-   #  mkdir ~/.vim/colors
-   #fi
+   if [ ! -d ~/.vim/colors ]; then
+     mkdir ~/.vim/colors
+   fi
 
    # Download VIM theme
-   #if [ ! -f ~/.vim/colors/wombat256mod.vim ]; then
-   #  curl -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
-   #fi
+   if [ ! -f ~/.vim/colors/wombat256mod.vim ]; then
+     curl -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
+   fi
 
    # Install bundles
-   #vim -c BundleInstall -c quitall
    vim - -i NONE -c VundleUpdate -c quitall
 } #install_vim()
 
