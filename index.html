@@ -1,15 +1,15 @@
 if [ ! -d ~/dotfiles ]; then
-   cd ~ \
-   && git clone https://github.com/ryan-frankel/dotfiles ~/dotfiles \
-   && cd ~/dotfiles/bashrc \
-   && source ./install.sh \
-   && cd ~/dotfiles/vimrc \
-   && source ./install.sh
+   cd ~
+   git clone https://github.com/ryan-frankel/dotfiles ~/dotfiles
+   cd ~/dotfiles/bashrc
+   source ./install.sh
+   cd ~/dotfiles/vimrc
+   source ./install.sh
 else
-   cd ~/dotfiles \
-   && git pull origin master \
-   && cd ~/dotfiles/bashrc \
-   && source ./install.sh \
-   && cd ~/dotfiles/vimrc \
-   && source ./install.sh
+   cd ~/dotfiles
+   git pull origin master
+   cd ~/dotfiles/bashrc
+   source ./install.sh
+   cd ~/dotfiles/vimrc
+   source ./install.sh
 fi
