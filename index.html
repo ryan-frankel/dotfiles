@@ -1,7 +1,29 @@
+#!/bin.bash
+
+# Check if BASHRC exists, if not
+# then pull that repo and install.
+# Otherwise, just update.
+# ###########################################################
+if [ ! -d ~/bashrc ]; then
+   cd ~ \
+   && git clone https://github.com/ryan-frankel/bashrc ~/bashrc \
+   && cd ~/bashrc \
+   && source ~/bashrc/install.sh
+else
+   cd ~/basrhc \
+   && git pull origin master \
+   && source ~/bashrc/install.sh
+fi
+
+# Check if VIMRC exists if not
+# then pull that repo and install.
+# Otherwise, just update.
+# ###########################################################
 if [ ! -d ~/vimrc ]; then
    cd ~ \
    && git clone https://github.com/ryan-frankel/vimrc ~/vimrc \
-   && cd ~/vimrc && source install.sh
+   && cd ~/vimrc \
+   && source install.sh
 else 
   cd ~/vimrc \
   && git pull origin master \
