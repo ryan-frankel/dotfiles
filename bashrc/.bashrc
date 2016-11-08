@@ -56,7 +56,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-source ~/bashrc/.git-prompt.sh
+source ~/dotfiles/bashrc/.git-prompt.sh
 
 PROMPT_DIRTRIM=2
 if [ "$color_prompt" = yes ]; then
