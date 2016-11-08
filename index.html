@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+{ # this ensures the entire script is downloaded #
+
 if [ ! -d ~/dotfiles ]; then
    cd ~
    git clone https://github.com/ryan-frankel/dotfiles ~/dotfiles
@@ -13,3 +17,5 @@ else
    cd ~/dotfiles/vimrc
    source ./install.sh
 fi
+
+} # this ensures the entire script is downloaded #
