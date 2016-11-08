@@ -84,12 +84,12 @@ esac
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/bashrc/.bash_aliases ]; then
-    . ~/bashrc/.bash_aliases
+if [ -f ~/dotfiles/bashrc/.bash_aliases ]; then
+    . ~/dotfiles/bashrc/.bash_aliases
 fi
 
-if [ -f ~/bashrc/.bash_site_aliases ]; then
-    . ~/bashrc/.bash_site_aliases
+if [ -f ~/dotfiles/bashrc/.bash_site_aliases ]; then
+    . ~/dotfiles/bashrc/.bash_site_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
