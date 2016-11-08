@@ -9,7 +9,11 @@ install_node() {
   nvm install node
   nvm use node
   nvm alias default node
+  source ~/.bashrc 
   npm install -g node-gyp
+
+  # Using trash instead of rm
+  npm install -g trash-cli
 }
 
 # FUNCTION FOR INSTALLING VIM

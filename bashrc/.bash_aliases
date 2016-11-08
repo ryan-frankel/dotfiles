@@ -8,6 +8,10 @@ alias .....="cd ../../../.."
 alias c='clear'
 alias h='history'
 
+# TRASH
+# #########################################
+alias rm='trash'
+
 # LS ALIASES
 # #########################################
 alias ll='ls -alFh'
