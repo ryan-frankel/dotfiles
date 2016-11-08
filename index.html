@@ -3,8 +3,8 @@ if [ ! -d "~/vimrc" ]; then
    && git clone https://github.com/ryan-frankel/vimrc ~/vimrc \
    && cd ~/vimrc && source install.sh
 else 
-  cd ~/vimrc &&
-  git pull origin master &&
-  source ~/vimrc/install.sh
+  cd ~/vimrc \
+  && git pull origin master \
+  && source ~/vimrc/install.sh
 fi
   
