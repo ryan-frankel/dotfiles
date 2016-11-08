@@ -33,21 +33,36 @@ install_vim() {
 
 # FUNCTION FOR INSTALLING BASH
 # ###################################################################
+function install_bash() {
+   #DELETE EXISTING .bashrc IF THERE IS ONE
+   rm -rf ~/.bashrc &> /dev/null
+   rm -rf ~/.bash_profile &> /dev/null
 
+   #SYM LINK NEW .bashrc FILE
+   ln -s ~/dotfiles/bashrc/.bashrc ~/.bashrc
+   ln -s ~/dotfiles/bashrc/.bashrc ~/.bash_profile
 
+   #MAKE LOCAL .bash_site_aliases
+   #touch ~/.bash_site_aliases
+
+   #RELOAD .bashrc
+   source ~/.bashrc
+}
+
+# ###################################################################
+# ###################################################################
+# MAIN
+# ###################################################################
+# ###################################################################
 if [ ! -d ~/dotfiles ]; then
-   cd ~
    git clone https://github.com/ryan-frankel/dotfiles ~/dotfiles
-   cd ~/dotfiles/bashrc
-   source ./install.sh
-   cd ~/dotfiles/vimrc
-   source ./install.sh
+   cd ~/dotfiles
 else
    cd ~/dotfiles
    git pull origin master
-   install_vim
-   #cd ~/dotfiles/bashrc
-   #source ./install.sh
 fi
+
+install_vim
+install_bash
 
 } # this ensures the entire script is downloaded #
