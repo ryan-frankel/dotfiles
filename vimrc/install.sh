@@ -5,8 +5,8 @@ rm -rf ~/.vimrc &> /dev/null
 rm -rf ~/.vim/snippets &> /dev/null
 
 # Symlink New
-ln -s ~/vimrc/.vimrc ~/.vimrc
-ln -s ~/vimrc/snippets ~/.vim/snippets 
+ln -s ~/dotfiles/vimrc/.vimrc ~/.vimrc
+ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
 
 # Install Vundle if Needed
 sudo apt-get install curl vim -y
