@@ -12,9 +12,9 @@ if [ ! -d ~/dotfiles ]; then
 else
    cd ~/dotfiles
    git pull origin master
-   cd ~/dotfiles/bashrc
-   source ./install.sh
    cd ~/dotfiles/vimrc
+   source ./install.sh
+   cd ~/dotfiles/bashrc
    source ./install.sh
 fi
 
