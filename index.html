@@ -2,21 +2,8 @@
 
 { # this ensures the entire script is downloaded #
 
-if [ ! -d ~/dotfiles ]; then
-   cd ~
-   git clone https://github.com/ryan-frankel/dotfiles ~/dotfiles
-   cd ~/dotfiles/bashrc
-   source ./install.sh
-   cd ~/dotfiles/vimrc
-   source ./install.sh
-else
-   cd ~/dotfiles
-   git pull origin master
-   install_vim
-   cd ~/dotfiles/bashrc
-   source ./install.sh
-fi
-
+# FUNCTION FOR INSTALLING VIM
+# ###################################################################
 install_vim() {
    # Delete Existing
    rm -rf ~/.vimrc &> /dev/null
@@ -45,5 +32,23 @@ install_vim() {
    # Install bundles
    vim -c BundleInstall -c quitall
 } #install_vim()
+
+
+
+
+if [ ! -d ~/dotfiles ]; then
+   cd ~
+   git clone https://github.com/ryan-frankel/dotfiles ~/dotfiles
+   cd ~/dotfiles/bashrc
+   source ./install.sh
+   cd ~/dotfiles/vimrc
+   source ./install.sh
+else
+   cd ~/dotfiles
+   git pull origin master
+   install_vim
+   cd ~/dotfiles/bashrc
+   source ./install.sh
+fi
 
 } # this ensures the entire script is downloaded #
