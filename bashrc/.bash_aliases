@@ -8,6 +8,10 @@ alias .....="cd ../../../.."
 alias c='clear'
 alias h='history'
 
+# Z
+# #########################################
+source ~/code/z/z.sh
+
 # TRASH
 # #########################################
 alias rm='trash'

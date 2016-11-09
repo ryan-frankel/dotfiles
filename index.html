@@ -1,31 +1,50 @@
 { # this ensures the entire script is downloaded #
 
+# FUNCTION FOR ECHO WITH COLOR OPTION
+# ###################################################################
+function ech() {
+	if [ -z "$2" ]; then
+		echo -e " \e[32m\u2713 $1\e[00m";
+	else
+		echo -e "\e[00m$1\e[00m";
+	fi
+}
+
 # FUNCTION FOR INSTALLING NODE + RELATED
 # ###################################################################
 install_node() {
-  sudo apt-get install build-essential -y
+	ech " - Build Essential..."
+  sudo apt-get -qq install build-essential -y
 
-  hash bar || { curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash; }
-  export NVM_DIR="/home/rfrankel/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm \
-  nvm install node 
-  nvm use node
-  nvm alias default node
+	ech " - NVM..."
+  if [ ! ~/.nvm ]; then
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash;
+    export NVM_DIR="/home/rfrankel/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm \
+    nvm install node 
+    nvm use node
+    nvm alias default node
+    npm install -g node-gyp
+  fi
 
-  # Node make tools
-  npm install -g node-gyp
+  # Install trash if required
+	ech " - Trash..."
+  type trash > /dev/null 2>&1 || { npm install -g trash-cli; }
 
-  # Using trash instead of rm
-  npm install -g trash-cli
+	# Install dtrx, ncdu, htop if required
+	ech " - dtrx, ncdu, htop..."
+	sudo apt-get -qq install dtrx ncdu htop -y
 }
 
 # FUNCTION FOR COMMAND LINE 
 # ###################################################################
 install_cli() {
+	ech " - Cloning z..."
   if [ ! -d ~/code/z ]; then
     git clone https://github.com/rupa/z.git ~/code/z
   fi
 
+	ech " - Replacing .z..."
   rm -f ~/.z
   ln -sf ~/dotfiles/z/.z ~/.z
 }
@@ -33,50 +52,56 @@ install_cli() {
 # FUNCTION FOR INSTALLING VIM
 # ###################################################################
 install_vim() {
-   # Delete Existing
-   rm -rf ~/.vimrc
-   rm -rf ~/.vim/snippets
+	# Delete Existing
+	ech " - Delete existing..."
+	rm -rf ~/.vimrc
+	rm -rf ~/.vim/snippets
 
-   # Symlink New
-   ln -s ~/dotfiles/vimrc/.vimrc ~/.vimrc
-   ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
+	# Symlink New
+	ech " - New symlinks..."
+	ln -s ~/dotfiles/vimrc/.vimrc ~/.vimrc
+	ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
 
-   # Install Vundle if Needed
-   sudo apt-get install curl vim -y
-   if [ ! -d ~/.vim/bundle/vundle/ ]; then
-     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-   fi
+	# Install Vundle if Needed
+	ech " - Install vundle..."
+	sudo apt-get -qq install curl vim -y
+	if [ ! -d ~/.vim/bundle/vundle/ ]; then
+	 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+	fi
 
-   # Create colors directory
-   if [ ! -d ~/.vim/colors ]; then
-     mkdir ~/.vim/colors
-   fi
+	# Create colors directory
+	ech " - Create colors directory..."
+	if [ ! -d ~/.vim/colors ]; then
+	 mkdir ~/.vim/colors
+	fi
 
-   # Download VIM theme
-   if [ ! -f ~/.vim/colors/wombat256mod.vim ]; then
-     curl -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
-   fi
+	# Download VIM theme
+	ech " - Downloading theme..."
+	if [ ! -f ~/.vim/colors/wombat256mod.vim ]; then
+	 curl -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
+	fi
 
-   # Install bundles
-   vim - -i NONE -c VundleUpdate -c quitall
+	# Install bundles
+	ech " - Install bundles..."
+	vim - -i NONE -c VundleUpdate -c quitall >& /dev/null
 } #install_vim()
 
 # FUNCTION FOR INSTALLING BASH
 # ###################################################################
 function install_bash() {
-   #DELETE EXISTING .bashrc IF THERE IS ONE
-   rm -rf ~/.bashrc &> /dev/null
-   rm -rf ~/.bash_profile &> /dev/null
+	#DELETE EXISTING .bashrc IF THERE IS ONE
+	ech " - Delete existing..."
+	rm -rf ~/.bashrc &> /dev/null
+	rm -rf ~/.bash_profile &> /dev/null
 
-   #SYM LINK NEW .bashrc FILE
-   ln -s ~/dotfiles/bashrc/.bashrc ~/.bashrc
-   ln -s ~/dotfiles/bashrc/.bashrc ~/.bash_profile
+	#SYM LINK NEW .bashrc FILE
+	ech " - Create new symlinks..."
+	ln -s ~/dotfiles/bashrc/.bashrc ~/.bashrc
+	ln -s ~/dotfiles/bashrc/.bashrc ~/.bash_profile
 
-   #MAKE LOCAL .bash_site_aliases
-   #touch ~/.bash_site_aliases
-
-   #RELOAD .bashrc
-   source ~/.bashrc
+	#RELOAD .bashrc
+	ech " - Reload bashrc..."
+	source ~/.bashrc
 }
 
 
@@ -85,17 +110,30 @@ function install_bash() {
 # MAIN
 # ###################################################################
 # ###################################################################
-if [ ! -d ~/dotfiles ]; then
-   git clone https://github.com/ryan-frankel/dotfiles ~/dotfiles
-   cd ~/dotfiles
-else
-   cd ~/dotfiles
-   git pull origin master
-fi
+function main() {
+	clear
 
-#install_node
-install_cli
-install_vim
-install_bash
+	if [ ! -d ~/dotfiles ]; then
+		ech "Cloning dotfiles..."	2
+		git clone https://github.com/ryan-frankel/dotfiles ~/dotfiles
+		cd ~/dotfiles
+	else
+		ech "Pulling dotfiles..." 2
+		cd ~/dotfiles
+		git pull --quiet origin master 
+	fi
 
+	ech "Installing Node..." 2
+	install_node
+	ech "Installing CLI..." 2
+	install_cli
+	ech "Installing bash..." 2
+	install_bash
+	ech "Installing vim..." 2
+	install_vim
+
+	ech "\nInstall completed.\n\n" 2
+}
+
+main
 } # this ensures the entire script is downloaded #
