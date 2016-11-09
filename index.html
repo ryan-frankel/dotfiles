@@ -17,19 +17,19 @@ install_node() {
   sudo apt-get -qq install build-essential -y
 
 	ech " - NVM..."
-  if [ ! ~/.nvm ]; then
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash;
+  if [ ! -d "~/.nvm" ]; then
+    curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &> /dev/null;
     export NVM_DIR="/home/rfrankel/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm \
-    nvm install node 
-    nvm use node
-    nvm alias default node
-    npm install -g node-gyp
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    nvm install node &> /dev/null 
+    nvm use node &> /dev/null
+    nvm alias default node &> /dev/null
+    npm install -g --silent node-gyp &> /dev/null
   fi
 
   # Install trash if required
 	ech " - Trash..."
-  type trash > /dev/null 2>&1 || { npm install -g trash-cli; }
+  type trash > /dev/null 2>&1 || { npm install -g --silent trash-cli &> /dev/null; }
 
 	# Install dtrx, ncdu, htop if required
 	ech " - dtrx, ncdu, htop..."
@@ -41,7 +41,7 @@ install_node() {
 install_cli() {
 	ech " - Cloning z..."
   if [ ! -d ~/code/z ]; then
-    git clone https://github.com/rupa/z.git ~/code/z
+    git clone --quiet https://github.com/rupa/z.git ~/code/z &> /dev/null
   fi
 
 	ech " - Replacing .z..."
@@ -66,7 +66,7 @@ install_vim() {
 	ech " - Install vundle..."
 	sudo apt-get -qq install curl vim -y
 	if [ ! -d ~/.vim/bundle/vundle/ ]; then
-	 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+	 git clone --quiet https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle &> /dev/null
 	fi
 
 	# Create colors directory
@@ -78,7 +78,7 @@ install_vim() {
 	# Download VIM theme
 	ech " - Downloading theme..."
 	if [ ! -f ~/.vim/colors/wombat256mod.vim ]; then
-	 curl -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
+	 curl --silent -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
 	fi
 
 	# Install bundles
@@ -115,7 +115,7 @@ function main() {
 
 	if [ ! -d ~/dotfiles ]; then
 		ech "Cloning dotfiles..."	2
-		git clone https://github.com/ryan-frankel/dotfiles ~/dotfiles
+		git clone --quiet https://github.com/ryan-frankel/dotfiles ~/dotfiles &> /dev/null
 		cd ~/dotfiles
 	else
 		ech "Pulling dotfiles..." 2
