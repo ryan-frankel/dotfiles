@@ -50,7 +50,7 @@ function islinux() {
 install_node() {
   ech " - Build Essential..."
   if islinux; then
-    sudo apt-get -qq install build-essential -y
+    sudo apt-get -qq install build-essential -y &> /dev/null
   fi
 
 	ech " - NVM..."
@@ -71,7 +71,7 @@ install_node() {
 	# Install dtrx, ncdu, htop if required
   ech " - dtrx, ncdu, htop..."
   if islinux; then
-	  sudo apt-get -qq install dtrx ncdu htop -y
+	  sudo apt-get -qq install dtrx ncdu htop -y &> /dev/null
   fi
   if isosx; then
     brew install --quieter dtrx ncdu htop &> /dev/null
@@ -107,7 +107,7 @@ install_vim() {
 	# Install Vundle if Needed
 	ech " - Install curl, vim, and vundle..."
   if islinux; then
-  	sudo apt-get -qq install curl vim -y
+  	sudo apt-get -qq install curl vim -y &> /dev/null
   fi
   if isosx; then
     brew install --quieter curl vim &> /dev/null
