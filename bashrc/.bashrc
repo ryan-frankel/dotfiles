@@ -61,7 +61,10 @@ fi
 #PROMPT_DIRTRIM=2
 
 source ~/code/z/z.sh
-source ~/dotfiles/bashrc/.git-prompt.sh
+
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_STATESEPARATOR=" "
+GIT_PS1_SHOWCOLORHINTS=1
 
 BLUE="\[\033[0;34m\]"
 GREEN="\[\033[0;32m\]"
@@ -80,16 +83,11 @@ YELLOW="\[\033[1;33m\]"
 WHITE="\[\033[1;37m\]"
 GIT="\$(__git_ps1)"
 
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_STATESEPARATOR=""
-GIT_PS1_SHOWCOLORHINTS=1
-
 if [ "$color_prompt" = yes ]; then
   if [ $(id -u) -eq 0 ]; then # YOU ARE ROOT
     PS1="${debian_chroot:+($debian_chroot)}\[\033[00;31m\]\h\[\033[00m\]:\[\033[00;31m\]\w\[\033[00;32m\]\[\033[00m\] (ROOT!!) ~~~~> "
   else 
     #PS1="${debian_chroot:+($debian_chroot)}\[\033[01;30m\]\h\[\033[00m\]:\[\033[01;37m\]\w\[\033[00;36m\]\$(__git_ps1)\[\033[00;32m\]\[\033[00m\] "
-    #PS1="\n${DARKGREY}\w${CYAN}${GIT}\n${LIGHTGREY}\u@\h: "
     PROMPT_COMMAND='__git_ps1 "\n${DARKGREY}\w" "\n${LIGHTGREY}\u@\h: ${LIGHTGREY}" "|%s"'
   fi
 else
@@ -150,3 +148,6 @@ fi
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+# SOURCE GIT PROMPT
+source ~/dotfiles/bashrc/.git-prompt.sh

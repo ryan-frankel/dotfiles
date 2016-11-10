@@ -236,13 +236,15 @@ __git_ps1_colorize_gitstring ()
     # Using \[ and \] around colors is necessary to prevent
     # issues with command line editing/browsing/completion!
     local c_red='\[\e[38;05;160m\]'
-    local c_green='\[\e[38;05;28m\]'
+    local c_green='\[\e[38;05;70m\]'
     local c_lblue='\[\e[1;34m\]'
     local c_clear='\[\e[0m\]'
+    local c_yellow='\[\e[38;05;190m\]'
   fi
   local bad_color=$c_red
   local ok_color=$c_green
   local flags_color="$c_lblue"
+  local warning_color="$c_yellow"
 
   local branch_color=""
   if [ $detached = no ]; then
@@ -252,11 +254,11 @@ __git_ps1_colorize_gitstring ()
   fi
   c="$branch_color$c"
   z="$c_clear$z"
-  if [ "$w" = "*" ]; then
+  if [ "$w" = "●" ]; then
     w="$bad_color$w"
   fi
   if [ -n "$i" ]; then
-    i="$ok_color$i"
+    i="$warning_color$i"
   fi
   if [ -n "$s" ]; then
     s="$flags_color$s"
@@ -459,9 +461,9 @@ __git_ps1 ()
 		if [ -n "${GIT_PS1_SHOWDIRTYSTATE-}" ] &&
 		   [ "$(git config --bool bash.showDirtyState)" != "false" ]
 		then
-			git diff --no-ext-diff --quiet --exit-code || w="*"
+			git diff --no-ext-diff --quiet --exit-code || w="●"
 			if [ -n "$short_sha" ]; then
-				git diff-index --cached --quiet HEAD -- || i="*"
+				git diff-index --cached --quiet HEAD -- || i="●"
 			else
 				i="#"
 			fi
