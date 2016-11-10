@@ -44,10 +44,6 @@ install_cli() {
     git clone --quiet https://github.com/rupa/z.git ~/code/z &> /dev/null
   fi
 
-	ech " - Replacing .z..."
-  rm -f ~/.z
-  ln -sf ~/dotfiles/z/.z ~/.z
-
   # GITCONFIG SYMLINK
   rm -rf ~/.gitconfig
   ln -s ~/dotfiles/git/.gitconfig ~/.gitconfig
