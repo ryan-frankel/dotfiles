@@ -97,11 +97,13 @@ function install_bash() {
 	ech " - Delete existing..."
 	rm -rf ~/.bashrc &> /dev/null
 	rm -rf ~/.bash_profile &> /dev/null
+  rm -rf ~/.git-prompt.sh &> /dev/null
 
 	#SYM LINK NEW .bashrc FILE
 	ech " - Create new symlinks..."
 	ln -s ~/dotfiles/bashrc/.bashrc ~/.bashrc
 	ln -s ~/dotfiles/bashrc/.bashrc ~/.bash_profile
+  ln -s ~/dotfiles/bashrc/.git-prompt.sh ~/.git-prompt.sh
 
 	#RELOAD .bashrc
 	ech " - Reload bashrc..."

@@ -60,8 +60,8 @@ fi
 # ###################################################################
 #PROMPT_DIRTRIM=2
 
-source ~/dotfiles/bashrc/.git-prompt.sh
 source ~/code/z/z.sh
+source ~/dotfiles/bashrc/.git-prompt.sh
 
 BLUE="\[\033[0;34m\]"
 GREEN="\[\033[0;32m\]"
