@@ -235,8 +235,8 @@ __git_ps1_colorize_gitstring ()
   else
     # Using \[ and \] around colors is necessary to prevent
     # issues with command line editing/browsing/completion!
-    local c_red='\[\e[0;31m\]'
-    local c_green='\[\e[0;32m\]'
+    local c_red='\[\e[38;05;160m\]'
+    local c_green='\[\e[38;05;28m\]'
     local c_lblue='\[\e[1;34m\]'
     local c_clear='\[\e[0m\]'
   fi
@@ -461,7 +461,7 @@ __git_ps1 ()
 		then
 			git diff --no-ext-diff --quiet --exit-code || w="*"
 			if [ -n "$short_sha" ]; then
-				git diff-index --cached --quiet HEAD -- || i="+"
+				git diff-index --cached --quiet HEAD -- || i="*"
 			else
 				i="#"
 			fi
