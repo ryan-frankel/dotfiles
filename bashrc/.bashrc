@@ -85,9 +85,9 @@ GIT="\$(__git_ps1)"
 
 if [ "$color_prompt" = yes ]; then
   if [ $(id -u) -eq 0 ]; then # YOU ARE ROOT
-    PS1="${debian_chroot:+($debian_chroot)}\[\033[00;31m\]\h\[\033[00m\]:\[\033[00;31m\]\w\[\033[00;32m\]\[\033[00m\] (ROOT!!) ~~~~> "
+    #PS1="${debian_chroot:+($debian_chroot)}\[\033[00;31m\]\h\[\033[00m\]:\[\033[00;31m\]\w\[\033[00;32m\]\[\033[00m\] (ROOT!!) ~~~~> "
+    PS1="${BLUE}\u@\h \w ${RED}(ROOT!!) ~~~~>${LIGHTGREY} "
   else 
-    #PS1="${debian_chroot:+($debian_chroot)}\[\033[01;30m\]\h\[\033[00m\]:\[\033[01;37m\]\w\[\033[00;36m\]\$(__git_ps1)\[\033[00;32m\]\[\033[00m\] "
     PROMPT_COMMAND='__git_ps1 "\n${DARKGREY}\w" "\n${LIGHTGREY}\u@\h: ${LIGHTGREY}" "|%s"'
   fi
 else
