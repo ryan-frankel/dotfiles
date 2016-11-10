@@ -3,9 +3,12 @@ function md() {
 	mkdir -p "$@" && cd "$@"
 }
 
-# find shorthand
+# Find shorthand
 function f() {
 	find . -name "$1" 2>&1 | grep -v 'Permission denied'
 }
 
-
+# Show colors
+functions colors() {
+  for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
+}

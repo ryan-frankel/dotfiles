@@ -151,3 +151,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # SOURCE GIT PROMPT
 source ~/dotfiles/bashrc/.git-prompt.sh
+
+# Source Functions
+source ~/dotfiles/bashrc/.functions
