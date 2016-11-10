@@ -47,6 +47,10 @@ install_cli() {
 	ech " - Replacing .z..."
   rm -f ~/.z
   ln -sf ~/dotfiles/z/.z ~/.z
+
+  # GITCONFIG SYMLINK
+  rm -rf ~/.gitconfig
+  ln -s ~/dotfiles/git/.gitconfig ~/.gitconfig
 }
 
 # FUNCTION FOR INSTALLING VIM
