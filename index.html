@@ -1,20 +1,57 @@
 { # this ensures the entire script is downloaded #
+BLUE="\033[0;34m"
+GREEN="\033[38;05;70m"
+CYAN="\033[0;36m"
+RED="\033[38;05;160m"
+PURPLE="\033[0;35m"
+BROWN="\033[0;33m"
+LIGHTGREY="\033[0;37m"
+DARKGREY="\033[1;30m"
+LIGHTBLUE="\033[1;34m"
+LIGHTGREEN="\033[1;32m"
+LIGHTCYAN="\033[1;36m"
+LIGHTRED="\033[1;31m"
+LIGHTPURPLE="\033[1;35m"
+YELLOW="\033[1;33m"
+WHITE="\033[1;37m"
+CURSOR="\033[00m";
 
 # FUNCTION FOR ECHO WITH COLOR OPTION
 # ###################################################################
 function ech() {
 	if [ -z "$2" ]; then
-		echo -e " \033[32m✓ $1\033[00m";
+		echo -e " ${GREEN} $1\033${CURSOR}";
 	else
-		echo -e "\033[00m$1\033[00m";
+		echo -e "${CURSOR}$1${CURSOR}";
 	fi
 }
+
+# FUNCTION TO TEST FOR OSX/LINUX/ETC
+# ###################################################################
+function isosx() {
+  if [[ $OSTYPE == *"darwin"* ]]; then
+    return 0; # true
+  else
+    return 1; # false
+  fi
+}
+
+function islinux() {
+  if [[ $OSTYPE == *"linux"* ]]; then
+    return 0; # true
+  else
+    return 1; # false
+  fi
+}
+
 
 # FUNCTION FOR INSTALLING NODE + RELATED
 # ###################################################################
 install_node() {
-	ech " - Build Essential..."
-  sudo apt-get -qq install build-essential -y
+  ech " - Build Essential..."
+  if islinux; then
+    sudo apt-get -qq install build-essential -y
+  fi
 
 	ech " - NVM..."
   if [ ! -d "$NVM_DIR" ]; then
@@ -32,8 +69,13 @@ install_node() {
   type trash > /dev/null 2>&1 || { npm install -g --silent trash-cli &> /dev/null; }
 
 	# Install dtrx, ncdu, htop if required
-	ech " - dtrx, ncdu, htop..."
-	sudo apt-get -qq install dtrx ncdu htop -y
+  ech " - dtrx, ncdu, htop..."
+  if islinux; then
+	  sudo apt-get -qq install dtrx ncdu htop -y
+  fi
+  if isosx; then
+    brew install --quieter dtrx ncdu htop &> /dev/null
+  fi
 }
 
 # FUNCTION FOR COMMAND LINE 
@@ -63,8 +105,13 @@ install_vim() {
 	ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
 
 	# Install Vundle if Needed
-	ech " - Install vundle..."
-	sudo apt-get -qq install curl vim -y
+	ech " - Install curl, vim, and vundle..."
+  if islinux; then
+  	sudo apt-get -qq install curl vim -y
+  fi
+  if isosx; then
+    brew install --quieter curl vim &> /dev/null
+  fi
 	if [ ! -d ~/.vim/bundle/vundle/ ]; then
 	 git clone --quiet https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle &> /dev/null
 	fi
@@ -106,7 +153,6 @@ function install_bash() {
 	source ~/.bashrc
 }
 
-
 # ###################################################################
 # ###################################################################
 # MAIN
@@ -124,6 +170,14 @@ function main() {
 		cd ~/dotfiles
 		git pull --quiet origin master 
 	fi
+
+  if isosx; then
+    which -s brew
+    if [[ $? != 0 ]]; then
+      ech "Installing Homebrew..." 2
+      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+  fi
 
 	ech "Installing Node..." 2
 	install_node
