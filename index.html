@@ -1,4 +1,5 @@
 { # this ensures the entire script is downloaded #
+
 BLUE="\033[0;34m"
 GREEN="\033[38;05;70m"
 CYAN="\033[0;36m"
@@ -177,6 +178,10 @@ function main() {
       ech "Installing Homebrew..." 2
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
+  fi
+  if islinux; then
+    ech "APT update..." 2
+    sudo apt-get update &> /dev/null
   fi
 
 	ech "\nInstalling Node..." 2
