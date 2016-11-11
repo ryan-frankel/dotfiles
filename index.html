@@ -75,7 +75,7 @@ install_node() {
 	  sudo apt-get -qq install dtrx ncdu htop -y &> /dev/null
   fi
   if isosx; then
-    brew install --quieter dtrx ncdu htop &> /dev/null
+    brew install --quieter dtrx ncdu htop
   fi
 }
 
@@ -111,7 +111,7 @@ install_vim() {
   	sudo apt-get -qq install curl vim -y &> /dev/null
   fi
   if isosx; then
-    brew install --quieter curl vim &> /dev/null
+    brew install --quieter curl vim
   fi
 	if [ ! -d ~/.vim/bundle/vundle/ ]; then
 	 git clone --quiet https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle &> /dev/null
