@@ -257,16 +257,16 @@ __git_ps1_colorize_gitstring ()
   c="$branch_color$c"
   z="$c_clear$z"
   if [ "$w" = "●" ]; then
-    w="$bad_color$w"
+    w="$c_orange$w"
   fi
   if [ -n "$i" ]; then
-    i="$warning_color$i"
+    i="$c_yellow$i"
   fi
   if [ -n "$s" ]; then
     s="$flags_color$s"
   fi
   if [ -n "$u" ]; then
-    u="$unstashed_color$u"
+    u="$c_red$u"
   fi
   r="$c_clear$r"
 }
