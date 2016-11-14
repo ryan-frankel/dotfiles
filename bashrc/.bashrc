@@ -1,18 +1,32 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# COLORS
+BLUE="\[\033[38;05;32m\]"
+GREEN="\[\033[38;05;70m\]"
+CYAN="\[\033[0;36m\]"
+RED="\[\033[38;05;160m\]"
+PURPLE="\[\033[0;35m\]"
+BROWN="\[\033[0;33m\]"
+LIGHTGREY="\[\033[38;05;250m\]"
+DARKGREY="\[\033[38;05;240m\]"
+LIGHTBLUE="\[\033[1;34m\]"
+LIGHTGREEN="\[\033[1;32m\]"
+LIGHTCYAN="\[\033[1;36m\]"
+LIGHTRED="\[\033[1;31m\]"
+LIGHTPURPLE="\[\033[1;35m\]"
+YELLOW="\[\033[1;33m\]"
+WHITE="\[\033[1;37m\]"
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# HISTORY SETTINGS
+# ###################################################################
 # don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# for setting history length
 HISTSIZE=5000
 HISTFILESIZE=10000
 
@@ -27,7 +41,7 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
@@ -60,28 +74,12 @@ fi
 # ###################################################################
 PROMPT_DIRTRIM=0
 
-source ~/code/z/z.sh
-
+# GIT PROMPT SETTINGS
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_STATESEPARATOR=" "
 GIT_PS1_SHOWCOLORHINTS=1
-
-BLUE="\[\033[38;05;32m\]"
-GREEN="\[\033[38;05;70m\]"
-CYAN="\[\033[0;36m\]"
-RED="\[\033[38;05;160m\]"
-PURPLE="\[\033[0;35m\]"
-BROWN="\[\033[0;33m\]"
-LIGHTGREY="\[\033[38;05;250m\]"
-DARKGREY="\[\033[38;05;240m\]"
-LIGHTBLUE="\[\033[1;34m\]"
-LIGHTGREEN="\[\033[1;32m\]"
-LIGHTCYAN="\[\033[1;36m\]"
-LIGHTRED="\[\033[1;31m\]"
-LIGHTPURPLE="\[\033[1;35m\]"
-YELLOW="\[\033[1;33m\]"
-WHITE="\[\033[1;37m\]"
 GIT="\$(__git_ps1)"
+
 
 if [ "$color_prompt" = yes ]; then
   if [ $(id -u) -eq 0 ]; then # YOU ARE ROOT
@@ -96,13 +94,13 @@ fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+#case "$TERM" in
+#xterm*|rxvt*)
+    #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    #;;
+#*)
+    #;;
+#esac
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -124,17 +122,14 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:/etc/apache2/
-VIMRC=~/.vimrc
-export VIMRC
+
+#VIMRC=~/.vimrc
+#export VIMRC
 
 # disable START/STOP signals
 stty -ixon
-
-#export NVM_DIR="/home/pj/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-#nvm use iojs
 
 # Update the colors for the LS command
 #If on a mx
@@ -151,6 +146,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # SOURCE GIT PROMPT
 source ~/dotfiles/bashrc/.git-prompt.sh
+
+# SOURCE z
+source ~/code/z/z.sh
 
 # Source Functions
 source ~/dotfiles/bashrc/.functions
