@@ -58,7 +58,7 @@ fi
 
 # COMMAND PROMPT
 # ###################################################################
-#PROMPT_DIRTRIM=2
+PROMPT_DIRTRIM=0
 
 source ~/code/z/z.sh
 

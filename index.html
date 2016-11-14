@@ -65,18 +65,6 @@ install_node() {
     npm install -g --silent node-gyp &> /dev/null
   fi
 
-  # Install trash if required
-	ech " - Trash..."
-  type trash > /dev/null 2>&1 || { npm install -g --silent trash-cli &> /dev/null; }
-
-	# Install dtrx, ncdu, htop if required
-  ech " - dtrx, ncdu, htop..."
-  if islinux; then
-	  sudo apt-get -qq install dtrx ncdu htop -y &> /dev/null
-  fi
-  if isosx; then
-    brew install --quieter dtrx ncdu htop
-  fi
 }
 
 # FUNCTION FOR COMMAND LINE 
@@ -85,6 +73,24 @@ install_cli() {
 	ech " - Cloning z..."
   if [ ! -d ~/code/z ]; then
     git clone --quiet https://github.com/rupa/z.git ~/code/z &> /dev/null
+  fi
+
+  # Install trash if required
+	ech " - Trash..."
+  if islinux; then
+    sudo apt-get install trash-cli -y &> /dev/null
+  fi
+  if isosx; then
+    brew install --quieter trash-cli
+  fi
+
+	# Install dtrx, ncdu, htop if required
+  ech " - dtrx, ncdu, htop..."
+  if islinux; then
+	  sudo apt-get -qq install dtrx ncdu htop -y &> /dev/null
+  fi
+  if isosx; then
+    brew install --quieter dtrx ncdu htop
   fi
 
   # GITCONFIG SYMLINK
