@@ -10,10 +10,27 @@ DARKGREY="\[\033[38;05;240m\]"
 LIGHTBLUE="\[\033[1;34m\]"
 LIGHTGREEN="\[\033[1;32m\]"
 LIGHTCYAN="\[\033[1;36m\]"
-LIGHTRED="\[\033[1;31m\]"
+LIGHTRED="\[\033[38;05;9m\]"
 LIGHTPURPLE="\[\033[1;35m\]"
 YELLOW="\[\033[1;33m\]"
 WHITE="\[\033[1;37m\]"
+
+# LS COLORS
+LSBLUE="38;05;32"
+LSGREEN="38;05;70"
+LSCYAN="0;36"
+LSRED="38;05;160"
+LSPURPLE="0;35"
+LSBROWN="0;33"
+LSLIGHTGREY="38;05;250"
+LSDARKGREY="38;05;240"
+LSLIGHTBLUE="1;34"
+LSLIGHTGREEN="1;32"
+LSLIGHTCYAN="1;36"
+LSLIGHTRED="38;05;9"
+LSLIGHTPURPLE="1;35"
+LSYELLOW="1;33"
+LSWHITE="1;37"
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -137,7 +154,14 @@ if [ "$(uname)" == "Darwin" ]; then
   export CLICOLOR=1
   export LSCOLORS=gxfxcxdxbxegedabagacad
 else
-  LS_COLORS=$LS_COLORS:'no=0;90:di=0;96:fi=0;37:ln=0;95:ex=0;91:' ; export LS_COLORS
+  #LS_COLORS=$LS_COLORS:'no=0;90:di=0;96:fi=0;37:ln=0;95:ex=0;91:'
+  dir="${LSGREEN}"
+  file="${LSLIGHTGREY}"
+  link="${LSBLUE}"
+  exe="${LSRED}"
+  shell="${LSLIGHTRED}"
+  LS_COLORS="di=${dir}:fi=${file}:no=${file}:ln=${link}:ex=${exe}:*.sh=${shell}"
+  export LS_COLORS
 fi
 
 # Node Version Manager
