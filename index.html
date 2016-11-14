@@ -77,12 +77,13 @@ install_cli() {
 
   # Install trash if required
 	ech " - Trash..."
-  if islinux; then
-    sudo apt-get install trash-cli -y &> /dev/null
-  fi
-  if isosx; then
-    brew install --quieter trash-cli
-  fi
+  npm install -g trash-cli empty-trash-cli &> /dev/null
+  #if islinux; then
+    #sudo apt-get install trash-cli -y &> /dev/null
+  #fi
+  #if isosx; then
+    #brew install --quieter trash-cli
+  #fi
 
 	# Install dtrx, ncdu, htop if required
   ech " - dtrx, ncdu, htop..."
