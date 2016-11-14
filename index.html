@@ -21,7 +21,7 @@ CURSOR="\033[00m";
 # ###################################################################
 function ech() {
 	if [ -z "$2" ]; then
-		echo -e " ${GREEN} $1\033${CURSOR}";
+		echo -e " ${GREEN}$1${CURSOR}";
 	else
 		echo -e "${CURSOR}$1${CURSOR}";
 	fi
@@ -49,12 +49,12 @@ function islinux() {
 # FUNCTION FOR INSTALLING NODE + RELATED
 # ###################################################################
 install_node() {
-  ech " - Build Essential..."
+  ech "- Build Essential..."
   if islinux; then
     sudo apt-get -qq install build-essential -y &> /dev/null
   fi
 
-	ech " - NVM..."
+	ech "- NVM..."
   if [ ! -d "$NVM_DIR" ]; then
     curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &> /dev/null;
     export NVM_DIR="/home/rfrankel/.nvm"
@@ -70,13 +70,13 @@ install_node() {
 # FUNCTION FOR COMMAND LINE 
 # ###################################################################
 install_cli() {
-	ech " - Cloning z..."
+	ech "- Cloning z..."
   if [ ! -d ~/code/z ]; then
     git clone --quiet https://github.com/rupa/z.git ~/code/z &> /dev/null
   fi
 
   # Install trash if required
-	ech " - Trash..."
+	ech "- Trash..."
   npm install -g trash-cli empty-trash-cli &> /dev/null
   #if islinux; then
     #sudo apt-get install trash-cli -y &> /dev/null
@@ -86,7 +86,7 @@ install_cli() {
   #fi
 
 	# Install dtrx, ncdu, htop if required
-  ech " - dtrx, ncdu, htop..."
+  ech "- dtrx, ncdu, htop..."
   if islinux; then
 	  sudo apt-get -qq install dtrx ncdu htop -y &> /dev/null
   fi
@@ -103,17 +103,17 @@ install_cli() {
 # ###################################################################
 install_vim() {
 	# Delete Existing
-	ech " - Delete existing..."
+	ech "- Delete existing..."
 	rm -rf ~/.vimrc
 	rm -rf ~/.vim/snippets
 
 	# Symlink New
-	ech " - New symlinks..."
+	ech "- New symlinks..."
 	ln -s ~/dotfiles/vimrc/.vimrc ~/.vimrc
 	ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
 
 	# Install Vundle if Needed
-	ech " - Install curl, vim, and vundle..."
+	ech "- Install curl, vim, and vundle..."
   if islinux; then
   	sudo apt-get -qq install curl vim -y &> /dev/null
   fi
@@ -125,19 +125,19 @@ install_vim() {
 	fi
 
 	# Create colors directory
-	ech " - Create colors directory..."
+	ech "- Create colors directory..."
 	if [ ! -d ~/.vim/colors ]; then
 	 mkdir ~/.vim/colors
 	fi
 
 	# Download VIM theme
-	ech " - Downloading theme..."
+	ech "- Downloading theme..."
 	if [ ! -f ~/.vim/colors/wombat256mod.vim ]; then
 	 curl --silent -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
 	fi
 
 	# Install bundles
-	ech " - Install bundles..."
+	ech "- Install bundles..."
 	vim - -i NONE -c VundleUpdate -c quitall >& /dev/null
 } #install_vim()
 
@@ -145,20 +145,20 @@ install_vim() {
 # ###################################################################
 function install_bash() {
 	#DELETE EXISTING .bashrc IF THERE IS ONE
-	ech " - Delete existing..."
+	ech "- Delete existing..."
 	rm -rf ~/.bashrc &> /dev/null
 	rm -rf ~/.bash_profile &> /dev/null
   rm -rf ~/.git-prompt.sh &> /dev/null
 
 	#SYM LINK NEW .bashrc FILE
-	ech " - Create new symlinks..."
+	ech "- Create new symlinks..."
 	ln -s ~/dotfiles/bashrc/.bashrc ~/.bashrc
 	ln -s ~/dotfiles/bashrc/.bashrc ~/.bash_profile
   ln -s ~/dotfiles/bashrc/.git-prompt.sh ~/.git-prompt.sh
 
 	#RELOAD .bashrc
-	ech " - Reload bashrc..."
-	source ~/.bashrc
+  ech "- Reload bashrc..."
+	#source ~/.bashrc
 }
 
 # ###################################################################
@@ -207,8 +207,10 @@ function main() {
   ech "==============================================" 2
 	install_vim
 
-	ech "\nInstall completed.\n\n" 2
+  ech "\nExecuting bash..." 2
 	exec bash
+
+	ech "\nInstall completed.\n\n" 2
 }
 
 main
