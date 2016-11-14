@@ -155,7 +155,6 @@ if [ "$(uname)" == "Darwin" ]; then
   export CLICOLOR=1
   export LSCOLORS=gxfxcxdxbxegedabagacad
 else
-  #LS_COLORS=$LS_COLORS:'no=0;90:di=0;96:fi=0;37:ln=0;95:ex=0;91:'
   dir="${LSGREEN}"
   file="${LSLIGHTGREY}"
   link="${LSBLUE}"
