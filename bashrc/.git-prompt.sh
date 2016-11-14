@@ -235,16 +235,18 @@ __git_ps1_colorize_gitstring ()
   else
     # Using \[ and \] around colors is necessary to prevent
     # issues with command line editing/browsing/completion!
-    local c_red='\[\e[38;05;160m\]'
-    local c_green='\[\e[38;05;70m\]'
-    local c_lblue='\[\e[1;34m\]'
-    local c_clear='\[\e[0m\]'
-    local c_yellow='\[\e[38;05;190m\]'
+    local c_red="${RED}"
+    local c_green="${GREEN}"
+    local c_lblue="${BLUE}"
+    local c_clread="${LIGHTGREY}"
+    local c_yellow="${YELLOW}"
+    local c_orange="${ORANGE}"
   fi
   local bad_color=$c_red
   local ok_color=$c_green
   local flags_color="$c_lblue"
   local warning_color="$c_yellow"
+  local unstashed_color="$c_orange"
 
   local branch_color=""
   if [ $detached = no ]; then
@@ -264,7 +266,7 @@ __git_ps1_colorize_gitstring ()
     s="$flags_color$s"
   fi
   if [ -n "$u" ]; then
-    u="$bad_color$u"
+    u="$unstashed_color$u"
   fi
   r="$c_clear$r"
 }
@@ -478,7 +480,7 @@ __git_ps1 ()
 		   [ "$(git config --bool bash.showUntrackedFiles)" != "false" ] &&
 		   git ls-files --others --exclude-standard --error-unmatch -- '*' >/dev/null 2>/dev/null
 		then
-			u="%${ZSH_VERSION+%}"
+			u="●${ZSH_VERSION+%}"
 		fi
 
 		if [ -n "${GIT_PS1_SHOWUPSTREAM-}" ]; then
@@ -500,6 +502,7 @@ __git_ps1 ()
 	fi
 
 	local f="$w$i$s$u"
+  local f="$u$w$i$s"
 	local gitstring="$c$b${f:+$z$f}$r$p"
 
 	if [ $pcmode = yes ]; then
