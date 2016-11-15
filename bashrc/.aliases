@@ -14,7 +14,7 @@ source ~/code/z/z.sh
 
 # TRASH
 # #########################################
-alias rm='trash'
+#alias rm='trash'
 
 # LS ALIASES
 # #########################################
