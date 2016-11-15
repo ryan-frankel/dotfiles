@@ -170,16 +170,6 @@ function install_bash() {
 function main() {
 	clear
 
-	if [ ! -d ~/dotfiles ]; then
-		ech "Cloning dotfiles..."	2
-		git clone --quiet https://github.com/ryan-frankel/dotfiles ~/dotfiles
-		cd ~/dotfiles
-	else
-		ech "Pulling dotfiles..." 2
-		cd ~/dotfiles
-		git pull --quiet origin master 
-	fi
-
   if isosx; then
     which -s brew
     if [[ $? != 0 ]]; then
@@ -190,7 +180,22 @@ function main() {
   if islinux; then
     ech "APT update..." 2
     sudo apt-get update &> /dev/null
+
+    echo "Install Git..." 2
+    sudo apt-get install -y &> /dev/null
   fi
+
+	if [ ! -d ~/dotfiles ]; then
+		ech "Cloning dotfiles..."	2
+		git clone --quiet https://github.com/ryan-frankel/dotfiles ~/dotfiles
+		cd ~/dotfiles
+	else
+		ech "Pulling dotfiles..." 2
+		cd ~/dotfiles
+		git pull --quiet origin master 
+	fi
+
+
 
 	ech "\nInstalling Node..." 2
   ech "==============================================" 2
