@@ -187,11 +187,11 @@ __git_ps1_show_upstream ()
 		"0	0") # equal to upstream
 			p="" ;;
 		"0	"*) # ahead of upstream
-			p="⇱" ;;
+			p="↑" ;;
 		*"	0") # behind upstream
-			p="⇲" ;;
+			p="↓" ;;
 		*)	    # diverged from upstream
-			p="⇱⇲" ;;
+			p="↑↓" ;;
 		esac
 	else
 		case "$count" in
