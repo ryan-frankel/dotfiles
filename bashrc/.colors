@@ -1,4 +1,4 @@
-# BASE COLORS
+# BASE COLORS (needed in this format in some cases)
 LSBLUE="38;05;32"
 LSGREEN="38;05;70"
 LSCYAN="38;05;37"
@@ -16,7 +16,7 @@ LSLIGHTPURPLE="1;35"
 LSYELLOW="38;05;148"
 LSWHITE="38;05;15"
 
-# COLORS
+# COLORS (usually needed in this format)
 BLUE="\[\033[${LSBLUE}m\]"
 GREEN="\[\033[${LSGREEN}m\]"
 CYAN="\[\033[${LSCYAN}m\]"
