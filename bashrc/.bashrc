@@ -92,6 +92,7 @@ fi
 
 # COMMAND PROMPT
 # ###################################################################
+# Must be set to zero in case it was previously set
 PROMPT_DIRTRIM=0
 
 # GIT PROMPT SETTINGS
