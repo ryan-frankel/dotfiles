@@ -181,8 +181,8 @@ function main() {
     ech "APT update..." 2
     sudo apt-get update &> /dev/null
 
-    echo "Install Git..." 2
-    sudo apt-get install -y &> /dev/null
+    ech "Install Git..." 2
+    sudo apt-get install git -y &> /dev/null
   fi
 
 	if [ ! -d ~/dotfiles ]; then
