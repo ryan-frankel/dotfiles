@@ -34,12 +34,12 @@ source ~/dotfiles/bashrc/.bashrc_prompt
 
 # ALIAS DEFINITIONS
 # ###################################################################
-if [ -f ~/dotfiles/bashrc/.bash_aliases ]; then
-    . ~/dotfiles/bashrc/.bash_aliases
+if [ -f ~/dotfiles/bashrc/.aliases ]; then
+    source ~/dotfiles/bashrc/.aliases
 fi
 
-if [ -f ~/dotfiles/bashrc/.bash_site_aliases ]; then
-    . ~/dotfiles/bashrc/.bash_site_aliases
+if [ -f ~/dotfiles/bashrc/.site_aliases ]; then
+    source ~/dotfiles/bashrc/.site_aliases
 fi
 
 # BASH COMPLETION
