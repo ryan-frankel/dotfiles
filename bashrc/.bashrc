@@ -2,9 +2,17 @@
 # ###################################################################
 [ -z "$PS1" ] && return
 
+# MISC
+# ###################################################################
+# check the window size after each command and adjust
+shopt -s checkwinsize
+
+# disable START/STOP signals
+stty -ixon
+
 # LOAD COLORS
 # ###################################################################
-source ~/dotfiles/bashrc/.bashrc_colors
+source ~/dotfiles/bashrc/.colors
 
 # HISTORY SETTINGS
 # ###################################################################
@@ -13,20 +21,9 @@ HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
-
-# for setting history length
 HISTSIZE=5000
 HISTFILESIZE=10000
 export PROMPT_COMMAND="history -a; history -c; history -r $PROMPT_COMMAND"
-
-# MISC
-# ###################################################################
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# disable START/STOP signals
-stty -ixon
 
 # PROMPT
 # ###################################################################
@@ -35,17 +32,17 @@ source ~/dotfiles/bashrc/.bashrc_prompt
 # ALIAS DEFINITIONS
 # ###################################################################
 if [ -f ~/dotfiles/bashrc/.aliases ]; then
-    source ~/dotfiles/bashrc/.aliases
+  source ~/dotfiles/bashrc/.aliases
 fi
 
 if [ -f ~/dotfiles/bashrc/.site_aliases ]; then
-    source ~/dotfiles/bashrc/.site_aliases
+  source ~/dotfiles/bashrc/.site_aliases
 fi
 
 # BASH COMPLETION
 # ###################################################################
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+  source /etc/bash_completion
 fi
 
 # PATH
@@ -59,11 +56,6 @@ if [ "$(uname)" == "Darwin" ]; then
   export CLICOLOR=1
   export LSCOLORS=gxfxcxdxbxegedabagacad
 else
-  dir="${LSGREEN}"
-  file="${LSLIGHTGREY}"
-  link="${LSBLUE}"
-  exe="${LSRED}"
-  shell="${LSLIGHTRED}"
   LS_COLORS="di=${dir}:fi=${file}:no=${file}:ln=${link}:ex=${exe}:*.sh=${shell}"
   export LS_COLORS
 fi
