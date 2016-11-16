@@ -160,17 +160,47 @@ function install_bash() {
 	ech "- Delete existing..."
 	rm -rf ~/.bashrc &> /dev/null
 	rm -rf ~/.bash_profile &> /dev/null
-  rm -rf ~/.git-prompt.sh &> /dev/null
 
 	#SYM LINK NEW .bashrc FILE
 	ech "- Create new symlinks..."
 	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bashrc
 	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bash_profile
-  #ln -s ~/dotfiles/bashrc/.git-prompt.sh ~/.git-prompt.sh
 
 	#RELOAD .bashrc
   ech "- Reload bashrc..."
   source ~/.bashrc
+}
+
+function install_setup() {
+  if isosx; then
+    which -s brew
+    if [[ $? != 0 ]]; then
+      ech "- Installing Homebrew..."
+      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+  fi
+
+  # LINUX BASICS
+  # #############################################################
+  if islinux; then
+    ech "- APT update..."
+    sudo apt-get update &> /dev/null
+
+    ech "- Install Git..."
+    sudo apt-get install git -y &> /dev/null
+  fi
+
+  # GET REPO
+  # #############################################################
+	if [ ! -d ~/dotfiles ]; then
+		ech "- Cloning dotfiles..."
+		git clone --quiet https://github.com/ryan-frankel/dotfiles ~/dotfiles
+		cd ~/dotfiles
+	else
+		ech "- Pulling dotfiles..."
+		cd ~/dotfiles
+		git pull --quiet origin master 
+	fi
 }
 
 # ###################################################################
@@ -181,37 +211,9 @@ function install_bash() {
 function main() {
 	clear
 
-  if isosx; then
-    which -s brew
-    if [[ $? != 0 ]]; then
-      ech "Installing Homebrew..." 2
-      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-  fi
-
-  # LINUX BASICS
-  # #############################################################
-  if islinux; then
-    ech "APT update..." 2
-    sudo apt-get update &> /dev/null
-
-    ech "Install Git..." 2
-    sudo apt-get install git -y &> /dev/null
-  fi
-
-  # GET REPO
-  # #############################################################
-	if [ ! -d ~/dotfiles ]; then
-		ech "Cloning dotfiles..."	2
-		git clone --quiet https://github.com/ryan-frankel/dotfiles ~/dotfiles
-		cd ~/dotfiles
-	else
-		ech "Pulling dotfiles..." 2
-		cd ~/dotfiles
-		git pull --quiet origin master 
-	fi
-
-
+  ech "\nSetting Up..." 2
+  ech "==============================================" 2
+  install_setup
 
 	ech "\nInstalling Node..." 2
   ech "==============================================" 2
