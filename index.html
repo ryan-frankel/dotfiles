@@ -7,25 +7,27 @@
 # ###################################################################
 function main() {
 	clear
+  define_colors
+  banner
 
   ech "\nSetting Up..." 2
-  ech "==============================================" 2
+  ech "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" 2
   install_setup
 
 	ech "\nInstalling Node..." 2
-  ech "==============================================" 2
+  ech "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" 2
 	install_node
 
 	ech "\nInstalling CLI..." 2
-  ech "==============================================" 2
+  ech "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" 2
 	install_cli
 
 	ech "\nInstalling bash..." 2
-  ech "==============================================" 2
+  ech "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" 2
 	install_bash
 
 	ech "\nInstalling vim..." 2
-  ech "==============================================" 2
+  ech "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" 2
 	install_vim
 
   ech "\nExecuting bash..." 2
@@ -34,17 +36,35 @@ function main() {
 	ech "\nInstall completed.\n\n" 2
 }
 
+function banner() {
+  echo -e "${DARKGRAY}"
+  echo -e ".8888b                            dP                dP             dP       "
+  echo -e "88   '                            88                88             88       "
+  echo -e "88aaa  88d888b. .d8888b. 88d888b. 88  .dP  .d8888b. 88    .d8888b. 88d888b. "
+  echo -e "88     88'  '88 88'  '88 88'  '88 88888'   88ooood8 88    Y8ooooo. 88'  '88 "
+  echo -e "88     88       88.  .88 88    88 88  '8b. 88.  ... 88          88 88    88 "
+  echo -e "dP     dP       '88888P8 dP    dP dP   'YP '88888P' dP 88 '88888P' dP    dP "
+  echo -e "oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+  echo -e "${CURSOR}"
+}
+
 # DEFINE COLORS
 # ###################################################################
 function define_colors {
   GREEN="\033[38;05;70m"
+  PURPLE="\033[38;05;93m"
+  LIGHTPURPLE="\033[38;05;105m"
+  LIGHTGRAY="\033[38;05;248m"
+  DARKGRAY="\033[38;05;234m"
   CURSOR="\033[00m";
+  CURSOR="${LIGHTGRAY}"
 }
 
 # SETUP, GIT, ADD THE REPO
 # ###################################################################
 function install_setup() {
   define_colors
+
 
   if isosx; then
     which -s brew
