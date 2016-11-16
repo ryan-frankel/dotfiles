@@ -95,6 +95,16 @@ install_cli() {
     brew install --quieter dtrx ncdu htop
   fi
 
+  # INSTALL GIT LFS
+  ech "- Git LFS..."
+  if [ ! -e /usr/local/bin/git-lfs ]; then
+    cd ~
+    wget https://github.com/git-lfs/git-lfs/releases/download/v1.4.4/git-lfs-linux-amd64-1.4.4.tar.gz &> /dev/null 
+    dtrx -n git-lfs-linux-amd64-1.4.4.tar.gz &> /dev/null
+    cd git-lfs-linux-amd64-1.4.4/git-lfs-1.4.4/
+    sudo ./install.sh &> /dev/null
+  fi
+
   # GITCONFIG SYMLINK
   rm -rf ~/.gitconfig
   ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
@@ -179,6 +189,9 @@ function main() {
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
   fi
+
+  # LINUX BASICS
+  # #############################################################
   if islinux; then
     ech "APT update..." 2
     sudo apt-get update &> /dev/null
@@ -187,6 +200,8 @@ function main() {
     sudo apt-get install git -y &> /dev/null
   fi
 
+  # GET REPO
+  # #############################################################
 	if [ ! -d ~/dotfiles ]; then
 		ech "Cloning dotfiles..."	2
 		git clone --quiet https://github.com/ryan-frankel/dotfiles ~/dotfiles
