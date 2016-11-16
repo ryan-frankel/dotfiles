@@ -79,12 +79,12 @@ install_cli() {
   # Install trash if required
 	ech "- Trash..."
   npm install -g trash-cli empty-trash-cli &> /dev/null
-  #if islinux; then
-    #sudo apt-get install trash-cli -y &> /dev/null
-  #fi
-  #if isosx; then
-    #brew install --quieter trash-cli
-  #fi
+  if islinux; then
+    sudo apt-get install trash-cli -y &> /dev/null
+  fi
+  if isosx; then
+    brew install --quieter trash-cli
+  fi
 
 	# Install dtrx, ncdu, htop if required
   ech "- dtrx, ncdu, htop..."
@@ -97,7 +97,7 @@ install_cli() {
 
   # GITCONFIG SYMLINK
   rm -rf ~/.gitconfig
-  ln -s ~/dotfiles/git/.gitconfig ~/.gitconfig
+  ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
 }
 
 # FUNCTION FOR INSTALLING VIM
@@ -110,8 +110,10 @@ install_vim() {
 
 	# Symlink New
 	ech "- New symlinks..."
-	ln -s ~/dotfiles/vimrc/.vimrc ~/.vimrc
-	ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
+	ln -s ~/dotfiles/vimrc/vimrc ~/.vimrc
+  if [ -d ~/dotfiles/vimrc/snippets ]; then
+  	ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
+  fi
 
 	# Install Vundle if Needed
 	ech "- Install curl, vim, and vundle..."
@@ -153,13 +155,13 @@ function install_bash() {
 
 	#SYM LINK NEW .bashrc FILE
 	ech "- Create new symlinks..."
-	ln -s ~/dotfiles/bashrc/.bashrc ~/.bashrc
-	ln -s ~/dotfiles/bashrc/.bashrc ~/.bash_profile
-  ln -s ~/dotfiles/bashrc/.git-prompt.sh ~/.git-prompt.sh
+	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bashrc
+	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bash_profile
+  #ln -s ~/dotfiles/bashrc/.git-prompt.sh ~/.git-prompt.sh
 
 	#RELOAD .bashrc
   ech "- Reload bashrc..."
-	#source ~/.bashrc
+  source ~/.bashrc
 }
 
 # ###################################################################

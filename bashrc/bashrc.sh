@@ -12,7 +12,7 @@ stty -ixon
 
 # LOAD COLORS
 # ###################################################################
-source ~/dotfiles/bashrc/.colors
+source ~/dotfiles/bashrc/colors.sh
 
 # HISTORY SETTINGS
 # ###################################################################
@@ -27,16 +27,16 @@ export PROMPT_COMMAND="history -a; history -c; history -r $PROMPT_COMMAND"
 
 # PROMPT
 # ###################################################################
-source ~/dotfiles/bashrc/.bashrc_prompt
+source ~/dotfiles/bashrc/bash_prompt.sh
 
 # ALIAS DEFINITIONS
 # ###################################################################
-if [ -f ~/dotfiles/bashrc/.aliases ]; then
-  source ~/dotfiles/bashrc/.aliases
+if [ -f ~/dotfiles/bashrc/aliases.sh ]; then
+  source ~/dotfiles/bashrc/aliases.sh
 fi
 
-if [ -f ~/dotfiles/bashrc/.site_aliases ]; then
-  source ~/dotfiles/bashrc/.site_aliases
+if [ -f ~/dotfiles/bashrc/site_aliases.sh ]; then
+  source ~/dotfiles/bashrc/site_aliases.sh
 fi
 
 # BASH COMPLETION
@@ -67,7 +67,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # GIT PROMPT
 # ###################################################################
-source ~/dotfiles/bashrc/.git-prompt.sh
+source ~/dotfiles/bashrc/git-prompt.sh
 
 # z
 # ###################################################################
@@ -75,4 +75,4 @@ source ~/code/z/z.sh
 
 # FUNCTIONS
 # ###################################################################
-source ~/dotfiles/bashrc/.functions
+source ~/dotfiles/bashrc/functions.sh
