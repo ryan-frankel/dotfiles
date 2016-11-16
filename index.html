@@ -1,24 +1,5 @@
 { # this ensures the entire script is downloaded #
 
-# Define colors
-BLUE="\033[0;34m"
-GREEN="\033[38;05;70m"
-CYAN="\033[0;36m"
-RED="\033[38;05;160m"
-PURPLE="\033[0;35m"
-BROWN="\033[0;33m"
-LIGHTGREY="\033[0;37m"
-DARKGREY="\033[1;30m"
-LIGHTBLUE="\033[1;34m"
-LIGHTGREEN="\033[1;32m"
-LIGHTCYAN="\033[1;36m"
-LIGHTRED="\033[1;31m"
-LIGHTPURPLE="\033[1;35m"
-YELLOW="\033[1;33m"
-WHITE="\033[1;37m"
-CURSOR="\033[00m";
-
-
 # ###################################################################
 # ###################################################################
 # MAIN
@@ -53,9 +34,31 @@ function main() {
 	ech "\nInstall completed.\n\n" 2
 }
 
+# Define colors
+function define_colors {
+  BLUE="\033[0;34m"
+  GREEN="\033[38;05;70m"
+  CYAN="\033[0;36m"
+  RED="\033[38;05;160m"
+  PURPLE="\033[0;35m"
+  BROWN="\033[0;33m"
+  LIGHTGREY="\033[0;37m"
+  DARKGREY="\033[1;30m"
+  LIGHTBLUE="\033[1;34m"
+  LIGHTGREEN="\033[1;32m"
+  LIGHTCYAN="\033[1;36m"
+  LIGHTRED="\033[1;31m"
+  LIGHTPURPLE="\033[1;35m"
+  YELLOW="\033[1;33m"
+  WHITE="\033[1;37m"
+  CURSOR="\033[00m";
+}
+
 # SETUP, GIT, ADD THE REPO
 # ###################################################################
 function install_setup() {
+  define_colors
+
   if isosx; then
     which -s brew
     if [[ $? != 0 ]]; then
