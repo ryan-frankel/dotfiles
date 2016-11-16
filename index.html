@@ -18,34 +18,74 @@ YELLOW="\033[1;33m"
 WHITE="\033[1;37m"
 CURSOR="\033[00m";
 
-# FUNCTION FOR ECHO WITH COLOR OPTION
+
 # ###################################################################
-function ech() {
-	if [ -z "$2" ]; then
-		echo -e " ${GREEN}$1${CURSOR}";
+# ###################################################################
+# MAIN
+# ###################################################################
+# ###################################################################
+function main() {
+	clear
+
+  ech "\nSetting Up..." 2
+  ech "==============================================" 2
+  install_setup
+
+	ech "\nInstalling Node..." 2
+  ech "==============================================" 2
+	install_node
+
+	ech "\nInstalling CLI..." 2
+  ech "==============================================" 2
+	install_cli
+
+	ech "\nInstalling bash..." 2
+  ech "==============================================" 2
+	install_bash
+
+	ech "\nInstalling vim..." 2
+  ech "==============================================" 2
+	install_vim
+
+  ech "\nExecuting bash..." 2
+	exec bash
+
+	ech "\nInstall completed.\n\n" 2
+}
+
+# SETUP, GIT, ADD THE REPO
+# ###################################################################
+function install_setup() {
+  if isosx; then
+    which -s brew
+    if [[ $? != 0 ]]; then
+      ech "- Installing Homebrew..."
+      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+  fi
+
+  # LINUX BASICS
+  # #############################################################
+  if islinux; then
+    ech "- APT update..."
+    sudo apt-get update &> /dev/null
+
+    ech "- Install Git..."
+    sudo apt-get install git -y &> /dev/null
+  fi
+
+  # GET REPO
+  # #############################################################
+	if [ ! -d ~/dotfiles ]; then
+		ech "- Cloning dotfiles..."
+		git clone --quiet https://github.com/ryan-frankel/dotfiles ~/dotfiles
+		cd ~/dotfiles
 	else
-		echo -e "${CURSOR}$1${CURSOR}";
+		ech "- Pulling dotfiles..."
+		cd ~/dotfiles
+		git pull --quiet origin master 
 	fi
 }
-
-# FUNCTION TO TEST FOR OSX/LINUX/ETC
-# ###################################################################
-function isosx() {
-  if [[ $OSTYPE == *"darwin"* ]]; then
-    return 0; # true
-  else
-    return 1; # false
-  fi
-}
-
-function islinux() {
-  if [[ $OSTYPE == *"linux"* ]]; then
-    return 0; # true
-  else
-    return 1; # false
-  fi
-}
-
 
 # FUNCTION FOR INSTALLING NODE + RELATED
 # ###################################################################
@@ -109,6 +149,24 @@ install_cli() {
   ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
 }
 
+# FUNCTION FOR INSTALLING BASH
+# ###################################################################
+function install_bash() {
+	#DELETE EXISTING .bashrc IF THERE IS ONE
+	ech "- Delete existing..."
+	rm -rf ~/.bashrc &> /dev/null
+	rm -rf ~/.bash_profile &> /dev/null
+
+	#SYM LINK NEW .bashrc FILE
+	ech "- Create new symlinks..."
+	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bashrc
+	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bash_profile
+
+	#RELOAD .bashrc
+  ech "- Reload bashrc..."
+  source ~/.bashrc
+}
+
 # FUNCTION FOR INSTALLING VIM
 # ###################################################################
 install_vim() {
@@ -153,88 +211,32 @@ install_vim() {
 	vim - -i NONE -c VundleUpdate -c quitall >& /dev/null
 } #install_vim()
 
-# FUNCTION FOR INSTALLING BASH
+# FUNCTION FOR ECHO WITH COLOR OPTION
 # ###################################################################
-function install_bash() {
-	#DELETE EXISTING .bashrc IF THERE IS ONE
-	ech "- Delete existing..."
-	rm -rf ~/.bashrc &> /dev/null
-	rm -rf ~/.bash_profile &> /dev/null
-
-	#SYM LINK NEW .bashrc FILE
-	ech "- Create new symlinks..."
-	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bashrc
-	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bash_profile
-
-	#RELOAD .bashrc
-  ech "- Reload bashrc..."
-  source ~/.bashrc
-}
-
-function install_setup() {
-  if isosx; then
-    which -s brew
-    if [[ $? != 0 ]]; then
-      ech "- Installing Homebrew..."
-      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-  fi
-
-  # LINUX BASICS
-  # #############################################################
-  if islinux; then
-    ech "- APT update..."
-    sudo apt-get update &> /dev/null
-
-    ech "- Install Git..."
-    sudo apt-get install git -y &> /dev/null
-  fi
-
-  # GET REPO
-  # #############################################################
-	if [ ! -d ~/dotfiles ]; then
-		ech "- Cloning dotfiles..."
-		git clone --quiet https://github.com/ryan-frankel/dotfiles ~/dotfiles
-		cd ~/dotfiles
+function ech() {
+	if [ -z "$2" ]; then
+		echo -e " ${GREEN}$1${CURSOR}";
 	else
-		ech "- Pulling dotfiles..."
-		cd ~/dotfiles
-		git pull --quiet origin master 
+		echo -e "${CURSOR}$1${CURSOR}";
 	fi
 }
 
+# FUNCTION TO TEST FOR OSX/LINUX/ETC
 # ###################################################################
-# ###################################################################
-# MAIN
-# ###################################################################
-# ###################################################################
-function main() {
-	clear
+function isosx() {
+  if [[ $OSTYPE == *"darwin"* ]]; then
+    return 0; # true
+  else
+    return 1; # false
+  fi
+}
 
-  ech "\nSetting Up..." 2
-  ech "==============================================" 2
-  install_setup
-
-	ech "\nInstalling Node..." 2
-  ech "==============================================" 2
-	install_node
-
-	ech "\nInstalling CLI..." 2
-  ech "==============================================" 2
-	install_cli
-
-	ech "\nInstalling bash..." 2
-  ech "==============================================" 2
-	install_bash
-
-	ech "\nInstalling vim..." 2
-  ech "==============================================" 2
-	install_vim
-
-  ech "\nExecuting bash..." 2
-	exec bash
-
-	ech "\nInstall completed.\n\n" 2
+function islinux() {
+  if [[ $OSTYPE == *"linux"* ]]; then
+    return 0; # true
+  else
+    return 1; # false
+  fi
 }
 
 main
