@@ -19,7 +19,7 @@ fi
 
 # Test if currently in Vim
 if [ -n "$VIMRUNTIME" ]; then
-  vimprompt="v]"
+  vimprompt="v-"
 else
   vimprompt=""
 fi
