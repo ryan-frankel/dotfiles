@@ -17,6 +17,13 @@ else
   color_prompt=
 fi
 
+# Test if currently in Vim
+if [ -n "$VIMRUNTIME" ]; then
+  vimprompt="v-"
+else
+  vimprompt=""
+fi
+
 # COMMAND PROMPT
 # ###################################################################
 # Must be set to zero in case it was previously set
@@ -35,7 +42,7 @@ if [ "$color_prompt" = yes ]; then
   if [ $(id -u) -eq 0 ]; then # YOU ARE ROOT
     PS1="${BLUE}\u@\h \w ${RED}(ROOT!!) ~~~~>${LIGHTGREY} "
   else 
-    PROMPT_COMMAND='__git_ps1 "\n${DARKGREY}\w" "\n${LIGHTGREY}\u@\h: ${LIGHTGREY}" "|%s"'
+    PROMPT_COMMAND='__git_ps1 "\n${DARKGREY}\w" "\n${LIGHTGREY}${vimprompt}\u@\h: ${LIGHTGREY}" "|%s"'
   fi
 else
 	PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$(__git_ps1)\$ "
