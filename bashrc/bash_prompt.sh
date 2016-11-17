@@ -20,6 +20,7 @@ fi
 # Test if currently in Vim
 if [ -n "$VIMRUNTIME" ]; then
   vimprompt="❤ "
+  #vimprompot="⏏ "
 else
   vimprompt=""
 fi
