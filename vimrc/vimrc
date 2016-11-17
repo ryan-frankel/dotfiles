@@ -120,3 +120,6 @@ set expandtab
 	 \ 'AcceptSelection("e")': ['<c-t>'],
 	 \ 'AcceptSelection("t")': ['<cr>'],
 	 \ }
+
+ " reset background color or exit
+ au VimLeave * !reset
