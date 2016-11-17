@@ -122,4 +122,4 @@ set expandtab
 	 \ }
 
  " reset background color or exit
- au VimLeave * !reset
+ au VimLeave * !tput sgr0
