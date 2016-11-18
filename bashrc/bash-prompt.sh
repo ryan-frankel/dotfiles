@@ -38,14 +38,18 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT="\$(__git_ps1)"
 
-
+# PS1 SETTINGS
 if [ "$color_prompt" = yes ]; then
-  if [ $(id -u) -eq 0 ]; then # YOU ARE ROOT
+  # CHECK IF ROOT OR NOT
+  if [ $(id -u) -eq 0 ]; then
+    # ROOT
     PS1="${BLUE}\u@\h \w ${RED}(ROOT!!) ~~~~>${LIGHTGREY} "
   else 
+    # REGULAR USER
     PROMPT_COMMAND='__git_ps1 "\n${DARKGREY}\w" "\n${DARKGREY}${vimprompt}${LIGHTGREY}\u@\h: ${LIGHTGREY}" "|%s"'
   fi
 else
+  # NO COLOR SUPPORT
 	PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$(__git_ps1)\$ "
 fi
 
