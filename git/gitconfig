@@ -1,6 +1,10 @@
 [user]
 	name = Ryan Frankel
 	email = ryan@digitalbrands.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
 [credential]
   helper = cache --timeout=86400
 [color]
