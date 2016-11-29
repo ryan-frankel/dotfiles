@@ -119,6 +119,7 @@ alias dvrd="docker volume rm ddd"
 
 alias dcu="docker-compose up"
 alias dcb='docker-compose build'
+alias dcr='docker-compose run'
 alias dcd="docker-compose down"
 
 alias deit="docker exec -it"

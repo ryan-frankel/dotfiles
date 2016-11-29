@@ -23,11 +23,11 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 HISTSIZE=5000
 HISTFILESIZE=10000
-export PROMPT_COMMAND="history -a; history -c; history -r $PROMPT_COMMAND"
+#export PROMPT_COMMAND="history -a; history -c; history -r $PROMPT_COMMAND"
 
 # PROMPT
 # ###################################################################
-source ~/dotfiles/bashrc/bash_prompt.sh
+source ~/dotfiles/bashrc/bash-prompt.sh
 
 # ALIAS DEFINITIONS
 # ###################################################################
@@ -35,8 +35,8 @@ if [ -f ~/dotfiles/bashrc/aliases.sh ]; then
   source ~/dotfiles/bashrc/aliases.sh
 fi
 
-if [ -f ~/dotfiles/bashrc/site_aliases.sh ]; then
-  source ~/dotfiles/bashrc/site_aliases.sh
+if [ -f ~/dotfiles/bashrc/site-aliases.sh ]; then
+  source ~/dotfiles/bashrc/site-aliases.sh
 fi
 
 # BASH COMPLETION

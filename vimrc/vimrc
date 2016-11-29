@@ -20,10 +20,10 @@
  set number
 
 " Tabstop
+set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab
  
  " Switch off all auto-indenting
  set nocindent
@@ -33,7 +33,7 @@ set expandtab
  set rtp+=$GOROOT/misc/vim
  filetype plugin indent off
  syntax on
- set mouse=a
+ set mouse=r
 
  " Case Insensitive search
  set ignorecase
@@ -120,3 +120,6 @@ set expandtab
 	 \ 'AcceptSelection("e")': ['<c-t>'],
 	 \ 'AcceptSelection("t")': ['<cr>'],
 	 \ }
+
+ " reset background color or exit
+ au VimLeave * !tput sgr0
