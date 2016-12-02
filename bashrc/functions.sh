@@ -12,3 +12,8 @@ function f() {
 function colors() {
   for code in {0..255}; do echo -e "\033[38;05;${code}m $code: Test"; done
 }
+
+# Calculator
+function = {
+  echo "$@" | /usr/bin/bc -l
+}
