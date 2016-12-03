@@ -12,6 +12,5 @@ alias td='mosh rfrankel@thedrizzle.org'
 # MINE
 # #########################################
 alias farm='mosh rfrankel@farmzip.com'
-alias fzwd='cd /home/farm-zip/'
 alias nerdmash='mosh rfrankel@nerdmash.com'
 alias shirts='mosh rfrankel@gainesvilleshirts.com'
