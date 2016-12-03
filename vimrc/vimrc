@@ -4,6 +4,9 @@
  filetype plugin on
  set nofoldenable
 
+ " Backspace
+ set backspace=indent,eol,start
+
  " Mapleader
  let mapleader = "\<Space>"
 
@@ -20,10 +23,10 @@
  set number
 
 " Tabstop
+set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab
  
  " Switch off all auto-indenting
  set nocindent

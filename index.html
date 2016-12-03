@@ -80,7 +80,7 @@ function install_setup() {
     sudo apt-get update &> /dev/null
 
     ech "- Install Git..."
-    sudo apt-get install git -y &> /dev/null
+    sudo apt-get install git bc -y &> /dev/null
   fi
 
   # GET REPO
@@ -132,7 +132,7 @@ install_cli() {
     sudo apt-get install trash-cli -y &> /dev/null
   fi
   if isosx; then
-    brew install --quieter trash-cli
+    brew reinstall --quieter trash-cli
   fi
 
 	# Install dtrx, ncdu, htop if required
@@ -141,7 +141,7 @@ install_cli() {
 	  sudo apt-get -qq install dtrx ncdu htop -y &> /dev/null
   fi
   if isosx; then
-    brew install --quieter dtrx ncdu htop
+    brew reinstall --quieter dtrx ncdu htop
   fi
 
   # INSTALL GIT LFS
@@ -197,7 +197,7 @@ install_vim() {
   	sudo apt-get -qq install curl vim -y &> /dev/null
   fi
   if isosx; then
-    brew install --quieter curl vim
+    brew reinstall --quieter curl vim
   fi
 	if [ ! -d ~/.vim/bundle/vundle/ ]; then
 	 git clone --quiet https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle &> /dev/null
