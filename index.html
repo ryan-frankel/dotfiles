@@ -5,6 +5,8 @@
 # MAIN
 # ###################################################################
 # ###################################################################
+tools="curl build-essential git bc dtrx ncdu htop mutt trash-cli"
+
 function main() {
 	clear
   define_colors
@@ -71,6 +73,9 @@ function install_setup() {
       ech "- Installing Homebrew..."
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
+
+    ech "- Install Tools..."
+    brew install --quieter $tools &> /dev/null
   fi
 
   # LINUX BASICS
@@ -79,8 +84,8 @@ function install_setup() {
     ech "- APT update..."
     sudo apt-get update &> /dev/null
 
-    ech "- Install Git..."
-    sudo apt-get install git bc -y &> /dev/null
+    ech "- Install Tools.."
+    sudo apt-get install $tools -y &> /dev/null
   fi
 
   # GET REPO
@@ -99,11 +104,6 @@ function install_setup() {
 # FUNCTION FOR INSTALLING NODE + RELATED
 # ###################################################################
 install_node() {
-  ech "- Build Essential..."
-  if islinux; then
-    sudo apt-get -qq install build-essential -y &> /dev/null
-  fi
-
 	ech "- NVM..."
   if [ ! -d "$NVM_DIR" ]; then
     curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &> /dev/null;
@@ -123,25 +123,6 @@ install_cli() {
 	ech "- Cloning z..."
   if [ ! -d ~/code/z ]; then
     git clone --quiet https://github.com/rupa/z.git ~/code/z &> /dev/null
-  fi
-
-  # Install trash if required
-	ech "- Trash..."
-  npm install -g trash-cli empty-trash-cli &> /dev/null
-  if islinux; then
-    sudo apt-get install trash-cli -y &> /dev/null
-  fi
-  if isosx; then
-    brew reinstall --quieter trash-cli
-  fi
-
-	# Install dtrx, ncdu, htop if required
-  ech "- dtrx, ncdu, htop..."
-  if islinux; then
-	  sudo apt-get -qq install dtrx ncdu htop -y &> /dev/null
-  fi
-  if isosx; then
-    brew reinstall --quieter dtrx ncdu htop
   fi
 
   # INSTALL GIT LFS
@@ -194,10 +175,10 @@ install_vim() {
 	# Install Vundle if Needed
 	ech "- Install curl, vim, and vundle..."
   if islinux; then
-  	sudo apt-get -qq install curl vim -y &> /dev/null
+  	sudo apt-get -qq install vim -y &> /dev/null
   fi
   if isosx; then
-    brew reinstall --quieter curl vim
+    brew reinstall --quieter vim
   fi
 	if [ ! -d ~/.vim/bundle/vundle/ ]; then
 	 git clone --quiet https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle &> /dev/null
