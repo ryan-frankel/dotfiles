@@ -8,6 +8,7 @@ alias da='mosh rfrankel@datingadvice.com'
 alias dc='mosh rfrankel@dealcrunch.com'
 alias rf='mosh rfrankel@rf.passprotect.me'
 alias td='mosh rfrankel@thedrizzle.org'
+alias dbd='mosh rfrankel@23.253.238.205'
 
 # MINE
 # #########################################
@@ -15,3 +16,4 @@ alias farm='mosh rfrankel@farmzip.com'
 alias fzwd='cd /home/farm-zip/'
 alias nerdmash='mosh rfrankel@nerdmash.com'
 alias shirts='mosh rfrankel@gainesvilleshirts.com'
+alias testfyi='mosh rfrankel@test.fyi'
