@@ -13,7 +13,6 @@ alias dbd='mosh rfrankel@23.253.238.205'
 # MINE
 # #########################################
 alias farm='mosh rfrankel@farmzip.com'
-alias fzwd='cd /home/farm-zip/'
 alias nerdmash='mosh rfrankel@nerdmash.com'
 alias shirts='mosh rfrankel@gainesvilleshirts.com'
 alias testfyi='mosh rfrankel@test.fyi'
