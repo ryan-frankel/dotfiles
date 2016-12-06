@@ -139,6 +139,11 @@ install_cli() {
   # GITCONFIG SYMLINK
   rm -rf ~/.gitconfig
   ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
+
+  # INSTALL MUTT
+	mkdir -p ~/.mutt
+  rm -rf ~/.mutt/muttrc
+  ln -s ~/dotfiles/mutt/muttrc ~/.mutt/muttrc
 }
 
 # FUNCTION FOR INSTALLING BASH
