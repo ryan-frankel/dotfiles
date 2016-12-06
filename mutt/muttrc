@@ -12,6 +12,7 @@ set folder = 'imaps://imap.gmail.com:993'
 set smtp_url = 'smtps://ryan@digitalbrands.com@smtp.gmail.com:465/'
 #set smtp_pass = 'yourpassword' # use the same password as for IMAP
 
+# MAILBOX SETTINGS
 set spoolfile = '+INBOX'
 set postponed = '+[Google Mail]/Drafts'
 set trash = '+[Google Mail]/Trash'
