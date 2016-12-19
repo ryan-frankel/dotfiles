@@ -118,9 +118,11 @@ alias ddd="docker volume ls -qf dangling=true"
 alias dvrd="docker volume rm ddd"
 
 alias dcu="docker-compose up"
-alias dcb='docker-compose build'
-alias dcr='docker-compose run'
+alias dcb="docker-compose build"
+alias dcr="docker-compose run"
 alias dcd="docker-compose down"
+alias dcs="docker-compose start"
+alias dcst="docker-compose stop"
 
 alias deit="docker exec -it"
 alias drit="docker run -it"

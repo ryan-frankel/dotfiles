@@ -4,6 +4,9 @@
  filetype plugin on
  set nofoldenable
 
+ " Backspace
+ set backspace=indent,eol,start
+
  " Mapleader
  let mapleader = "\<Space>"
 
