@@ -5,7 +5,9 @@
 # MAIN
 # ###################################################################
 # ###################################################################
-tools="curl build-essential git bc dtrx ncdu htop mutt trash-cli"
+tools="curl build-essential git bc dtrx ncdu htop trash-cli silversearcher-ag" 
+mactools="curl build-essential git bc dtrx ncdu htop trash-cli the_silver_searcher"
+# Add mutt for email
 
 function main() {
 	clear
@@ -77,7 +79,7 @@ function install_setup() {
     fi
 
     ech "- Install Tools..."
-    brew install --quieter $tools &> /dev/null
+    brew install --quieter $mactools &> /dev/null
   fi
 
   # LINUX BASICS
@@ -87,7 +89,7 @@ function install_setup() {
     sudo apt-get update &> /dev/null
 
     ech "- Install Tools.."
-    sudo apt-get install $tools -y &> /dev/null
+    sudo apt-get install $tools -y
   fi
 
   # GET REPO

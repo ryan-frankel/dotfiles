@@ -88,7 +88,7 @@ alias ni='git commit -m "New Images"';
 alias snippets='vim ~/.vim/bundle/vim-snippets/UltiSnips/';
 alias vimrc='vim ~/vimrc/.vimrc';
 alias tmux-reload='tmux source-file ~/.tmux.conf';
-alias weather='curl http://wttr.in/Gainesville_FL';
+alias weather='curl http://wttr.in/32601';
 alias www-data='sudo chown www-data * && sudo chgrp www-data *';
 alias logs="cd $WP_DIR && cd ../../logs/ && ll"
 alias ctags-gen="ctags -R -f .git/tags ."
@@ -118,9 +118,11 @@ alias ddd="docker volume ls -qf dangling=true"
 alias dvrd="docker volume rm ddd"
 
 alias dcu="docker-compose up"
-alias dcb='docker-compose build'
-alias dcr='docker-compose run'
+alias dcb="docker-compose build"
+alias dcr="docker-compose run"
 alias dcd="docker-compose down"
+alias dcs="docker-compose start"
+alias dcst="docker-compose stop"
 
 alias deit="docker exec -it"
 alias drit="docker run -it"
