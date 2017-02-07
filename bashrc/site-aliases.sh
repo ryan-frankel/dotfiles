@@ -1,7 +1,7 @@
 # SITES
 # #########################################
 alias bc='mosh rfrankel@166.78.243.119'
-alias ha='mosh rfrankel@123.253.111.148'
+alias ha='mosh rfrankel@23.253.111.148'
 alias cr='mosh rfrankel@cardrates.com'
 alias pr='mosh rfrankel@printaholic.com'
 alias da='mosh rfrankel@datingadvice.com'
