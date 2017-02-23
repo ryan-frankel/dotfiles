@@ -48,6 +48,9 @@ set smarttab
  au BufRead,BufNewFile *.vcl set filetype=vcl
  " Source ejs in Vim
  au BufNewFile,BufRead *.ejs set filetype=html
+ " Source pug in vim
+ au BufNewFile,BufRead *.pug set filetype=pug
+
  " Source Go VIM
  au BufRead,BufNewFile *.go set filetype=go
  let g:go_highlight_functions = 1
@@ -71,20 +74,28 @@ set smarttab
  Bundle 'scrooloose/nerdtree.git'
  Bundle 'scrooloose/nerdcommenter.git'
  Bundle 'ervandew/supertab.git'
+ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+
  Bundle 'jwhitley/vim-matchit'
  Bundle 'tpope/vim-fugitive'
  Bundle 'ctrlpvim/ctrlp.vim'
+
+ " Autocompletion
+ "Bundle 'ahayman/vim-nodejs-complete'
+
+ "Bundle 'vim-scripts/L9'
+ "Bundle 'othree/vim-autocomplpop'
+ Bundle 'Valloric/YouCompleteMe'
+ Bundle 'ternjs/tern_for_vim'
 
  " Syntax
  Bundle 'sheerun/vim-polyglot'
 
  Bundle 'godlygeek/tabular'
-	if exists(":Tabularize")
-		nmap <Leader>a= :Tabularize /=<CR>
-		vmap <Leader>a= :Tabularize /=<CR>
-		nmap <Leader>a: :Tabularize /:\zs<CR>
-		vmap <Leader>a: :Tabularize /:\zs<CR>
-	endif
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
 
 
  " Snippits
