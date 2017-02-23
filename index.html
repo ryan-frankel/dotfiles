@@ -5,7 +5,8 @@
 # MAIN
 # ###################################################################
 # ###################################################################
-tools="curl build-essential git bc dtrx ncdu htop trash-cli silversearcher-ag" 
+tools="curl build-essential git bc dtrx ncdu htop trash-cli" 
+# silversearcher-ag
 mactools="curl build-essential git bc dtrx ncdu htop trash-cli the_silver_searcher"
 # Add mutt for email
 
@@ -183,9 +184,9 @@ install_vim() {
 
 	# Install Vundle if Needed
 	ech "- Install curl, vim, and vundle..."
-  if islinux; then
-  	sudo apt-get -qq install vim -y &> /dev/null
-  fi
+  #if islinux; then
+    #sudo apt-get -qq install vim -y &> /dev/null
+  #fi
   if isosx; then
     brew reinstall --quieter vim
   fi
@@ -281,8 +282,51 @@ function compile_vim() {
   sudo update-alternatives --set vi /usr/bin/dbus-update-activation-environment
 }
 
+# FUNCTION FOR COMPILING CMAKE
+# ###################################################################
+function compile_cmake() {
+  cd ~
+  wget -cL --no-check-certificate https://cmake.org/files/v2.8/cmake-2.8.12.tar.gz \
+  && dtrx cmake-2.8.12.tar.gz \
+  && cd cmake-2.8.12 \
+  && mkdir _build \
+  && cd _build \
+  && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+  && make \
+  && sudo make install \
+  && sudo ldconfig
+}
+
+
+# FUNCTION FOR COMPILING YOUCOMPLETEME
+# ###################################################################
+function compile_ycm() {
+  cd ~
+
+  # Requirements
+  sudo apt-get install build-essential
+  sudo apt-get install python-dev python3-dev
+  sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+  sudo apt-get update
+  sudo apt-get install gcc-4.8 g++-4.8
+  sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
+
+  # Install go
+  #sudo apt-get install golang-go
+
+  # Compile YCM
+  cd ~/.vim/bundle/YouCompleteMe
+  ./install.py --tern-completer 
+}
+
+
+
 if [ "$1" == "vim" ]; then
   compile_vim
+elif [ "$1" == "ycm" ]; then
+  compile_ycm
+elif [ "$1" == "cmake" ]; then
+  compile_cmake
 else
   main
 fi
