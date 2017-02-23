@@ -130,13 +130,13 @@ install_cli() {
   fi
 
   # INSTALL GIT LFS
-  ech "- Git LFS..."
-  if islinux; then
-    hash git-lfs >/dev/null 2>&1 || {
-      curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash &> /dev/null
-      sudo apt-get install git-lfs -y &>/dev/null 
-    }
-  fi
+  #ech "- Git LFS..."
+  #if islinux; then
+    #hash git-lfs >/dev/null 2>&1 || {
+      #curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash &> /dev/null
+      #sudo apt-get install git-lfs -y &>/dev/null 
+    #}
+  #fi
 
   # GITCONFIG SYMLINK
   rm -rf ~/.gitconfig
