@@ -19,6 +19,27 @@ function main() {
   ech "----------------------------------------------------------------------------" 2
   install_setup
 
+	ech "\nInstalling bash..." 2
+  ech "----------------------------------------------------------------------------" 2
+	install_bash
+
+  ech "\nExecuting bash..." 2
+	. ~/.bashrc
+
+	ech "\nInstall completed.\n\n" 2
+}
+
+# FUNCTION TO INSTALL TOOLS
+# ###################################################################
+function install_tools() {
+  clear
+  define_colors
+  banner
+
+  ech "\nSetting Up..." 2
+  ech "----------------------------------------------------------------------------" 2
+  install_setup
+
 	ech "\nInstalling Node..." 2
   ech "----------------------------------------------------------------------------" 2
 	install_node
@@ -27,16 +48,9 @@ function main() {
   ech "----------------------------------------------------------------------------" 2
 	install_cli
 
-	ech "\nInstalling bash..." 2
-  ech "----------------------------------------------------------------------------" 2
-	install_bash
-
 	ech "\nInstalling vim..." 2
   ech "----------------------------------------------------------------------------" 2
 	install_vim
-
-  ech "\nExecuting bash..." 2
-	exec bash
 
 	ech "\nInstall completed.\n\n" 2
 }
@@ -319,14 +333,26 @@ function compile_ycm() {
   ./install.py --tern-completer 
 }
 
-
-
-if [ "$1" == "vim" ]; then
+if [ "$1" == "--help" ]; then
+  echo "vim - compile vim and install all bundles"
+  echo "cmake - install new version of cmake"
+  echo "ycm - install youcompleteme"
+  echo "tools - install basic tools"
+  echo "all - INSTALL ALL THE ABOVE"
+elif [ "$1" == "vim" ]; then
   compile_vim
-elif [ "$1" == "ycm" ]; then
-  compile_ycm
+  install_vim
 elif [ "$1" == "cmake" ]; then
   compile_cmake
+elif [ "$1" == "ycm" ]; then
+  compile_ycm
+elif ["$1" == "tools" ]; then
+  install_tools
+elif [ "$1" == "all" ]; then
+  install_tools
+  compile_vim
+  compile_cmake
+  compile_ycm
 else
   main
 fi
