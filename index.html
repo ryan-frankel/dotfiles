@@ -222,7 +222,7 @@ install_vim() {
 
 	# Install bundles
 	ech "- Install bundles..."
-	vim - -i NONE -c VundleUpdate -c quitall >& /dev/null
+  vim +PluginInstall +qall
 } #install_vim()
 
 # FUNCTION FOR ECHO WITH COLOR OPTION
