@@ -101,7 +101,7 @@ function install_setup() {
   # #############################################################
   if islinux; then
     ech "- APT update..."
-    sudo apt-get update &> /dev/null
+    sudo apt-get update
 
     ech "- Install Tools.."
     sudo apt-get install $tools -y
@@ -301,15 +301,24 @@ function compile_vim() {
 function compile_cmake() {
   cd ~
   sudo apt-get install cmake
-  wget -cL --no-check-certificate https://cmake.org/files/v2.8/cmake-2.8.12.tar.gz \
-  && dtrx cmake-2.8.12.tar.gz \
-  && cd cmake-2.8.12 \
-  && mkdir _build \
-  && cd _build \
-  && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-  && make \
-  && sudo make install \
-  && sudo ldconfig
+
+  # Get cmake version
+  cmake_version=$(cmake --version | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")
+
+  if should_upgrade $cmake_version "2.8.11"; then
+    # Upgrade cmake if necessary
+    cd ~
+    rm -rf cmake-2.8.12*
+    wget -cL --no-check-certificate https://cmake.org/files/v2.8/cmake-2.8.12.tar.gz \
+    && dtrx cmake-2.8.12.tar.gz \
+    && cd cmake-2.8.12 \
+    && mkdir _build \
+    && cd _build \
+    && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+    && make \
+    && sudo make install \
+    && sudo ldconfig
+  fi
 }
 
 
@@ -334,6 +343,41 @@ function compile_ycm() {
   ./install.py --tern-completer 
 }
 
+# FUNCTION FOR COMPARING VERSIONS
+# ###################################################################
+function should_upgrade() {
+    if [[ $1 == $2 ]]
+    then
+        return 1
+    fi
+    local IFS=.
+    local i ver1=($1) ver2=($2)
+    # fill empty fields in ver1 with zeros
+    for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
+    do
+        ver1[i]=0
+    done
+    for ((i=0; i<${#ver1[@]}; i++))
+    do
+        if [[ -z ${ver2[i]} ]]
+        then
+            # fill empty fields in ver2 with zeros
+            ver2[i]=0
+        fi
+        if ((10#${ver1[i]} > 10#${ver2[i]}))
+        then
+            return 1
+        fi
+        if ((10#${ver1[i]} < 10#${ver2[i]}))
+        then
+            return 0
+        fi
+    done
+    return 1
+}
+
+# MAIN FUNCTIONS
+# ###################################################################
 if [ "$1" == "--help" ]; then
   echo "vim - compile vim and install all bundles"
   echo "cmake - install new version of cmake"
