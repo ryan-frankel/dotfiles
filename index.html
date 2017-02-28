@@ -257,7 +257,9 @@ function islinux() {
 # ###################################################################
 function compile_vim() {
 	# Get cmake version
+
 	vim_version=$(vim --version | egrep -o "([0-9]{1,}\.)+[0-9]{1,}" | head -n1)
+	hash vim >/dev/null 2>&1 || { vim_version="0"; }
 
 	if should_upgrade $vim_version "8.0"; then 
 	
