@@ -300,6 +300,7 @@ function compile_vim() {
 # ###################################################################
 function compile_cmake() {
   cd ~
+  sudo apt-get install cmake
   wget -cL --no-check-certificate https://cmake.org/files/v2.8/cmake-2.8.12.tar.gz \
   && dtrx cmake-2.8.12.tar.gz \
   && cd cmake-2.8.12 \
@@ -350,8 +351,8 @@ elif ["$1" == "tools" ]; then
   install_tools
 elif [ "$1" == "all" ]; then
   install_tools
-  compile_vim
   compile_cmake
+  compile_vim
   compile_ycm
 else
   main
