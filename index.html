@@ -271,9 +271,11 @@ function compile_vim() {
 
 		# Remove vim
 		sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox
+		sudo dpkg -r vim
 
 		  # Get vim source
 			cd ~
+			sudo rm -rf ~/vim
 			git clone https://github.com/vim/vim.git ./vim
 		  cd vim
 		  
