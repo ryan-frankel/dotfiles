@@ -9,33 +9,9 @@ tools="curl build-essential git bc dtrx ncdu htop trash-cli"
 # silversearcher-ag
 mactools="curl build-essential git bc dtrx ncdu htop trash-cli the_silver_searcher"
 
-# MAIN FUNCTIONS
-# ###################################################################
-if [ "$1" == "--help" ]; then
-  echo "vim - compile vim and install all bundles"
-  echo "cmake - install new version of cmake"
-  echo "ycm - install youcompleteme"
-  echo "tools - install basic tools"
-  echo "all - INSTALL ALL THE ABOVE"
-elif [ "$1" == "vim" ]; then
-  compile_vim
-  update_vimrc
-elif [ "$1" == "cmake" ]; then
-  compile_cmake
-elif [ "$1" == "ycm" ]; then
-  compile_ycm
-elif ["$1" == "tools" ]; then
-  install_tools
-elif [ "$1" == "all" ]; then
-  install_tools
-  compile_cmake
-  compile_vim
-  update_vimrc
-  compile_ycm
-else
-  main
-fi
-# Add mutt for email
+# Source the utility functions
+source ./utils/utils.sh
+
 function main() {
 	clear
   define_colors
@@ -79,32 +55,6 @@ function install_tools() {
 	update_vimrc
 
 	ech "\nInstall completed.\n\n" 2
-}
-
-# DEFINE BANNER
-# ###################################################################
-function banner() {
-  echo -e "${DARKGRAY}"
-  echo -e ".8888b                            dP                dP             dP       "
-  echo -e "88   '                            88                88             88       "
-  echo -e "88aaa  88d888b. .d8888b. 88d888b. 88  .dP  .d8888b. 88    .d8888b. 88d888b. "
-  echo -e "88     88'  '88 88'  '88 88'  '88 88888'   88ooood8 88    Y8ooooo. 88'  '88 "
-  echo -e "88     88       88.  .88 88    88 88  '8b. 88.  ... 88          88 88    88 "
-  echo -e "dP     dP       '88888P8 dP    dP dP   'YP '88888P' dP 88 '88888P' dP    dP "
-  echo -e "----------------------------------------------------------------------------"
-  echo -e "${CURSOR}"
-}
-
-# DEFINE COLORS
-# ###################################################################
-function define_colors {
-  GREEN="\033[38;05;70m"
-  PURPLE="\033[38;05;93m"
-  LIGHTPURPLE="\033[38;05;105m"
-  LIGHTGRAY="\033[38;05;248m"
-  DARKGRAY="\033[38;05;236m"
-  CURSOR="\033[00m";
-  CURSOR="${LIGHTGRAY}"
 }
 
 # SETUP, GIT, ADD THE REPO
@@ -243,34 +193,6 @@ update_vimrc() {
   vim +PluginInstall +qall
 } #update_vimrc
 
-# FUNCTION FOR ECHO WITH COLOR OPTION
-# ###################################################################
-function ech() {
-	if [ -z "$2" ]; then
-		echo -e " ${GREEN}$1${CURSOR}";
-	else
-		echo -e "${CURSOR}$1${CURSOR}";
-	fi
-}
-
-# FUNCTION TO TEST FOR OSX/LINUX/ETC
-# ###################################################################
-function isosx() {
-  if [[ $OSTYPE == *"darwin"* ]]; then
-    return 0; # true
-  else
-    return 1; # false
-  fi
-}
-
-function islinux() {
-  if [[ $OSTYPE == *"linux"* ]]; then
-    return 0; # true
-  else
-    return 1; # false
-  fi
-}
-
 # FUNCTION FOR COMPILING VIM FROM SOURCE
 # ###################################################################
 function compile_vim() {
@@ -373,37 +295,33 @@ function compile_ycm() {
   ./install.py --tern-completer 
 }
 
-# FUNCTION FOR COMPARING VERSIONS
+# MAIN FUNCTIONS
 # ###################################################################
-function should_upgrade() {
-    if [[ $1 == $2 ]]
-    then
-        return 1
-    fi
-    local IFS=.
-    local i ver1=($1) ver2=($2)
-    # fill empty fields in ver1 with zeros
-    for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
-    do
-        ver1[i]=0
-    done
-    for ((i=0; i<${#ver1[@]}; i++))
-    do
-        if [[ -z ${ver2[i]} ]]
-        then
-            # fill empty fields in ver2 with zeros
-            ver2[i]=0
-        fi
-        if ((10#${ver1[i]} > 10#${ver2[i]}))
-        then
-            return 1
-        fi
-        if ((10#${ver1[i]} < 10#${ver2[i]}))
-        then
-            return 0
-        fi
-    done
-    return 1
-}
+# At bottom so all functions are defined when this is run
+if [ "$1" == "--help" ]; then
+  echo "vim - compile vim and install all bundles"
+  echo "cmake - install new version of cmake"
+  echo "ycm - install youcompleteme"
+  echo "tools - install basic tools"
+  echo "all - INSTALL ALL THE ABOVE"
+elif [ "$1" == "vim" ]; then
+  compile_vim
+  update_vimrc
+elif [ "$1" == "cmake" ]; then
+  compile_cmake
+elif [ "$1" == "ycm" ]; then
+  compile_ycm
+elif [ "$1" == "tools" ]; then
+  install_tools
+elif [ "$1" == "all" ]; then
+  install_tools
+  compile_cmake
+  compile_vim
+  update_vimrc
+  compile_ycm
+else
+  main
+fi
+
 
 } # this ensures the entire script is downloaded #
