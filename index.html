@@ -8,8 +8,34 @@
 tools="curl build-essential git bc dtrx ncdu htop trash-cli" 
 # silversearcher-ag
 mactools="curl build-essential git bc dtrx ncdu htop trash-cli the_silver_searcher"
-# Add mutt for email
 
+# MAIN FUNCTIONS
+# ###################################################################
+if [ "$1" == "--help" ]; then
+  echo "vim - compile vim and install all bundles"
+  echo "cmake - install new version of cmake"
+  echo "ycm - install youcompleteme"
+  echo "tools - install basic tools"
+  echo "all - INSTALL ALL THE ABOVE"
+elif [ "$1" == "vim" ]; then
+  compile_vim
+  update_vimrc
+elif [ "$1" == "cmake" ]; then
+  compile_cmake
+elif [ "$1" == "ycm" ]; then
+  compile_ycm
+elif ["$1" == "tools" ]; then
+  install_tools
+elif [ "$1" == "all" ]; then
+  install_tools
+  compile_cmake
+  compile_vim
+  update_vimrc
+  compile_ycm
+else
+  main
+fi
+# Add mutt for email
 function main() {
 	clear
   define_colors
@@ -48,9 +74,9 @@ function install_tools() {
   ech "----------------------------------------------------------------------------" 2
 	install_cli
 
-	ech "\nInstalling vim..." 2
+	ech "\nUpdate vimrc..." 2
   ech "----------------------------------------------------------------------------" 2
-	install_vim
+	update_vimrc
 
 	ech "\nInstall completed.\n\n" 2
 }
@@ -156,11 +182,6 @@ install_cli() {
   # GITCONFIG SYMLINK
   rm -rf ~/.gitconfig
   ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
-
-  # INSTALL MUTT
-	mkdir -p ~/.mutt
-  rm -rf ~/.mutt/muttrc
-  ln -s ~/dotfiles/mutt/muttrc ~/.mutt/muttrc
 }
 
 # FUNCTION FOR INSTALLING BASH
@@ -181,9 +202,9 @@ function install_bash() {
   source ~/.bashrc
 }
 
-# FUNCTION FOR INSTALLING VIM
+# FUNCTION FOR UPDATING VIMRC
 # ###################################################################
-install_vim() {
+update_vimrc() {
 	# Delete Existing
 	ech "- Delete existing..."
 	rm -rf ~/.vimrc
@@ -197,11 +218,8 @@ install_vim() {
   fi
 
 	# Install Vundle if Needed
-	ech "- Install curl, vim, and vundle..."
-  #if islinux; then
-    #sudo apt-get -qq install vim -y &> /dev/null
-  #fi
   if isosx; then
+	  ech "- Install curl, vim, and vundle..."
     brew reinstall --quieter vim
   fi
 	if [ ! -d ~/.vim/bundle/vundle/ ]; then
@@ -223,7 +241,7 @@ install_vim() {
 	# Install bundles
 	ech "- Install bundles..."
   vim +PluginInstall +qall
-} #install_vim()
+} #update_vimrc
 
 # FUNCTION FOR ECHO WITH COLOR OPTION
 # ###################################################################
@@ -331,7 +349,6 @@ function compile_cmake() {
   fi
 }
 
-
 # FUNCTION FOR COMPILING YOUCOMPLETEME
 # ###################################################################
 function compile_ycm() {
@@ -389,30 +406,4 @@ function should_upgrade() {
     return 1
 }
 
-# MAIN FUNCTIONS
-# ###################################################################
-if [ "$1" == "--help" ]; then
-  echo "vim - compile vim and install all bundles"
-  echo "cmake - install new version of cmake"
-  echo "ycm - install youcompleteme"
-  echo "tools - install basic tools"
-  echo "all - INSTALL ALL THE ABOVE"
-elif [ "$1" == "vim" ]; then
-  compile_vim
-  install_vim
-elif [ "$1" == "cmake" ]; then
-  compile_cmake
-elif [ "$1" == "ycm" ]; then
-  compile_ycm
-elif ["$1" == "tools" ]; then
-  install_tools
-elif [ "$1" == "all" ]; then
-  install_tools
-  compile_cmake
-  compile_vim
-  install_vim
-  compile_ycm
-else
-  main
-fi
 } # this ensures the entire script is downloaded #
