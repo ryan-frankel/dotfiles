@@ -1,11 +1,5 @@
 { # this ensures the entire script is downloaded #
 
-# ###################################################################
-# ###################################################################
-# MAIN
-# ###################################################################
-# ###################################################################
-
 # Source the utility functions
 source ./utils/utils.sh
 source ./utils/basic_setup.sh
@@ -14,6 +8,9 @@ source ./utils/basic_tools.sh
 source ./utils/compile_vim.sh
 source ./utils/compile_cmake.sh
 
+# ###################################################################
+# MAIN
+# ###################################################################
 function main() {
 	clear
   define_colors
@@ -27,13 +24,10 @@ function main() {
   ech "----------------------------------------------------------------------------" 2
 	install_bashrc
 
-  ech "\nExecuting bash..." 2
-	source ~/.bashrc
-
-	ech "\nInstall completed.\n\n" 2
+	ech "\nInstall completed.\n\nPlease run 'source ~/.bashrc'\n\n" 2
 }
 
-# MAIN FUNCTIONS
+# MAIN CLI Function
 # ###################################################################
 # At bottom so all functions are defined when this is run
 if [ "$1" == "--help" ]; then
