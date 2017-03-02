@@ -77,16 +77,33 @@ set smarttab
  let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
  Bundle 'jwhitley/vim-matchit'
- Bundle 'tpope/vim-fugitive'
+ "Bundle 'tpope/vim-fugitive'
  Bundle 'ctrlpvim/ctrlp.vim'
+ " Ignore files in gitignore
+ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
- " Autocompletion
- "Bundle 'ahayman/vim-nodejs-complete'
+ Bundle 'easymotion/vim-easymotion'
+   " Gif config
+  map  / <Plug>(easymotion-sn)
+  omap / <Plug>(easymotion-tn)
+  " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+  " Without these mappings, `n` & `N` works fine. (These mappings just provide
+  " different highlight method and have some other features )
+  "map  n <Plug>(easymotion-next)
+  "map  N <Plug>(easymotion-prev)
 
- "Bundle 'vim-scripts/L9'
- "Bundle 'othree/vim-autocomplpop'
+  " Smartcase
+  let g:EasyMotion_smartcase = 1
+  let g:EasyMotion_use_smartsign_us = 1
+  " Jump to anywhere you want with minimal keystrokes, with just one key binding.
+  " `s{char}{label}`
+  nmap s <Plug>(easymotion-overwin-f)
+
+  nmap w <Plug>(easymotion-w)
+
  Bundle 'Valloric/YouCompleteMe'
  Bundle 'ternjs/tern_for_vim'
+ Bundle 'airblade/vim-gitgutter'
 
  " Syntax
  Bundle 'sheerun/vim-polyglot'
