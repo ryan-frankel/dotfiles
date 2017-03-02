@@ -5,12 +5,14 @@
 # MAIN
 # ###################################################################
 # ###################################################################
-tools="curl build-essential git bc dtrx ncdu htop trash-cli" 
-# silversearcher-ag
-mactools="curl build-essential git bc dtrx ncdu htop trash-cli the_silver_searcher"
 
 # Source the utility functions
 source ./utils/utils.sh
+source ./utils/basic_setup.sh
+source ./utils/install_bashrc.sh
+source ./utils/basic_tools.sh
+source ./utils/compile_vim.sh
+source ./utils/compile_cmake.sh
 
 function main() {
 	clear
@@ -19,280 +21,16 @@ function main() {
 
   ech "\nSetting Up..." 2
   ech "----------------------------------------------------------------------------" 2
-  install_setup
+  basic_setup
 
 	ech "\nInstalling bash..." 2
   ech "----------------------------------------------------------------------------" 2
-	install_bash
+	install_bashrc
 
   ech "\nExecuting bash..." 2
-	. ~/.bashrc
+	source ~/.bashrc
 
 	ech "\nInstall completed.\n\n" 2
-}
-
-# FUNCTION TO INSTALL TOOLS
-# ###################################################################
-function install_tools() {
-  clear
-  define_colors
-  banner
-
-  ech "\nSetting Up..." 2
-  ech "----------------------------------------------------------------------------" 2
-  install_setup
-
-	ech "\nInstalling Node..." 2
-  ech "----------------------------------------------------------------------------" 2
-	install_node
-
-	ech "\nInstalling CLI..." 2
-  ech "----------------------------------------------------------------------------" 2
-	install_cli
-
-	ech "\nUpdate vimrc..." 2
-  ech "----------------------------------------------------------------------------" 2
-	update_vimrc
-
-	ech "\nInstall completed.\n\n" 2
-}
-
-# SETUP, GIT, ADD THE REPO
-# ###################################################################
-function install_setup() {
-  define_colors
-
-  if isosx; then
-    which -s brew
-    if [[ $? != 0 ]]; then
-      ech "- Installing Homebrew..."
-      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-
-    ech "- Install Tools..."
-    brew install --quieter $mactools &> /dev/null
-  fi
-
-  # LINUX BASICS
-  # #############################################################
-  if islinux; then
-    ech "- APT update..."
-    sudo apt-get update
-
-    ech "- Install Tools.."
-    sudo apt-get install $tools -y
-  fi
-
-  # GET REPO
-  # #############################################################
-	if [ ! -d ~/dotfiles ]; then
-		ech "- Cloning dotfiles..."
-		git clone --quiet https://github.com/ryan-frankel/dotfiles ~/dotfiles
-		cd ~/dotfiles
-	else
-		ech "- Pulling dotfiles..."
-		cd ~/dotfiles
-		git pull --quiet origin master 
-	fi
-}
-
-# FUNCTION FOR INSTALLING NODE + RELATED
-# ###################################################################
-install_node() {
-	ech "- NVM..."
-  if [ ! -d "$NVM_DIR" ]; then
-    curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &> /dev/null;
-    export NVM_DIR="/home/rfrankel/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    nvm install node &> /dev/null 
-    nvm use node &> /dev/null
-    nvm alias default node &> /dev/null
-    npm install -g --silent node-gyp &> /dev/null
-  fi
-
-}
-
-# FUNCTION FOR COMMAND LINE 
-# ###################################################################
-install_cli() {
-	ech "- Cloning z..."
-  if [ ! -d ~/code/z ]; then
-    git clone --quiet https://github.com/rupa/z.git ~/code/z &> /dev/null
-  fi
-
-  # INSTALL GIT LFS
-  #ech "- Git LFS..."
-  #if islinux; then
-    #hash git-lfs >/dev/null 2>&1 || {
-      #curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash &> /dev/null
-      #sudo apt-get install git-lfs -y &>/dev/null 
-    #}
-  #fi
-
-  # GITCONFIG SYMLINK
-  rm -rf ~/.gitconfig
-  ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
-}
-
-# FUNCTION FOR INSTALLING BASH
-# ###################################################################
-function install_bash() {
-	#DELETE EXISTING .bashrc IF THERE IS ONE
-	ech "- Delete existing..."
-	rm -rf ~/.bashrc &> /dev/null
-	rm -rf ~/.bash_profile &> /dev/null
-
-	#SYM LINK NEW .bashrc FILE
-	ech "- Create new symlinks..."
-	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bashrc
-	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bash_profile
-
-	#RELOAD .bashrc
-  ech "- Reload bashrc..."
-  source ~/.bashrc
-}
-
-# FUNCTION FOR UPDATING VIMRC
-# ###################################################################
-update_vimrc() {
-	# Delete Existing
-	ech "- Delete existing..."
-	rm -rf ~/.vimrc
-	rm -rf ~/.vim/snippets
-
-	# Symlink New
-	ech "- New symlinks..."
-	ln -s ~/dotfiles/vimrc/vimrc ~/.vimrc
-  if [ -d ~/dotfiles/vimrc/snippets ]; then
-  	ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
-  fi
-
-	# Install Vundle if Needed
-  if isosx; then
-	  ech "- Install curl, vim, and vundle..."
-    brew reinstall --quieter vim
-  fi
-	if [ ! -d ~/.vim/bundle/vundle/ ]; then
-	 git clone --quiet https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle &> /dev/null
-	fi
-
-	# Create colors directory
-	ech "- Create colors directory..."
-	if [ ! -d ~/.vim/colors ]; then
-	 mkdir ~/.vim/colors
-	fi
-
-	# Download VIM theme
-	ech "- Downloading theme..."
-	if [ ! -f ~/.vim/colors/wombat256mod.vim ]; then
-	 curl --silent -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
-	fi
-
-	# Install bundles
-	ech "- Install bundles..."
-  vim +PluginInstall +qall
-} #update_vimrc
-
-# FUNCTION FOR COMPILING VIM FROM SOURCE
-# ###################################################################
-function compile_vim() {
-	# Get cmake version
-
-	vim_version=$(vim --version | egrep -o "([0-9]{1,}\.)+[0-9]{1,}" | head -n1)
-	hash vim >/dev/null 2>&1 || { vim_version="0"; }
-
-	if should_upgrade $vim_version "8.0"; then 
-	
-		# Install prereqs
-		sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
-				libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
-				libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
-				python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git
-
-		# Remove vim
-		sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox
-		sudo dpkg -r vim
-
-		  # Get vim source
-			cd ~
-			sudo rm -rf ~/vim
-			git clone https://github.com/vim/vim.git ./vim
-		  cd vim
-		  
-		  # Configure installation
-		  ./configure --with-features=huge \
-			    --enable-multibyte \
-			    --enable-rubyinterp=yes \
-			    --enable-pythoninterp=yes \
-			    --enable-python3interp=yes \
-			    --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu \
-			    --enable-perlinterp=yes \
-			    --enable-luainterp=yes \
-			    --enable-gui=gtk2 --enable-cscope --prefix=/usr
-		  make VIMRUNTIMEDIR=/usr/share/vim/vim80
-
-		  # Get checkinstall
-		  sudo apt-get install checkinstall
-
-		  # Install vim
-		  cd ~/vim
-		  sudo checkinstall
-
-		  # Set Vim as default editor
-		  sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
-		  sudo update-alternatives --set editor /usr/bin/vim
-		  sudo update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1
-		  sudo update-alternatives --set vi /usr/bin/dbus-update-activation-environment
-	fi
-}
-
-# FUNCTION FOR COMPILING CMAKE
-# ###################################################################
-function compile_cmake() {
-  cd ~
-  sudo apt-get install cmake
-
-  # Get cmake version
-  cmake_version=$(cmake --version | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")
-
-  if should_upgrade $cmake_version "2.8.11"; then
-    # Upgrade cmake if necessary
-    cd ~
-    rm -rf cmake-2.8.12*
-    wget -cL --no-check-certificate https://cmake.org/files/v2.8/cmake-2.8.12.tar.gz \
-    && dtrx cmake-2.8.12.tar.gz \
-    && cd cmake-2.8.12 \
-    && mkdir _build \
-    && cd _build \
-    && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
-    && make \
-    && sudo make install \
-    && sudo ldconfig
-  fi
-}
-
-# FUNCTION FOR COMPILING YOUCOMPLETEME
-# ###################################################################
-function compile_ycm() {
-  cd ~
-
-  # Requirements
-  sudo apt-get install build-essential
-  sudo apt-get install python-dev python3-dev
-  sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-  sudo apt-get update
-  sudo apt-get install gcc-4.8 g++-4.8
-  sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
-
-  # Install node
-  install_node
-
-  # Install go
-  #sudo apt-get install golang-go
-
-  # Compile YCM
-  cd ~/.vim/bundle/YouCompleteMe
-  ./install.py --tern-completer 
 }
 
 # MAIN FUNCTIONS
@@ -312,9 +50,9 @@ elif [ "$1" == "cmake" ]; then
 elif [ "$1" == "ycm" ]; then
   compile_ycm
 elif [ "$1" == "tools" ]; then
-  install_tools
+  basic_tools
 elif [ "$1" == "all" ]; then
-  install_tools
+  basic_tools
   compile_cmake
   compile_vim
   update_vimrc
@@ -322,6 +60,5 @@ elif [ "$1" == "all" ]; then
 else
   main
 fi
-
 
 } # this ensures the entire script is downloaded #
