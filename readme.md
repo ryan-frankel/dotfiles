@@ -6,7 +6,8 @@ grab the repo and execute the basic installation with the following command.
 
 `curl frankel.sh | bash`
 
-The will download this git repo to ~/dotfiles/ and will run install.sh.
+The will download this git repo to ~/dotfiles/ and will run index.html (which
+is a bash script).
 
 The reason for index.html is to serve as a hosted file with GitHub 
 pages that the DNS server can point to.  This allows the simple curl
@@ -16,7 +17,7 @@ request.
 There are options for installing cmake, vim8.0 and YouCompleteMe. To access the 
 help screen simply type:
 
-`./install.sh --help`
+`./index.html --help`
 
 This should output:
 ```
