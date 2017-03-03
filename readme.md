@@ -1,7 +1,7 @@
 Installs and compiles my dotfiles. Tested on Ubuntu 12.04 and 16.04.
 
 ## Basic Usage
-The domain for automatically downloading this project is frankel.sh. You can 
+The domain for automatically downloading this project is http://frankel.sh. You can 
 grab the repo and execute the basic installation with the following command.
 
 `curl frankel.sh | bash`
