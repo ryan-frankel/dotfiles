@@ -148,10 +148,13 @@
   # At bottom so all functions are defined when this is run
   if [ "$1" == "--help" ]; then
     echo "vim - compile vim and install all bundles"
+    echo "updatevim - Updates vim bundles and vimrc"
     echo "cmake - install new version of cmake"
     echo "ycm - install youcompleteme"
     echo "tools - install basic tools"
     echo "all - INSTALL ALL THE ABOVE"
+  elif [ "$1" == "updatevim" ]; then
+    update_vimrc
   elif [ "$1" == "vim" ]; then
     compile_vim
     update_vimrc
