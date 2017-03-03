@@ -61,7 +61,7 @@ nearly a 100% chance you would like your settings to be different.
   * Line numbers on by default
   * NerdTree Open By Default
 
-  #### Plugins
+#### Plugins
   * NerdTree
   * NerdCommenter
   * SuperTab
