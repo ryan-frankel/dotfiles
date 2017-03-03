@@ -22,6 +22,7 @@ help screen simply type:
 This should output:
 ```
 vim - compile vim and install all bundles
+updatevim - Updates vim bundles and vimrc
 cmake - install new version of cmake
 ycm - install youcompleteme
 tools - install basic tools
