@@ -65,7 +65,6 @@ nearly a 100% chance you would like your settings to be different.
 #### Plugins
   * NerdTree
   * NerdCommenter
-  * SuperTab
   * CtrlP
   * Matchit
   * EasyMotion [w/ s and / mappings]

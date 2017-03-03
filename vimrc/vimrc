@@ -73,8 +73,8 @@ set smarttab
  " Functional
  Bundle 'scrooloose/nerdtree.git'
  Bundle 'scrooloose/nerdcommenter.git'
- Bundle 'ervandew/supertab.git'
- let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+ "Bundle 'ervandew/supertab.git'
+ "let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
  Bundle 'jwhitley/vim-matchit'
  "Bundle 'tpope/vim-fugitive'
