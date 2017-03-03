@@ -33,44 +33,45 @@ nearly a 100% chance you would like your settings to be different.
 
 ## Basic Tools Used
 ### Bashrc
-  Two line bash prompt with username, server, current directory, and Git prompt
-  Bash Prompt shows status of Git Repo. Red is changed/added, Yellow is yet
+  * Two line bash prompt with username, server, current directory, and Git prompt
+  * Bash Prompt shows status of Git Repo. Red is changed/added, Yellow is yet
     to be commited.  Green is the branch name.
-  Check out ./bashrc/aliases.sh for the CLI aliases
-  Custom colors for LS
-  NVM
-  Z
-  Various functions in ./bashrc/functions.sh
+  * Check out ./bashrc/aliases.sh for the CLI aliases
+  * Custom colors for LS
+  * NVM
+  * Z
+  * Various functions in ./bashrc/functions.sh
 
 ### Tools
-  curl
-  build-essential
-  git
-  bc
-  dtrx
-  ncdu
-  htop
-  trash-cli
+  * curl
+  * build-essential
+  * git
+  * bc
+  * dtrx
+  * ncdu
+  * htop
+  * trash-cli
 
 ### Vim
-  Spaces over tabs 
-  2 Spaces for tabs
-  <Space> mapleader
-  Vundle
-  Wombat256Mod ColorScheme
-  Line numbers on by default
-  NerdTree Open By Default
+  * Spaces over tabs 
+  * 2 Spaces for tabs
+  * <Space> mapleader
+  * Vundle
+  * Wombat256Mod ColorScheme
+  * Line numbers on by default
+  * NerdTree Open By Default
 
-  NerdTree
-  NerdCommenter
-  SuperTab
-  CtrlP
-  Matchit
-  EasyMotion
-  YouCompleteMe
-  GitGutter
-  PolyGlot
-  Tabular
-  Snipmate
-  Syntastic
+  #### Plugins
+  * NerdTree
+  * NerdCommenter
+  * SuperTab
+  * CtrlP
+  * Matchit
+  * EasyMotion [w/ s and / mappings]
+  * YouCompleteMe
+  * GitGutter
+  * PolyGlot
+  * Tabular
+  * Snipmate
+  * Syntastic
 
