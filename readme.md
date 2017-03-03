@@ -57,7 +57,7 @@ nearly a 100% chance you would like your settings to be different.
 ### Vim
   * Spaces over tabs 
   * 2 Spaces for tabs
-  * <Space> mapleader
+  * Space mapleader
   * Vundle
   * Wombat256Mod ColorScheme
   * Line numbers on by default
