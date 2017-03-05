@@ -102,6 +102,7 @@ set smarttab
   nmap w <Plug>(easymotion-w)
 
  Bundle 'Valloric/YouCompleteMe'
+  set completeopt-=preview
  Bundle 'ternjs/tern_for_vim'
  Bundle 'airblade/vim-gitgutter'
 
