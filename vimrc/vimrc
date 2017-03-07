@@ -103,25 +103,49 @@ set smarttab
  Bundle 'ternjs/tern_for_vim'
  Bundle 'airblade/vim-gitgutter'
  Bundle 'tpope/vim-fugitive.git'
- Bundle 'vim-airline/vim-airline'
- Bundle 'vim-airline/vim-airline-themes'
-    set laststatus=2
-    let g:airline_powerline_fonts=1
-    let g:airline_theme='bubblegum'
-    let g:airline#extensions#whitespace#enabled = 0
-    highlight clear SignColumn
+ Bundle 'itchyny/lightline.vim'
+  set noshowmode
+  set laststatus=2
+  let g:lightline = {
+    \ 'colorscheme': 'wombat',
+		\ 'active': {
+		\ 	'left': [ [ 'mode', 'paste' ], [ 'relativepath' ] ],
+    \   'right': [ [ 'fugitive' ], [ 'gitgutter' ] ]
+		\ },
+    \ 'component_function': {
+    \   'fugitive': 'LightlineFugitive',
+    \   'gitgutter': 'LightlineGitGutter'
+    \ },
+    \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+    \ }
 
-    function! AirlineInit() 
-      let g:airline_section_a = airline#section#create(['mode', ' ', 'paste'])
-      let g:airline_section_b = airline#section#create('%f')
-      let g:airline_section_c = airline#section#create('')
-      let g:airline_section_x = airline#section#create(['hunks'])
-      let g:airline_section_y = airline#section#create(['branch'])
-      let g:airline_section_z = airline#section#create(['%p%%'])
-      call airline#update_statusline()
-    endfunction
-    call AirlineInit()
-    autocmd VimEnter * call AirlineInit()
+	function! LightlineFugitive()
+		return exists('*fugitive#head') ? printf( '%s%s', "\u2387 ", fugitive#head()) : ''
+	endfunction
+  function LightlineGitGutter() 
+    let hunks = exists('*GitGutterGetHunkSummary') ? GitGutterGetHunkSummary() : ''
+    let string = ''
+    if !empty(hunks)
+      for i in [0, 1, 2]
+        if (hunks[i] > 0)
+          if (i == 0)
+            let symbol = '+'
+          elseif (i == 1)
+            let symbol = '~'
+          elseif (i == 2)
+            let symbol = '-'
+          endif
+          let string .= printf('%s%s ', symbol, hunks[i])
+        endif
+      endfor
+    endif
+    return string
+  endfunction
+
+  Bundle 'maxbrunsfeld/vim-yankstack'
+    nmap <leader>p <Plug>yankstack_substitute_older_paste
+    nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
  " Syntax
  Bundle 'sheerun/vim-polyglot'
