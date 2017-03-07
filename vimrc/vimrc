@@ -73,42 +73,55 @@ set smarttab
  " Functional
  Bundle 'scrooloose/nerdtree.git'
  Bundle 'scrooloose/nerdcommenter.git'
- "Bundle 'ervandew/supertab.git'
- "let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+ Bundle 'ervandew/supertab.git'
+  let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
  Bundle 'jwhitley/vim-matchit'
- "Bundle 'tpope/vim-fugitive'
  Bundle 'ctrlpvim/ctrlp.vim'
- " Ignore files in gitignore
- let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
- nmap <Leader>r :CtrlPMRU<CR>
- vmap <Leader>r :CtrlPMRU<CR>
- nmap <Leader>f :CtrlP<CR>
- vmap <Leader>f :CtrlP<CR>
+   " Ignore files in gitignore
+   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+   nmap <Leader>r :CtrlPMRU<CR>
+   vmap <Leader>r :CtrlPMRU<CR>
+   nmap <Leader>f :CtrlP<CR>
+   vmap <Leader>f :CtrlP<CR>
 
  Bundle 'easymotion/vim-easymotion'
    " Gif config
-  map  / <Plug>(easymotion-sn)
-  omap / <Plug>(easymotion-tn)
-  " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
-  " Without these mappings, `n` & `N` works fine. (These mappings just provide
-  " different highlight method and have some other features )
-  "map  n <Plug>(easymotion-next)
-  "map  N <Plug>(easymotion-prev)
-
-  " Smartcase
-  let g:EasyMotion_smartcase = 1
-  let g:EasyMotion_use_smartsign_us = 1
-  " Jump to anywhere you want with minimal keystrokes, with just one key binding.
-  " `s{char}{label}`
-  nmap s <Plug>(easymotion-overwin-f)
-
-  nmap w <Plug>(easymotion-w)
+    map  / <Plug>(easymotion-sn)
+    omap / <Plug>(easymotion-tn)
+    " Smartcase
+    let g:EasyMotion_smartcase = 1
+    let g:EasyMotion_use_smartsign_us = 1
+    " Jump to anywhere you want with minimal keystrokes, with just one key binding.
+    " `s{char}{label}`
+    nmap s <Plug>(easymotion-overwin-f)
+    nmap w <Plug>(easymotion-w)
 
  Bundle 'Valloric/YouCompleteMe'
-  set completeopt-=preview
+    set completeopt-=preview
+
  Bundle 'ternjs/tern_for_vim'
  Bundle 'airblade/vim-gitgutter'
+ Bundle 'tpope/vim-fugitive.git'
+ Bundle 'vim-airline/vim-airline'
+ Bundle 'vim-airline/vim-airline-themes'
+    set laststatus=2
+    let g:airline_powerline_fonts=1
+    let g:airline_theme='jellybeans'
+    let g:airline#extensions#whitespace#enabled = 0
+    highlight clear SignColumn
+
+    function! AirlineInit() 
+      let g:airline_section_a = airline#section#create(['mode', ' ', 'paste'])
+      let g:airline_section_b = airline#section#create('')
+      let g:airline_section_c = airline#section#create('')
+      let g:airline_section_x = airline#section#create('')
+      let g:airline_section_y = airline#section#create(['hunks'])
+      let g:airline_section_z = airline#section#create(['branch'])
+      call airline#update_statusline()
+    endfunction
+    call AirlineInit()
+    autocmd VimEnter * call AirlineInit()
 
  " Syntax
  Bundle 'sheerun/vim-polyglot'
