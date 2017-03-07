@@ -121,7 +121,7 @@ set smarttab
     \ }
 
 	function! LightlineFugitive()
-		return exists('*fugitive#head') ? printf( '%s%s', "\u2387 ", fugitive#head()) : ''
+		return exists('*fugitive#head') ? printf( '%s%s', "\uE0A0 ", fugitive#head()) : ''
 	endfunction
   function LightlineGitGutter() 
     let hunks = exists('*GitGutterGetHunkSummary') ? GitGutterGetHunkSummary() : ''
@@ -140,7 +140,11 @@ set smarttab
         endif
       endfor
     endif
-    return string
+    if (string == '')
+      return
+    else
+      return string
+    endif
   endfunction
 
   Bundle 'maxbrunsfeld/vim-yankstack'
