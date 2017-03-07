@@ -72,6 +72,9 @@ set smarttab
 
  " Functional
  Bundle 'scrooloose/nerdtree.git'
+ Bundle 'vim-scripts/mru.vim'
+  nmap <Leader>r :MRU<CR>
+  vmap <Leader>r :MRU<CR>
  Bundle 'scrooloose/nerdcommenter.git'
  "Bundle 'ervandew/supertab.git'
  "let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
