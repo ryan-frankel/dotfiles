@@ -107,17 +107,19 @@ set smarttab
  Bundle 'vim-airline/vim-airline-themes'
     set laststatus=2
     let g:airline_powerline_fonts=1
-    let g:airline_theme='jellybeans'
+    let g:airline_theme='bubblegum'
     let g:airline#extensions#whitespace#enabled = 0
     highlight clear SignColumn
 
     function! AirlineInit() 
       let g:airline_section_a = airline#section#create(['mode', ' ', 'paste'])
-      let g:airline_section_b = airline#section#create('')
+      let g:airline_section_b = airline#section#create('%f')
       let g:airline_section_c = airline#section#create('')
-      let g:airline_section_x = airline#section#create('')
-      let g:airline_section_y = airline#section#create(['hunks'])
-      let g:airline_section_z = airline#section#create(['branch'])
+      let g:airline_section_x = airline#section#create(['hunks'])
+      let g:airline_section_y = airline#section#create(['branch'])
+      let g:airline_section_z = airline#section#create(['%p%%'])
+      "let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '%3p%%'.spc, 'linenr', 'maxlinenr', spc.':%3v'])
+      "let g:airline_section_z = airline#section#create(['%3p%%'.spc, 'linenr',  ':%3v'])
       call airline#update_statusline()
     endfunction
     call AirlineInit()
