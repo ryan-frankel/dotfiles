@@ -118,8 +118,6 @@ set smarttab
       let g:airline_section_x = airline#section#create(['hunks'])
       let g:airline_section_y = airline#section#create(['branch'])
       let g:airline_section_z = airline#section#create(['%p%%'])
-      "let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '%3p%%'.spc, 'linenr', 'maxlinenr', spc.':%3v'])
-      "let g:airline_section_z = airline#section#create(['%3p%%'.spc, 'linenr',  ':%3v'])
       call airline#update_statusline()
     endfunction
     call AirlineInit()
