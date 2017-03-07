@@ -83,6 +83,8 @@ set smarttab
  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
  nmap <Leader>r :CtrlPMRU<CR>
  vmap <Leader>r :CtrlPMRU<CR>
+ nmap <Leader>f :CtrlP<CR>
+ vmap <Leader>f :CtrlP<CR>
 
  Bundle 'easymotion/vim-easymotion'
    " Gif config
