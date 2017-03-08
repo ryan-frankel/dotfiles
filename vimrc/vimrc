@@ -107,7 +107,7 @@ set smarttab
   set noshowmode
   set laststatus=2
   let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'frankelColorScheme',
 		\ 'active': {
 		\ 	'left': [ [ 'mode', 'paste' ], [ 'relativepath' ] ],
     \   'right': [ [ 'fugitive' ], [ 'gitgutter' ], [ 'CtrlPMark' ] ]
