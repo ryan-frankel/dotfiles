@@ -23,7 +23,7 @@ let s:grayLightest = [ '#e4e4e4', 254 ]
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
 let s:p.normal.left = [ [ s:gray, s:blue ], [ s:grayLightest, s:grayLight ] ]
-let s:p.normal.right = [ [ s:gray, s:blue ], [ s:grayLight, s:grayLight ] ]
+let s:p.normal.right = [ [ s:gray, s:blue ], [ s:grayLightest, s:grayLight ] ]
 
 let s:p.inactive.right = [ [ s:gray, s:grayLight ], [ s:grayLight, s:gray ] ]
 let s:p.inactive.left =  [ [ s:grayLight, s:gray ], [ s:grayLight, s:gray ] ]
