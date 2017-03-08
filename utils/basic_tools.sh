@@ -69,6 +69,7 @@ update_vimrc() {
 	ech "- Delete existing..."
 	rm -rf ~/.vimrc
 	rm -rf ~/.vim/snippets
+  rm -rf ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/frankelColorScheme.vim
 
 	# Symlink New
 	ech "- New symlinks..."
@@ -76,6 +77,7 @@ update_vimrc() {
   if [ -d ~/dotfiles/vimrc/snippets ]; then
   	ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
   fi
+  ln -s ~/dotfiles/vimrc/frankelColorScheme.vim ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/frankelColorScheme.vim
 
 	# Install Vundle if Needed
   if isosx; then

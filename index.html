@@ -3,7 +3,6 @@
   # Source the utility functions
   if [ -d ~/dotfiles ]; then
     source ~/dotfiles/utils/utils.sh
-    source ~/dotfiles/utils/basic_setup.sh
     source ~/dotfiles/utils/install_bashrc.sh
     source ~/dotfiles/utils/basic_tools.sh
     source ~/dotfiles/utils/compile_vim.sh
@@ -25,7 +24,6 @@
     # Source the utility functions
     if [ -d ~/dotfiles ]; then
       source ~/dotfiles/utils/utils.sh
-      source ~/dotfiles/utils/basic_setup.sh
       source ~/dotfiles/utils/install_bashrc.sh
       source ~/dotfiles/utils/basic_tools.sh
       source ~/dotfiles/utils/compile_vim.sh
@@ -39,8 +37,9 @@
 
     ech "\nInstall completed.\n\n" 2
     ech "Please run 'source ~/.bashrc'\n\n" 2
-  }
 
+    update_vimrc
+  }
 
   # ###################################################################
   # ###################################################################
