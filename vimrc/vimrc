@@ -110,7 +110,7 @@ set smarttab
     \ 'colorscheme': 'wombat',
 		\ 'active': {
 		\ 	'left': [ [ 'mode', 'paste' ], [ 'relativepath' ] ],
-    \   'right': [ [ 'fugitive' ], [ 'gitgutter' ] ]
+    \   'right': [ [ 'fugitive' ], [ 'gitgutter' ], [ 'CtrlPMark' ] ]
 		\ },
     \ 'component_function': {
     \   'fugitive': 'LightlineFugitive',
@@ -123,7 +123,8 @@ set smarttab
 	function! LightlineFugitive()
 		return exists('*fugitive#head') ? printf( '%s%s', "\uE0A0 ", fugitive#head()) : ''
 	endfunction
-  function LightlineGitGutter() 
+
+  function! LightlineGitGutter() 
     let hunks = exists('*GitGutterGetHunkSummary') ? GitGutterGetHunkSummary() : ''
     let string = ''
     if !empty(hunks)
@@ -140,11 +141,8 @@ set smarttab
         endif
       endfor
     endif
-    if (string == '')
-      return
-    else
-      return string
-    endif
+
+    return string
   endfunction
 
   Bundle 'maxbrunsfeld/vim-yankstack'
@@ -165,7 +163,7 @@ set smarttab
  Bundle 'MarcWeber/vim-addon-mw-utils'
  Bundle 'tomtom/tlib_vim'
  Bundle 'garbas/vim-snipmate'
- let g:snippets_dir="~/vimrc/snippets/"
+   let g:snippets_dir="~/vimrc/snippets/"
  
  " Syntax Checkers
  Bundle 'nrocco/vim-phplint'
