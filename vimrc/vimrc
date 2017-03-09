@@ -106,6 +106,7 @@ Bundle 'tpope/vim-fugitive.git'
 Bundle 'itchyny/lightline.vim'
 set noshowmode
 set laststatus=2
+source ~/dotfiles/vimrc/frankelColorScheme.vim
 let g:lightline = {
   \ 'colorscheme': 'frankelColorScheme',
   \ 'active': {

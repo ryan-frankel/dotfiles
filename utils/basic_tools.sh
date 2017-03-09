@@ -77,7 +77,6 @@ update_vimrc() {
   if [ -d ~/dotfiles/vimrc/snippets ]; then
   	ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
   fi
-  ln -s ~/dotfiles/vimrc/frankelColorScheme.vim ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/frankelColorScheme.vim
 
 	# Install Vundle if Needed
   if isosx; then
