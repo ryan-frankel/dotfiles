@@ -138,7 +138,7 @@ Bundle 'itchyny/lightline.vim'
     \ 'colorscheme': 'frankelColorScheme',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'gitgutter' ] ],
-    \   'right': [ [ 'hostname' ], [ 'relativepath' ] ]
+    \   'right': [ [ 'hostname' ], [ 'relativepath', 'modified' ] ]
     \ },
     \ 'component_function': {
     \   'fugitive': 'LightlineFugitive',
@@ -146,8 +146,12 @@ Bundle 'itchyny/lightline.vim'
     \   'hostname': 'LightlineHostname'
     \ },
     \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+    \ 'tab': {
+    \   'active': [ 'filename', 'modified' ],
+    \   'inactive': [ 'filename', 'modified' ]
     \ }
+  \}
 
   function LightlineHostname()
       return hostname()
@@ -181,9 +185,9 @@ Bundle 'itchyny/lightline.vim'
     return string
   endfunction
 
-Bundle 'maxbrunsfeld/vim-yankstack'
-  nmap <leader>p <Plug>yankstack_substitute_older_paste
-  nmap <leader>P <Plug>yankstack_substitute_newer_paste
+"Bundle 'maxbrunsfeld/vim-yankstack'
+  "nmap <leader>p <Plug>yankstack_substitute_older_paste
+  "nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " Syntax
 Bundle 'sheerun/vim-polyglot'
@@ -193,7 +197,6 @@ Bundle 'godlygeek/tabular'
   vmap <Leader>a= :Tabularize /=<CR>
   nmap <Leader>a: :Tabularize /:<CR>
   vmap <Leader>a: :Tabularize /:<CR>
-
 
 " Snippits
 Bundle 'MarcWeber/vim-addon-mw-utils'
