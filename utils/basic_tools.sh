@@ -69,7 +69,6 @@ update_vimrc() {
 	ech "- Delete existing..."
 	rm -rf ~/.vimrc
 	rm -rf ~/.vim/snippets
-  rm -rf ~/.vim/bundle/lightline.vim/autoload/lightline/colorscheme/frankelColorScheme.vim
 
 	# Symlink New
 	ech "- New symlinks..."

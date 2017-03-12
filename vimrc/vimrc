@@ -95,7 +95,9 @@ Bundle 'scrooloose/nerdtree.git'
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'ervandew/supertab.git'
   let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+  "let g:SuperTabDefaultCompletionType = '<C-n>'
   let g:SuperTabDefaultCompletionType = "context"
+  " make YCM compatible with UltiSnips (using supertab)
 
 Bundle 'jwhitley/vim-matchit'
 Bundle 'ctrlpvim/ctrlp.vim'
@@ -125,6 +127,8 @@ Bundle 'easymotion/vim-easymotion'
   nmap w <Plug>(easymotion-w)
 
 Bundle 'Valloric/YouCompleteMe'
+  "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
   set completeopt-=preview
 
 Bundle 'ternjs/tern_for_vim'
@@ -201,8 +205,11 @@ Bundle 'godlygeek/tabular'
 " Snippits
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-  let g:snippets_dir="~/vimrc/snippets/"
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+  let g:UltiSnipsExpandTrigger = "<CR>"
+  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Syntax Checkers
 Bundle 'nrocco/vim-phplint'
