@@ -97,7 +97,6 @@ Bundle 'ervandew/supertab.git'
   let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
   "let g:SuperTabDefaultCompletionType = '<C-n>'
   let g:SuperTabDefaultCompletionType = "context"
-  " make YCM compatible with UltiSnips (using supertab)
 
 Bundle 'jwhitley/vim-matchit'
 Bundle 'ctrlpvim/ctrlp.vim'
@@ -207,9 +206,9 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
-  let g:UltiSnipsExpandTrigger = "<CR>"
+  let g:UltiSnipsExpandTrigger = "<c-s>"
   let g:UltiSnipsJumpForwardTrigger = "<tab>"
-  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+  let g:UltiSnipsJumpBackwardTrigger = "<c-tab>"
 
 " Syntax Checkers
 Bundle 'nrocco/vim-phplint'

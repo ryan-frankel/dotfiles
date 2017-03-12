@@ -69,12 +69,17 @@ update_vimrc() {
 	ech "- Delete existing..."
 	rm -rf ~/.vimrc
 	rm -rf ~/.vim/snippets
+  rm -rf ~/.vim/UltiSnips
 
 	# Symlink New
 	ech "- New symlinks..."
 	ln -s ~/dotfiles/vimrc/vimrc ~/.vimrc
   if [ -d ~/dotfiles/vimrc/snippets ]; then
   	ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
+  fi
+  if [ -d ~/dotfiles/vimrc/UltiSnips ]; then 
+    ls -s ~/dotfiles/vimrc/UltiSnips ~/.vim/UltiSnips
+    ls -s ~/dotfiles/vimrc/UltiSnips ~/.vim/UltiSnips
   fi
 
 	# Install Vundle if Needed
