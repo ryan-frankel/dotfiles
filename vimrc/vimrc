@@ -91,6 +91,7 @@ let &t_Co=256
 Bundle 'gmarik/vundle'
 
 " Functional
+Bundle 'jiangmiao/auto-pairs'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'scrooloose/nerdcommenter.git'
 Bundle 'ervandew/supertab.git'
@@ -206,7 +207,7 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
-  let g:UltiSnipsExpandTrigger = "<tab><space>"
+  let g:UltiSnipsExpandTrigger = "<c-s>"
   let g:UltiSnipsJumpForwardTrigger = "<tab>"
   let g:UltiSnipsJumpBackwardTrigger = "<c-tab>"
 
