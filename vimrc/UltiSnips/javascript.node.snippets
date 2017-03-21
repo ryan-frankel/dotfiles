@@ -1,0 +1,137 @@
+snippet ex
+module.exports = ${1};
+endsnippet
+
+snippet re
+var ${2} = require('${3:module_name}');
+endsnippet
+
+snippet get
+${1:route}.get('${2:route}', function(req, res) {
+  ${0}
+}); // get
+endsnippet
+
+snippet post
+${1:route}.post('${2:route}', function(req, res) {
+  ${0}
+}); // post
+endsnippet
+
+snippet route
+${1:route}.${2:get}('${3:route}', function(req, res) {
+  ${0}
+}); // ${4:comment}
+endsnippet
+
+snippet router_define
+var express = require('express');
+var router = express.Router();
+var logger = require('../logger.js');
+
+module.exports = router;
+endsnippet
+
+snippet au
+app.use(${1}, ${2});
+endsnippet
+
+snippet server
+var server = app.listen(${1:port}, function(err) {
+  if (err) { return ${2}; }
+  logger.info("${3:=== SERVER STARTED ===}");
+}); // server
+endsnippet
+
+snippet errc
+if (err) { return ${1:callback}(err); }
+endsnippet
+
+snippet errs
+if (err) { return res.send(err); }
+endsnippet
+
+snippet views
+// View Engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+endsnippet
+
+snippet public
+// PUBLIC
+app.use(express.static(path.join(__dirname, 'public')));
+endsnippet
+
+snippet encoding
+// Encoding of Body
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+endsnippet
+
+snippet log
+logger.info(${1});
+endsnippet
+
+snippet loge
+logger.error(${2});
+endsnippet
+
+snippet logw
+logger.warn(${3});
+endsnippet
+
+snippet logger_define
+var winston = require('winston');
+
+// Winston Init
+var logger = new winston.Logger({
+  level: 'info'
+  , transports: [
+    new (winston.transports.Console)({
+      level: 'info'
+      , colorize: true
+      , timestamp: false
+    })
+    , new (winston.transports.File)({
+      name: 'all-human'
+      , level: 'info'
+      , filename: './logs/all-human.log'
+      , json: false
+      , timestamp: true
+      , maxsize: 1024 * 1024 * 10
+    })
+    , new (winston.transports.File)({
+      name: 'error-human'
+      , level: 'error'
+      , filename: './logs/error.log'
+      , json: false
+      , timestamp: true
+      , maxsize: 1024 * 1024 * 10
+   })
+  ]
+  , exceptionHandlers: [
+    new (winston.transports.File)({
+      filename: './logs/exceptions.log'
+      , json: false
+    })
+    , new (winston.transports.Console)({
+      colorize: true
+      , humanReadableUnhandledException: true
+    })
+  ]
+});//winston.Logger
+
+module.exports = logger;
+endsnippet
+
+snippet model
+var mongoose = require('mongoose');
+var Schema   = mongoose.Schema;
+
+var ${1}Schema = new Schema({
+  ${0}
+}); // ${1}
+
+module.exports = mongoose.model('${1}', ${1}Schema);
+endsnippet

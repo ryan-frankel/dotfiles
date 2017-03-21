@@ -78,8 +78,7 @@ update_vimrc() {
   	ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
   fi
   if [ -d ~/dotfiles/vimrc/UltiSnips ]; then 
-    ls -s ~/dotfiles/vimrc/UltiSnips ~/.vim/UltiSnips
-    ls -s ~/dotfiles/vimrc/UltiSnips ~/.vim/UltiSnips
+    ln -s ~/dotfiles/vimrc/UltiSnips ~/.vim/UltiSnips
   fi
 
 	# Install Vundle if Needed
