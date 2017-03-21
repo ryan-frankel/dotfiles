@@ -68,6 +68,8 @@ au BufRead,BufNewFile *.vcl set filetype=vcl
 au BufNewFile,BufRead *.ejs set filetype=html
 " Source pug in vim
 au BufNewFile,BufRead *.pug set filetype=pug
+" Source .snippets
+au BufNewFile,BufRead *.snippets set filetype=snippets
 
 " ------------------------------------------------------
 " Source Go VIM
