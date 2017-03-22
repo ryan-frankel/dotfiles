@@ -4,46 +4,46 @@ filetype indent on
 filetype plugin on
 set nofoldenable
 
-" ------------------------------------------------------
-" Backspace
-" ------------------------------------------------------
+" ******************************************************************
+"  Backspace
+" ******************************************************************
 set backspace=indent,eol,start
 
-" ------------------------------------------------------
-" Mapleader
-" ------------------------------------------------------
+" ******************************************************************
+"  Mapleader
+" ******************************************************************
 let mapleader = "\<Space>"
 
-set background=dark
-
-" ------------------------------------------------------
-" Vundle
-" ------------------------------------------------------
+" ******************************************************************
+"  Vundle
+" ******************************************************************
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" ------------------------------------------------------
-" Color scheme
-" ------------------------------------------------------
+" ******************************************************************
+"  Color Scheme
+" ******************************************************************
+let &t_Co=256
+set background=dark
 colorscheme wombat256mod
 
-" ------------------------------------------------------
-" Line Numbers
-" ------------------------------------------------------
+" ******************************************************************
+"  Line Numbers
+" ******************************************************************
 set number
 
-" ------------------------------------------------------
-" Tabstop
-" ------------------------------------------------------
+" ******************************************************************
+"  Tabstop
+" ******************************************************************
 set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set smarttab
  
-" ------------------------------------------------------
-" Switch off all auto-indenting
-" ------------------------------------------------------
+" ******************************************************************
+"  Turn off auto indenting
+" ******************************************************************
 set nocindent
 set nosmartindent
 set autoindent
@@ -53,14 +53,14 @@ filetype plugin indent off
 syntax on
 set mouse=r
 
-" ------------------------------------------------------
-" Case Insensitive search
-" ------------------------------------------------------
+" ******************************************************************
+"  Case insensitive search
+" ******************************************************************
 set ignorecase
 
-" ------------------------------------------------------
-" Filetypes
-" ------------------------------------------------------
+" ******************************************************************
+"  Filetype definitions
+" ******************************************************************
 au BufRead,BufNewFile *.less set filetype=less
 " source vcl
 au BufRead,BufNewFile *.vcl set filetype=vcl
@@ -68,157 +68,143 @@ au BufRead,BufNewFile *.vcl set filetype=vcl
 au BufNewFile,BufRead *.ejs set filetype=html
 " Source pug in vim
 au BufNewFile,BufRead *.pug set filetype=pug
+au BufNewFile,BufRead *.jade setf pug
 " Source .snippets
 au BufNewFile,BufRead *.snippets set filetype=snippets
-
-" ------------------------------------------------------
-" Source Go VIM
-" ------------------------------------------------------
+" Go
 au BufRead,BufNewFile *.go set filetype=go
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-"source ~/.vim/bundle/vim-go/syntax/go.vim
-" Source PUG
-au BufNewFile,BufRead *.jade setf pug
 
-" ------------------------------------------------------
-"  Colors
-" ------------------------------------------------------
-let &t_Co=256
-
-" ------------------------------------------------------
+" ******************************************************************
 "  Bundles
-" ------------------------------------------------------
+" ******************************************************************
 Bundle 'gmarik/vundle'
 
-" Functional
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'scrooloose/nerdtree.git'
-Bundle 'scrooloose/nerdcommenter.git'
-Bundle 'ervandew/supertab.git'
-  let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-  "let g:SuperTabDefaultCompletionType = '<C-n>'
-  let g:SuperTabDefaultCompletionType = "context"
+  " ******************************************************************
+  "  Functional
+  " ******************************************************************
+  Bundle 'jiangmiao/auto-pairs'
+  Bundle 'scrooloose/nerdtree.git'
+  Bundle 'scrooloose/nerdcommenter.git'
+  Bundle 'ervandew/supertab.git'
+    let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+    "let g:SuperTabDefaultCompletionType = '<C-n>'
+    let g:SuperTabDefaultCompletionType = "context"
+  Bundle 'jwhitley/vim-matchit'
+  Bundle 'ctrlpvim/ctrlp.vim'
+    " Ignore files in gitignore
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+    nmap <Leader>r :CtrlPMRU<CR>
+    vmap <Leader>r :CtrlPMRU<CR>
+    nmap <Leader>f :CtrlP<CR>
+    vmap <Leader>f :CtrlP<CR>
+    " Ctrl-P - Enter to Open in New Tab
+    let g:ctrlp_prompt_mappings = {
+     \ 'AcceptSelection("e")': ['<c-t>'],
+     \ 'AcceptSelection("t")': ['<cr>'],
+     \ }
+  Bundle 'easymotion/vim-easymotion'
+   " Gif config
+    map  / <Plug>(easymotion-sn)
+    omap / <Plug>(easymotion-tn)
+    " Smartcase
+    let g:EasyMotion_smartcase = 1
+    let g:EasyMotion_use_smartsign_us = 1
+    " Jump to anywhere you want with minimal keystrokes, with just one key binding.
+    " `s{char}{label}`
+    nmap s <Plug>(easymotion-overwin-f)
+    nmap w <Plug>(easymotion-w)
+  Bundle 'Valloric/YouCompleteMe'
+    "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+    "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+    set completeopt-=preview
+  Bundle 'ternjs/tern_for_vim'
+  Bundle 'airblade/vim-gitgutter'
 
-Bundle 'jwhitley/vim-matchit'
-Bundle 'ctrlpvim/ctrlp.vim'
-  " Ignore files in gitignore
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-  nmap <Leader>r :CtrlPMRU<CR>
-  vmap <Leader>r :CtrlPMRU<CR>
-  nmap <Leader>f :CtrlP<CR>
-  vmap <Leader>f :CtrlP<CR>
+  " ******************************************************************
+  "  Syntax Highlighter + Checkers
+  " ******************************************************************
+  Bundle 'sheerun/vim-polyglot'
+  Bundle 'scrooloose/syntastic.git'
 
-  " Ctrl-P - Enter to Open in New Tab
-  let g:ctrlp_prompt_mappings = {
-   \ 'AcceptSelection("e")': ['<c-t>'],
-   \ 'AcceptSelection("t")': ['<cr>'],
-   \ }
+  " ******************************************************************
+  "  Lightline
+  " ******************************************************************
+  Bundle 'itchyny/lightline.vim'
+  Bundle 'tpope/vim-fugitive.git'
+    set noshowmode
+    set laststatus=2
+    source ~/dotfiles/vimrc/frankelColorScheme.vim
+    let g:lightline = {
+      \ 'colorscheme': 'frankelColorScheme',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'gitgutter' ] ],
+      \   'right': [ [ 'hostname' ], [ 'relativepath', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightlineFugitive',
+      \   'gitgutter': 'LightlineGitGutter',
+      \   'hostname': 'LightlineHostname'
+      \ },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+      \ 'tab': {
+      \   'active': [ 'filename', 'modified' ],
+      \   'inactive': [ 'filename', 'modified' ]
+      \ }
+    \}
 
-Bundle 'easymotion/vim-easymotion'
- " Gif config
-  map  / <Plug>(easymotion-sn)
-  omap / <Plug>(easymotion-tn)
-  " Smartcase
-  let g:EasyMotion_smartcase = 1
-  let g:EasyMotion_use_smartsign_us = 1
-  " Jump to anywhere you want with minimal keystrokes, with just one key binding.
-  " `s{char}{label}`
-  nmap s <Plug>(easymotion-overwin-f)
-  nmap w <Plug>(easymotion-w)
+    function LightlineHostname()
+        return hostname()
+      endfunction
 
-Bundle 'Valloric/YouCompleteMe'
-  "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-  set completeopt-=preview
-
-Bundle 'ternjs/tern_for_vim'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'tpope/vim-fugitive.git'
-Bundle 'itchyny/lightline.vim'
-  set noshowmode
-  set laststatus=2
-  source ~/dotfiles/vimrc/frankelColorScheme.vim
-  let g:lightline = {
-    \ 'colorscheme': 'frankelColorScheme',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'gitgutter' ] ],
-    \   'right': [ [ 'hostname' ], [ 'relativepath', 'modified' ] ]
-    \ },
-    \ 'component_function': {
-    \   'fugitive': 'LightlineFugitive',
-    \   'gitgutter': 'LightlineGitGutter',
-    \   'hostname': 'LightlineHostname'
-    \ },
-    \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
-    \ 'tab': {
-    \   'active': [ 'filename', 'modified' ],
-    \   'inactive': [ 'filename', 'modified' ]
-    \ }
-  \}
-
-  function LightlineHostname()
-      return hostname()
+    function! LightlineFugitive()
+      return exists('*fugitive#head') ? printf( '%s%s', "\uE0A0 ", fugitive#head()) : ''
     endfunction
 
-  function! LightlineFugitive()
-    return exists('*fugitive#head') ? printf( '%s%s', "\uE0A0 ", fugitive#head()) : ''
-  endfunction
-
-  function! LightlineGitGutter() 
-    let hunks = exists('*GitGutterGetHunkSummary') ? GitGutterGetHunkSummary() : ''
-    let string = ''
-    if !empty(hunks)
-      for i in [0, 1, 2]
-        if (hunks[i] > 0)
-          if (i == 0)
-            let symbol = '+'
-          elseif (i == 1)
-            let symbol = '~'
-          elseif (i == 2)
-            let symbol = '-'
+    function! LightlineGitGutter() 
+      let hunks = exists('*GitGutterGetHunkSummary') ? GitGutterGetHunkSummary() : ''
+      let string = ''
+      if !empty(hunks)
+        for i in [0, 1, 2]
+          if (hunks[i] > 0)
+            if (i == 0)
+              let symbol = '+'
+            elseif (i == 1)
+              let symbol = '~'
+            elseif (i == 2)
+              let symbol = '-'
+            endif
+            let string .= printf('%s%s ', symbol, hunks[i])
           endif
-          let string .= printf('%s%s ', symbol, hunks[i])
-        endif
-      endfor
-    endif
+        endfor
+      endif
 
-    " Strip leading and trailing whitespace
-    let string = substitute(string, '^\s*\(.\{-}\)\s*$', '\1', '')
+      " Strip leading and trailing whitespace
+      let string = substitute(string, '^\s*\(.\{-}\)\s*$', '\1', '')
 
-    return string
-  endfunction
+      return string
+    endfunction
 
-"Bundle 'maxbrunsfeld/vim-yankstack'
-  "nmap <leader>p <Plug>yankstack_substitute_older_paste
-  "nmap <leader>P <Plug>yankstack_substitute_newer_paste
+  " ******************************************************************
+  "  Formatting
+  " ******************************************************************
+  Bundle 'godlygeek/tabular'
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:<CR>
+    vmap <Leader>a: :Tabularize /:<CR>
 
-" Syntax
-Bundle 'sheerun/vim-polyglot'
+  " ******************************************************************
+  "  Snippits
+  " ******************************************************************
+  Bundle 'SirVer/ultisnips'
+    let g:UltiSnipsExpandTrigger = "<c-j>"
+    let g:UltiSnipsJumpForwardTrigger = "<tab>"
+    let g:UltiSnipsJumpBackwardTrigger = "<c-tab>"
 
-Bundle 'godlygeek/tabular'
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:<CR>
-  vmap <Leader>a: :Tabularize /:<CR>
-
-" Snippits
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'SirVer/ultisnips'
-"Bundle 'honza/vim-snippets'
-  let g:UltiSnipsExpandTrigger = "<c-s>"
-  let g:UltiSnipsJumpForwardTrigger = "<tab>"
-  let g:UltiSnipsJumpBackwardTrigger = "<c-tab>"
-
-" Syntax Checkers
-Bundle 'nrocco/vim-phplint'
-Bundle 'hokaccha/vim-html5validator.git'
-Bundle 'scrooloose/syntastic.git'
-
-" Final functions and exit commands
+" ******************************************************************
+"  Open NerdTree on Enter
+" ******************************************************************
 filetype plugin indent on     " required! 
 function! StartUp()
  if 0 == argc()
@@ -228,5 +214,7 @@ function! StartUp()
 endfunction
 au VimEnter * call StartUp()
 
-" reset background color or exit
+" ******************************************************************
+"  Reset background color on exit
+" ******************************************************************
 au VimLeave * !tput sgr0
