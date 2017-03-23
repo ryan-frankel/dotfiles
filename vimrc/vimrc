@@ -113,18 +113,29 @@ Bundle 'gmarik/vundle'
     " `s{char}{label}`
     nmap s <Plug>(easymotion-overwin-f)
     nmap w <Plug>(easymotion-w)
+    " Searcg and replace highlighted text
+    vnoremap <Leader>% "hy:%s/<C-r>h//gc<left><left><left>
   Bundle 'Valloric/YouCompleteMe'
     "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
     "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
     set completeopt-=preview
+    " Colors
+    highlight Pmenu ctermfg=187 ctermbg=235
+    highlight PmenuSel ctermfg=235 ctermbg=187
   Bundle 'ternjs/tern_for_vim'
   Bundle 'airblade/vim-gitgutter'
 
   " ******************************************************************
-  "  Syntax Highlighter + Checkers
+  "  Syntax Highlighter + Checkers + Selectors
   " ******************************************************************
   Bundle 'sheerun/vim-polyglot'
   Bundle 'scrooloose/syntastic.git'
+  Bundle 'robmiller/vim-movar'
+    " Select and log snippet
+    imap <c-l> <Esc>vavyocon<c-j><Esc>p$i
+    nmap <c-l> vavyocon<c-j><Esc>p$
+    "imap <c-k> <Esc>vavyolog<c-j><Esc>p$i
+    "nmap <c-k> vavyolog<c-j><Esc>p$
 
   " ******************************************************************
   "  Lightline
