@@ -98,9 +98,15 @@ update_vimrc() {
 
 	# Download VIM theme
 	ech "- Downloading theme..."
-	if [ ! -f ~/.vim/colors/wombat256mod.vim ]; then
-	 curl --silent -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
-	fi
+  if [ ! -d ~/.vim/colors/ ]; then
+    mdir ~/.vim/colors/
+  fi
+  rm ~/.vim/color/wombat256mod.vim
+  cp ~/dotfiles/vimrc/colors/wombat256mod.vim ~/.vim/colors/wombat256mod.vim
+
+	#if [ ! -f ~/.vim/colors/wombat256mod.vim ]; then
+   #curl --silent -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
+	#fi
 
 	# Install bundles
 	ech "- Install bundles..."

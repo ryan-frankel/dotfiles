@@ -1,5 +1,5 @@
 " =============================================================================
-" Filename: autoload/lightline/colorscheme/frankelColorScheme.vim
+" Filename: autoload/lightline/colorscheme/lightlineColorScheme.vim
 " Author: ryan-frankel
 " License: MIT License
 " Last Change: 2017/03/08
@@ -43,4 +43,4 @@ let s:p.tabline.right   = [ [ s:grayLighter, s:grayLight ] ]
 let s:p.normal.error    = [ [ s:grayDark, s:red ] ]
 let s:p.normal.warning  = [ [ s:gray, s:yellow ] ]
 
-let g:lightline#colorscheme#frankelColorScheme#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline#colorscheme#lightlineColorScheme#palette = lightline#colorscheme#flatten(s:p)

@@ -5,27 +5,27 @@ snippet ex
 /* ******************************************************************
  * Exports
  * *****************************************************************/
-module.exports = ${1};
+module.exports = $1;
 endsnippet
 
 snippet re
-var ${2} = require('${3:module_name}');
+var $2 = require('${3:module_name}');
 endsnippet
 
 snippet get
-${1:route}.get('${2:route}', function(req, res) {
+${1:router}.get('${2:route}', function(req, res) {
   ${0}
-}); // get ${2}
+}); // GET $2
 endsnippet
 
 snippet post
-${1:route}.post('${2:route}', function(req, res) {
+${1:router}.post('${2:route}', function(req, res) {
   ${0}
-}); // POST ${2}
+}); // POST $2
 endsnippet
 
 snippet route
-${1:route}.${2:get}('${3:route}', function(req, res) {
+${1:router}.${2:get}('${3:route}', function(req, res) {
   ${0}
 }); // ${4:comment}
 endsnippet
@@ -131,13 +131,13 @@ var logger = new winston.Logger({
 module.exports = logger;
 endsnippet
 
-snippet model
+snippet model_define
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
-var ${1}Schema = new Schema({
-  ${0}
-}); // ${1}
+var $1Schema = new Schema({
+  $0
+}); // $1
 
-module.exports = mongoose.model('${1}', ${1}Schema);
+module.exports = mongoose.model('$1', $1Schema);
 endsnippet
