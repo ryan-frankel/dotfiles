@@ -13,7 +13,10 @@ set backspace=indent,eol,start
 "  Mapleader
 " ******************************************************************
 let mapleader = "\<Space>"
-"let mapeader = "\<F1>"
+:map  <F5> <nop>
+:map! <F5> <nop>
+let maplocalleader = "\<F5>"
+set showcmd
 
 " ******************************************************************
 "  Vundle
@@ -60,6 +63,19 @@ set mouse=r
 set ignorecase
 
 " ******************************************************************
+"  Leader Mappings
+" ******************************************************************
+nmap <Leader>w :w<CR> 
+nmap <LocalLeader>w :w<CR>
+vmap <Leader>w :w<CR> 
+vmap <LocalLeader>w :w<CR> 
+
+nmap <Leader>q :q<CR> 
+nmap <LocalLeader>q :q<CR> 
+vmap <Leader>q :q<CR> 
+vmap <LocalLeader>q :q<CR> 
+
+" ******************************************************************
 "  Filetype definitions
 " ******************************************************************
 au BufRead,BufNewFile *.less set filetype=less
@@ -100,6 +116,11 @@ Bundle 'gmarik/vundle'
     "exec "hi NERDTreeExecFile ctermfg=" . s:NTExecColor
 
   Bundle 'scrooloose/nerdcommenter.git'
+    nnoremap <Leader>c :call NERDComment(0,"toggle")<CR>
+    nnoremap <LocalLeader>c :call NERDComment(0,"toggle")<CR>
+    vnoremap <Leader>c :call NERDComment(0,"toggle")<CR>
+    vnoremap <LocalLeader>c :call NERDComment(0,"toggle")<CR>
+    imap <LocalLeader>c <esc>:call NERDComment(0,"toggle")<CR>i
   Bundle 'ervandew/supertab.git'
     let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
     "let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -109,9 +130,13 @@ Bundle 'gmarik/vundle'
     " Ignore files in gitignore
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
     nmap <Leader>r :CtrlPMRU<CR>
+    nmap <LocalLeader>r :CtrlPMRU<CR>
     vmap <Leader>r :CtrlPMRU<CR>
+    vmap <LocalLeader>r :CtrlPMRU<CR>
     nmap <Leader>f :CtrlP<CR>
+    nmap <LocalLeader>f :CtrlP<CR>
     vmap <Leader>f :CtrlP<CR>
+    vmap <LocalLeader>f :CtrlP<CR>
     " Ctrl-P - Enter to Open in New Tab
     let g:ctrlp_prompt_mappings = {
      \ 'AcceptSelection("e")': ['<c-t>'],
@@ -128,8 +153,11 @@ Bundle 'gmarik/vundle'
     " `s{char}{label}`
     nmap s <Plug>(easymotion-overwin-f)
     nmap w <Plug>(easymotion-w)
-    " Searcg and replace highlighted text
+    " Search and replace highlighted text
+    vnoremap <Leader>5 "hy:%s/<C-r>h//gc<left><left><left>
     vnoremap <Leader>% "hy:%s/<C-r>h//gc<left><left><left>
+    vnoremap <LocalLeader>5 "hy:%s/<C-r>h//gc<left><left><left>
+    vnoremap <LocalLeader>% "hy:%s/<C-r>h//gc<left><left><left>
   Bundle 'Valloric/YouCompleteMe'
     "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
     "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
@@ -150,8 +178,10 @@ Bundle 'gmarik/vundle'
   Bundle 'scrooloose/syntastic.git'
   Bundle 'robmiller/vim-movar'
     " Select and log snippet
-    imap <c-l> <Esc>vavyocon<c-j><Esc>p$i
-    nmap <c-l> vavyocon<c-j><Esc>p$
+    "imap <c-l> <Esc>vavyocon<c-j><Esc>p$i
+    imap <LocalLeader>l <Esc>vavyocon<c-j><Esc>p$i
+    nmap <Leader>l vavyocon<c-j><Esc>p$
+    nmap <LocalLeader>l vavyocon<c-j><Esc>p$
     "imap <c-k> <Esc>vavyolog<c-j><Esc>p$i
     "nmap <c-k> vavyolog<c-j><Esc>p$
 
@@ -219,16 +249,21 @@ Bundle 'gmarik/vundle'
   " ******************************************************************
   Bundle 'godlygeek/tabular'
     nmap <Leader>a= :Tabularize /=<CR>
+    nmap <LocalLeader>a= :Tabularize /=<CR>
     vmap <Leader>a= :Tabularize /=<CR>
+    vmap <LocalLeader>a= :Tabularize /=<CR>
     nmap <Leader>a: :Tabularize /:<CR>
+    nmap <LocalLeader>a: :Tabularize /:<CR>
     vmap <Leader>a: :Tabularize /:<CR>
+    vmap <LocalLeader>a: :Tabularize /:<CR>
 
   " ******************************************************************
   "  Snippits
   " ******************************************************************
   Bundle 'SirVer/ultisnips'
-    let g:UltiSnipsExpandTrigger = "<c-j>"
-    let g:UltiSnipsJumpForwardTrigger = "<tab>"
+    "let g:UltiSnipsExpandTrigger       = '<c-j>'
+    let g:UltiSnipsExpandTrigger       = '<LocalLeader><Space>'
+    let g:UltiSnipsJumpForwardTrigger  = "<tab>"
     let g:UltiSnipsJumpBackwardTrigger = "<c-tab>"
 
 " ******************************************************************
