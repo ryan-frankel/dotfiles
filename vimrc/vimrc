@@ -13,6 +13,7 @@ set backspace=indent,eol,start
 "  Mapleader
 " ******************************************************************
 let mapleader = "\<Space>"
+"let mapeader = "\<F1>"
 
 " ******************************************************************
 "  Vundle
@@ -138,6 +139,9 @@ Bundle 'gmarik/vundle'
     highlight PmenuSel ctermfg=235 ctermbg=187
   Bundle 'ternjs/tern_for_vim'
   Bundle 'airblade/vim-gitgutter'
+  Bundle 'terryma/vim-expand-region'
+    vmap v <Plug>(expand_region_expand)
+    vmap <C-v> <Plug>(expand_region_shrink)
 
   " ******************************************************************
   "  Syntax Highlighter + Checkers + Selectors
