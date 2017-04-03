@@ -1,0 +1,93 @@
+priority -50
+
+snippet /
+/* ******************************************************************
+ * $1
+ * *****************************************************************/
+endsnippet
+
+snippet . 
+.$1 {
+	$0
+} // $1
+endsnippet
+
+snippet bc
+background-color: $1;
+endsnippet
+
+snippet co
+color: $1;
+endsnippet
+
+snippet pr
+position: relative;
+endsnippet
+
+snippet ff
+font-family: @${1:headingsFontFamily};
+endsnippet
+
+snippet fs
+font-size: $1px;
+endsnippet
+
+snippet lh
+line-height: ${1:1.5};
+endsnippet
+
+snippet ls
+letter-spacing: $1;
+endsnippet
+
+snippet m
+margin: $1;
+endsnippet
+
+snippet p
+padding: $1;
+snippet bs
+endsnippet
+
+snippet bo
+border$1: $2px solid @$3;
+endsnippet
+
+snippet ho
+&:hover {
+	$1
+} // &:hover
+endsnippet
+
+snippet center
+position : absolute;
+margin   : auto;
+top      : 0;
+left     : 0;
+bottom   : 0;
+right    : 0;
+endsnippet
+
+snippet db 
+display: block;
+endsnippet
+
+snippet dn
+display: none;
+endsnippet
+
+snippet dib
+display: inline-block;
+endsnippet
+
+snippet fl
+float: left;
+endsnippet
+
+snippet fr
+float: right;
+endsnippet
+
+snippet z
+z-index: $1;
+endsnippet
