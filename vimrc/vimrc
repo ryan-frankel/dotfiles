@@ -107,14 +107,14 @@ Bundle 'gmarik/vundle'
     let s:NTCWDColor      = 70
     let s:NTDirColor      = 70
     let s:NTExecColor     = 9
-    "exec "hi NERDTreeDir      ctermfg=" . s:NTDirColor
-    "exec "hi NERDTreeDirSlash ctermfg=" . s:NTDirColor
+    exec "hi NERDTreeDir      ctermfg=" . s:NTDirColor
+    exec "hi NERDTreeDirSlash ctermfg=" . s:NTDirColor
+    exec "hi NERDTreeCWD      ctermfg=" . s:NTCWDColor
+    exec "hi NERDTreeExecFile ctermfg=" . s:NTExecColor
     "let s:cmd = "hi NERDTreeOpenable ctermfg=" . s:NTDirColor
     "exec s:cmd
     "let s:cmd = "hi NERDTreeClosable ctermfg=" . s:NTDirColor
     "exec s:cmd
-    "exec "hi NERDTreeCWD      ctermfg=" . s:NTCWDColor
-    "exec "hi NERDTreeExecFile ctermfg=" . s:NTExecColor
 
   Bundle 'scrooloose/nerdcommenter.git'
     nnoremap <Leader><Space> :call NERDComment(0,"toggle")<CR>
