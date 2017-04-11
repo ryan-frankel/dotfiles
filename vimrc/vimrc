@@ -69,7 +69,7 @@ nmap <Leader>w :w<CR>
 nmap <LocalLeader>w :w<CR>
 vmap <Leader>w :w<CR> 
 vmap <LocalLeader>w :w<CR> 
-imap <LocalLeader>w :w<CR><Esc>
+imap <LocalLeader>w <Esc>:w<CR><Esc>i
 
 nmap <Leader>q :q<CR> 
 nmap <LocalLeader>q :q<CR> 
