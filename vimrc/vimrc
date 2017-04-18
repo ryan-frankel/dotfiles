@@ -121,6 +121,8 @@ Bundle 'gmarik/vundle'
     "exec s:cmd
     "let s:cmd = "hi NERDTreeClosable ctermfg=" . s:NTDirColor
     "exec s:cmd
+    let g:NERDTreeDirArrowExpandable="+"
+    let g:NERDTreeDirArrowCollapsible="~"
 
   Bundle 'scrooloose/nerdcommenter.git'
     nnoremap <Leader><Space> :call NERDComment(0,"toggle")<CR>
