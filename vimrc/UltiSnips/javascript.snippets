@@ -16,16 +16,16 @@ function $1($2) {
 endsnippet
 
 snippet if "if (condition) { ... }"
-if (${1}) {
+if ($1) {
   ${0}
 } // if
 endsnippet
 
 snippet ife "if (condition) { ... } else { ... }"
-if (${1}) {
+if ($1) {
   ${0}
 } else {
-  ${2}
+  $2 
 } // if; else
 endsnippet
 
@@ -46,5 +46,5 @@ for (var ${1:prop} in ${2:object}) {
 endsnippet
 
 snippet con
-console.log(${1});
+console.log($1);
 endsnippet 

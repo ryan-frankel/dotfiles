@@ -32,9 +32,14 @@ endsnippet
 
 snippet router_define
 var express = require('express');
-var router = express.Router();
-var logger = require('../logger.js');
+var router  = express.Router();
+var logger  = require('../logger.js');
 
+$1
+
+/* ******************************************************************
+ * Exports
+ * *****************************************************************/
 module.exports = router;
 endsnippet
 

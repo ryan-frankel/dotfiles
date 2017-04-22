@@ -76,11 +76,17 @@ nmap <Leader>q :q<CR>
 nmap <LocalLeader>q :q<CR> 
 vmap <Leader>q :q<CR> 
 vmap <LocalLeader>q :q<CR> 
-" Add ; at end-of-line
-imap <LocalLeader>; <Esc>A;<CR>
 
 "Jump to end-of-line
-imap <LocalLeader>e <Esc>A
+imap <LocalLeader>e <Esc>A<Space>
+" Add ; at end-of-line
+imap <LocalLeader>; <Esc>A;
+nmap <LocalLeader>; <Esc>A;
+nmap <Leader>; <Esc>A;
+" Add { at end-of-line
+imap <LocalLeader>[ <Esc>A {<CR>
+nmap <LocalLeader>[ <Esc>A {<CR>
+nmap <Leader>[ <Esc>A {<CR>
 
 " ******************************************************************
 "  Filetype definitions
