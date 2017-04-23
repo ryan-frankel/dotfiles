@@ -89,6 +89,30 @@ nmap <LocalLeader>[ <Esc>A {<CR>
 nmap <Leader>[ <Esc>A {<CR>
 
 " ******************************************************************
+"  Splits
+" ******************************************************************
+nmap <Leader>- <C-W>S
+nmap <LocalLeader>- <C-W>S
+nmap <Leader>\ <C-W>v
+nmap <LocalLeader>\ <C-W>v
+
+" ******************************************************************
+"  Split Movement
+" ******************************************************************
+"nnoremap <LocalLeader>h <C-W><C-H>
+"nnoremap <LocalLeader>j <C-W><C-H>
+"nnoremap <LocalLeader>k <C-W><C-K>
+"nnoremap <LocalLeader>l <C-W><C-L>
+
+" ******************************************************************
+"  Window Movement Mappings
+" ******************************************************************
+nnoremap <LocalLeader>j <C-W><C-J>
+nnoremap <LocalLeader>k <C-W><C-K>
+nnoremap <LocalLeader>l <C-W><C-L>
+nnoremap <LocalLeader>h <C-W><C-H>
+
+" ******************************************************************
 "  Filetype definitions
 " ******************************************************************
 au BufRead,BufNewFile *.less set filetype=less
@@ -131,11 +155,11 @@ Bundle 'gmarik/vundle'
     let g:NERDTreeDirArrowCollapsible="~"
 
   Bundle 'scrooloose/nerdcommenter.git'
-    nnoremap <Leader><Space> :call NERDComment(0,"toggle")<CR>
-    nnoremap <LocalLeader><Space> :call NERDComment(0,"toggle")<CR>
-    vnoremap <Leader><Space> :call NERDComment(0,"toggle")<CR>
-    vnoremap <LocalLeader><Space> :call NERDComment(0,"toggle")<CR>
-    imap <LocalLeader>c <esc>:call NERDComment(0,"toggle")<CR>i
+    nnoremap <Leader>c        :call NERDComment(0,"toggle")<CR>
+    nnoremap <LocalLeader>c   :call NERDComment(0,"toggle")<CR>
+    vnoremap <Leader>c        :call NERDComment(0,"toggle")<CR>
+    vnoremap <LocalLeader>c   :call NERDComment(0,"toggle")<CR>
+    imap <LocalLeader>c <esc> :call NERDComment(0,"toggle")<CR>i
   Bundle 'ervandew/supertab.git'
     let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
     "let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -193,12 +217,9 @@ Bundle 'gmarik/vundle'
   Bundle 'scrooloose/syntastic.git'
   Bundle 'robmiller/vim-movar'
     " Select and log snippet
-    "imap <c-l> <Esc>vavyocon<c-j><Esc>p$i
-    imap <LocalLeader>l <Esc>vavyocon<LocalLeader><Space><Esc>p$i
-    nmap <Leader>l vavyocon<LocalLeader><Space><Esc>p$
-    nmap <LocalLeader>l vavyocon<LocalLeader><Space><Esc>p$
-    "imap <c-k> <Esc>vavyolog<c-j><Esc>p$i
-    "nmap <c-k> vavyolog<c-j><Esc>p$
+    "imap <LocalLeader>l <Esc>vavyocon<LocalLeader><Space><Esc>p$i
+    "nmap <Leader>l vavyocon<LocalLeader><Space><Esc>p$
+    "nmap <LocalLeader>l vavyocon<LocalLeader><Space><Esc>p$
 
   " ******************************************************************
   "  Lightline
