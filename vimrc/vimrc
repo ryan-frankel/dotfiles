@@ -1,13 +1,11 @@
+" ******************************************************************
+"  Indents and filetypes
+" ******************************************************************
 set nocompatible               " be iMproved
 filetype on                   " required!
 filetype indent on
 filetype plugin on
 set nofoldenable
-
-" ******************************************************************
-"  Backspace
-" ******************************************************************
-set backspace=indent,eol,start
 
 " ******************************************************************
 "  Mapleader
@@ -17,6 +15,13 @@ let mapleader = "\<Space>"
 :map! <F5> <nop>
 let maplocalleader = "\<F5>"
 set showcmd
+
+" ******************************************************************
+"  Misc.
+" ******************************************************************
+set backspace=indent,eol,start "backspace
+set number "Line Numbers
+set ignorecase "Case insensitive search
 
 " ******************************************************************
 "  Vundle
@@ -30,11 +35,6 @@ call vundle#rc()
 let &t_Co=256
 set background=dark
 colorscheme wombat256mod
-
-" ******************************************************************
-"  Line Numbers
-" ******************************************************************
-set number
 
 " ******************************************************************
 "  Tabstop
@@ -58,11 +58,6 @@ syntax on
 set mouse=r
 
 " ******************************************************************
-"  Case insensitive search
-" ******************************************************************
-set ignorecase
-
-" ******************************************************************
 "  Leader Mappings
 " ******************************************************************
 " Write
@@ -76,7 +71,6 @@ nmap <Leader>q :q<CR>
 nmap <LocalLeader>q :q<CR> 
 vmap <Leader>q :q<CR> 
 vmap <LocalLeader>q :q<CR> 
-
 "Jump to end-of-line
 imap <LocalLeader>e <Esc>A<Space>
 " Add ; at end-of-line
