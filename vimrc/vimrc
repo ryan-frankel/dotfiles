@@ -85,10 +85,10 @@ nmap <Leader>[ <Esc>A {<CR>
 " ******************************************************************
 "  Splits
 " ******************************************************************
-nmap <Leader>- <C-W>S
-nmap <LocalLeader>- <C-W>S
-nmap <Leader>\ <C-W>v
-nmap <LocalLeader>\ <C-W>v
+"nmap <Leader>- <C-W>S
+"nmap <LocalLeader>- <C-W>S
+"nmap <Leader>\ <C-W>v
+"nmap <LocalLeader>\ <C-W>v
 
 " ******************************************************************
 "  Split Movement
@@ -101,10 +101,10 @@ nmap <LocalLeader>\ <C-W>v
 " ******************************************************************
 "  Window Movement Mappings
 " ******************************************************************
-nnoremap <LocalLeader>j <C-W><C-J>
-nnoremap <LocalLeader>k <C-W><C-K>
-nnoremap <LocalLeader>l <C-W><C-L>
-nnoremap <LocalLeader>h <C-W><C-H>
+"nnoremap <LocalLeader>j <C-W><C-J>
+"nnoremap <LocalLeader>k <C-W><C-K>
+"nnoremap <LocalLeader>l <C-W><C-L>
+"nnoremap <LocalLeader>h <C-W><C-H>
 
 " ******************************************************************
 "  Filetype definitions
@@ -148,11 +148,11 @@ Bundle 'gmarik/vundle'
     let g:NERDTreeDirArrowCollapsible="▿"
 
   Bundle 'scrooloose/nerdcommenter.git'
-    nnoremap <Leader>c        :call NERDComment(0,"toggle")<CR>
-    nnoremap <LocalLeader>c   :call NERDComment(0,"toggle")<CR>
-    vnoremap <Leader>c        :call NERDComment(0,"toggle")<CR>
-    vnoremap <LocalLeader>c   :call NERDComment(0,"toggle")<CR>
-    imap <LocalLeader>c <esc> :call NERDComment(0,"toggle")<CR>i
+    nnoremap <Leader>c            : call NERDComment(0,"toggle")<CR>
+    nnoremap <LocalLeader>c       : call NERDComment(0,"toggle")<CR>
+    vnoremap <Leader>c            : call NERDComment(0,"toggle")<CR>
+    vnoremap <LocalLeader>c       : call NERDComment(0,"toggle")<CR>
+    imap <LocalLeader>c <esc>     : call NERDComment(0,"toggle")<CR>i
   Bundle 'ervandew/supertab.git'
     let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
     "let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -187,12 +187,10 @@ Bundle 'gmarik/vundle'
     nmap w <Plug>(easymotion-w)
     " Search and replace highlighted text
     vnoremap <Leader>5 "hy:%s/<C-r>h//gc<left><left><left>
-    vnoremap <Leader>% "hy:%s/<C-r>h//gc<left><left><left>
     vnoremap <LocalLeader>5 "hy:%s/<C-r>h//gc<left><left><left>
+    vnoremap <Leader>% "hy:%s/<C-r>h//gc<left><left><left>
     vnoremap <LocalLeader>% "hy:%s/<C-r>h//gc<left><left><left>
   Bundle 'Valloric/YouCompleteMe'
-    "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-    "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
     set completeopt-=preview
     " Colors
     highlight Pmenu ctermfg=187 ctermbg=235
@@ -210,9 +208,9 @@ Bundle 'gmarik/vundle'
   Bundle 'scrooloose/syntastic.git'
   Bundle 'robmiller/vim-movar'
     " Select and log snippet
-    "imap <LocalLeader>l <Esc>vavyocon<LocalLeader><Space><Esc>p$i
-    "nmap <Leader>l vavyocon<LocalLeader><Space><Esc>p$
-    "nmap <LocalLeader>l vavyocon<LocalLeader><Space><Esc>p$
+    imap <LocalLeader>l <Esc>vavyocon<LocalLeader><Space><Esc>p$i
+    nmap <Leader>l vavyocon<LocalLeader><Space><Esc>p$
+    nmap <LocalLeader>l vavyocon<LocalLeader><Space><Esc>p$
 
   " ******************************************************************
   "  Lightline
