@@ -81,6 +81,14 @@ nmap <Leader>; <Esc>A;
 imap <LocalLeader>[ <Esc>A {<CR>
 nmap <LocalLeader>[ <Esc>A {<CR>
 nmap <Leader>[ <Esc>A {<CR>
+" Tab 
+imap <LocalLeader>t <Esc>gti
+nmap <LocalLeader>t gt
+vmap <LocalLeader>t gt
+" Shell
+imap <LocalLeader>as <Esc>:sh<CR>
+nmap <LocalLeader>as <Esc>:sh<CR>
+vmap <LocalLeader>as <Esc>:sh<CR>
 
 " ******************************************************************
 "  Splits
