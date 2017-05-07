@@ -45,6 +45,7 @@ install_node() {
 install_cli() {
 	ech "- Cloning z..."
   if [ ! -d ~/code/z ]; then
+    mkdir ~/code
     git clone --quiet https://github.com/rupa/z.git ~/code/z &> /dev/null
   fi
 

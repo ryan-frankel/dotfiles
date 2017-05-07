@@ -20,6 +20,7 @@
 
     ech "\nSetting Up..." 2
     ech "----------------------------------------------------------------------------" 2
+    # We need certain functions to run in this file, then we grab the others
     basic_setup
     # Source the utility functions
     if [ -d ~/dotfiles ]; then
@@ -50,9 +51,9 @@
   # SETUP, GIT, ADD THE REPO
   # ###################################################################
   function basic_setup() {
-    tools="curl build-essential git bc dtrx ncdu htop trash-cli tmux" 
+    tools="curl build-essential git bc dtrx ncdu htop trash-cli tmux vim" 
     # silversearcher-ag
-    mactools="curl build-essential git bc dtrx ncdu htop trash-cli the_silver_searcher tmux"
+    mactools="curl build-essential git bc dtrx ncdu htop trash-cli the_silver_searcher tmux vim"
 
     define_colors
 
