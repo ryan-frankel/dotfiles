@@ -100,7 +100,7 @@ update_vimrc() {
 	# Download VIM theme
 	ech "- Downloading theme..."
   if [ ! -d ~/.vim/colors/ ]; then
-    mdir ~/.vim/colors/
+    mkdir ~/.vim/colors/
   fi
   rm ~/.vim/color/wombat256mod.vim
   cp ~/dotfiles/vimrc/colors/wombat256mod.vim ~/.vim/colors/wombat256mod.vim
