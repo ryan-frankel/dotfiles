@@ -8,8 +8,8 @@ function compile_ycm() {
   sudo apt-get install python-dev python3-dev
   sudo add-apt-repository ppa:ubuntu-toolchain-r/test
   sudo apt-get update
-  sudo apt-get install gcc-4.8 g++-4.8
-  sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8
+  sudo apt-get install gcc-6 g++-6
+  sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6
 
   # Install node
   install_node
@@ -19,5 +19,5 @@ function compile_ycm() {
 
   # Compile YCM
   cd ~/.vim/bundle/YouCompleteMe
-  ./install.py --tern-completer 
+  CXX="/usr/bin/g++-6" CC="/usr/bin/gcc-6" ./install.py --tern-completer 
 }
