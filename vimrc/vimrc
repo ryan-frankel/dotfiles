@@ -97,7 +97,6 @@ vmap <LocalLeader>p :set paste!<CR>
 nmap <Leader>p :set paste!<CR>
 vmap <Leader>p :set paste!<CR>
 
-
 " ******************************************************************
 "  Splits
 " ******************************************************************
