@@ -89,6 +89,14 @@ vmap <LocalLeader>t gt
 imap <LocalLeader>as <Esc>:sh<CR>
 nmap <LocalLeader>as <Esc>:sh<CR>
 vmap <LocalLeader>as <Esc>:sh<CR>
+" Psate Mode
+"set pastetoggle=<LocalLeader>p
+imap <LocalLeader>p :set paste!<CR>
+nmap <LocalLeader>p :set paste!<CR>
+vmap <LocalLeader>p :set paste!<CR>
+nmap <Leader>p :set paste!<CR>
+vmap <Leader>p :set paste!<CR>
+
 
 " ******************************************************************
 "  Splits
