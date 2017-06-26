@@ -43,7 +43,7 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set smarttab
+"set smarttab
  
 " ******************************************************************
 "  Turn off auto indenting
@@ -290,10 +290,15 @@ Bundle 'gmarik/vundle'
   "  Formatting
   " ******************************************************************
   Bundle 'godlygeek/tabular'
+    " equals
     nmap <Leader>a= :Tabularize /=<CR>
     nmap <LocalLeader>a= :Tabularize /=<CR>
+    nmap <LocalLeader>= :Tabularize /=<CR>
     vmap <Leader>a= :Tabularize /=<CR>
     vmap <LocalLeader>a= :Tabularize /=<CR>
+    vmap <LocalLeader>= :Tabularize /=<CR>
+
+    " colon
     nmap <Leader>a: :Tabularize /:<CR>
     nmap <LocalLeader>a: :Tabularize /:<CR>
     vmap <Leader>a: :Tabularize /:<CR>
