@@ -37,7 +37,6 @@ install_node() {
     nvm alias default node &> /dev/null
     npm install -g --silent node-gyp &> /dev/null
   fi
-
 }
 
 # FUNCTION FOR COMMAND LINE 

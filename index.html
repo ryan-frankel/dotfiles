@@ -64,6 +64,9 @@
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
       fi
 
+      ech "- Install Eternal Terminal..."
+      brew install MisterTea/et/et
+
       ech "- Install Tools..."
       brew install --quieter $mactools &> /dev/null
 
@@ -79,6 +82,11 @@
     if islinux; then
       ech "- APT update..."
       sudo apt-get update
+
+      echo "- Install Eternal Terminal..."
+      sudo add-apt-repository ppa:jgmath2000/et
+      sudo apt-get update
+      sudo apt-get install et
 
       ech "- Install Tools.."
       sudo apt-get install $tools -y
