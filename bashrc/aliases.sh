@@ -79,7 +79,6 @@ alias ro='mosh http://169.55.197.105/'
 alias sd-dev='mosh doppleruser@159.203.73.119'
 alias pullrm='git subtree pull --prefix=plugins/rain-maker git@github.com:digital-brands/rain-maker.git master'
 alias pushrm='git subtree push --prefix=plugins/rain-maker git@github.com:digital-brands/rain-maker.git master'
-#alias monsoon='php ~/monsoon-php/monsoon.php'
 alias update='sudo apt-get update && sudo apt-get upgrade -y && cd ~/bashrc && gplm && cd - && cd ~/vimrc/ && gplm && vim -c PluginCLean -c q -c q && vim -c PluginInstall -c q -c q && cd -'
 alias less-upgrade='sudo npm install -g less@1.7.4'
 alias less-downgrade='sudo npm install -g less@1.3.3'
@@ -137,3 +136,4 @@ alias dim="docker images"
 # MONSOON
 # #########################################
 alias monsoon="docker-compose run monsoon php monsoon.php"
+alias monsoonOld='php ~/monsoon-php/monsoon.php'
