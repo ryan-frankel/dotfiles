@@ -7,14 +7,14 @@ alias pr='mosh rfrankel@printaholic.com'
 alias da='mosh rfrankel@datingadvice.com'
 alias dc='mosh rfrankel@dealcrunch.com'
 
-alias rf='et rfrankel@rf.passprotect.me'
+alias rf='mosh rfrankel@rf.passprotect.me'
 alias td='mosh rfrankel@thedrizzle.org'
-alias dbd='et rfrankel@23.253.238.205'
-alias rfd='et rfrankel@165.227.106.79'
+alias dbd='mosh rfrankel@23.253.238.205'
+alias rfd='mosh rfrankel@165.227.106.79'
 
 # MINE
 # #########################################
-alias farm='et rfrankel@farmzip.com'
-alias nerdmash='et rfrankel@nerdmash.com'
-alias shirts='et rfrankel@gainesvilleshirts.com'
-alias testfyi='et rfrankel@test.fyi'
+alias farm='mosh rfrankel@farmzip.com'
+alias nerdmash='mosh rfrankel@nerdmash.com'
+alias shirts='mosh rfrankel@gainesvilleshirts.com'
+alias testfyi='mosh rfrankel@test.fyi'
