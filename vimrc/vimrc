@@ -35,6 +35,8 @@ call vundle#rc()
 let &t_Co=256
 set background=dark
 colorscheme wombat256mod
+" Fix for tmux background colors in vim
+set t_ut= 
 
 " ******************************************************************
 "  Tabstop
@@ -220,6 +222,7 @@ Bundle 'gmarik/vundle'
   "  Syntax Highlighter + Checkers + Selectors
   " ******************************************************************
   Bundle 'sheerun/vim-polyglot'
+    set conceallevel=0
   Bundle 'scrooloose/syntastic.git'
   Bundle 'robmiller/vim-movar'
     " Select and log snippet
