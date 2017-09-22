@@ -99,6 +99,11 @@ vmap <LocalLeader>p :set paste!<CR>
 nmap <Leader>p :set paste!<CR>
 vmap <Leader>p :set paste!<CR>
 
+" NERDTreeToggle
+map <LocalLeader><Tab> :NERDTreeToggle<CR>
+nmap <Leader><Tab> :NERDTreeToggle<CR>
+vmap <Leader><Tab> :NERDTreeToggle<CR>
+
 " ******************************************************************
 "  Splits
 " ******************************************************************
