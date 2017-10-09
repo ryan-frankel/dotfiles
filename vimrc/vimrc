@@ -299,18 +299,18 @@ Bundle 'gmarik/vundle'
   " ******************************************************************
   Bundle 'godlygeek/tabular'
     " equals
-    nmap <Leader>a= :Tabularize /=<CR>
-    nmap <LocalLeader>a= :Tabularize /=<CR>
-    nmap <LocalLeader>= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    vmap <LocalLeader>a= :Tabularize /=<CR>
-    vmap <LocalLeader>= :Tabularize /=<CR>
+    nmap <Leader>a= :Tabularize /=.*/<CR>
+    nmap <LocalLeader>a= :Tabularize /=.*/<CR>
+    nmap <LocalLeader>= :Tabularize /=.*/<CR>
+    vmap <Leader>a= :Tabularize /=.*/<CR>
+    vmap <LocalLeader>a= :Tabularize /=.*/<CR>
+    vmap <LocalLeader>= :Tabularize /=.*/<CR>
 
     " colon
-    nmap <Leader>a: :Tabularize /:<CR>
-    nmap <LocalLeader>a: :Tabularize /:<CR>
-    vmap <Leader>a: :Tabularize /:<CR>
-    vmap <LocalLeader>a: :Tabularize /:<CR>
+    nmap <Leader>a: :Tabularize /:.*/<CR>
+    nmap <LocalLeader>a: :Tabularize /:.*/<CR>
+    vmap <Leader>a: :Tabularize /:.*/<CR>
+    vmap <LocalLeader>a: :Tabularize /:.*/<CR>
 
   " ******************************************************************
   "  Snippits
