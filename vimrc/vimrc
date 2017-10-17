@@ -35,6 +35,8 @@ call vundle#rc()
 let &t_Co=256
 set background=dark
 colorscheme wombat256mod
+" Fix for tmux background colors in vim
+set t_ut= 
 
 " ******************************************************************
 "  Tabstop
@@ -97,6 +99,11 @@ nmap <LocalLeader>p :set paste!<CR>
 vmap <LocalLeader>p :set paste!<CR>
 nmap <Leader>p :set paste!<CR>
 vmap <Leader>p :set paste!<CR>
+
+" NERDTreeToggle
+map <LocalLeader><Tab> :NERDTreeToggle<CR>
+nmap <Leader><Tab> :NERDTreeToggle<CR>
+vmap <Leader><Tab> :NERDTreeToggle<CR>
 
 " ******************************************************************
 "  Splits
@@ -221,6 +228,7 @@ Bundle 'gmarik/vundle'
   "  Syntax Highlighter + Checkers + Selectors
   " ******************************************************************
   Bundle 'sheerun/vim-polyglot'
+    set conceallevel=0
   Bundle 'scrooloose/syntastic.git'
   Bundle 'robmiller/vim-movar'
     " Select and log snippet
@@ -292,18 +300,18 @@ Bundle 'gmarik/vundle'
   " ******************************************************************
   Bundle 'godlygeek/tabular'
     " equals
-    nmap <Leader>a= :Tabularize /=<CR>
-    nmap <LocalLeader>a= :Tabularize /=<CR>
-    nmap <LocalLeader>= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    vmap <LocalLeader>a= :Tabularize /=<CR>
-    vmap <LocalLeader>= :Tabularize /=<CR>
+    nmap <Leader>a= :Tabularize /=.*/<CR>
+    nmap <LocalLeader>a= :Tabularize /=.*/<CR>
+    nmap <LocalLeader>= :Tabularize /=.*/<CR>
+    vmap <Leader>a= :Tabularize /=.*/<CR>
+    vmap <LocalLeader>a= :Tabularize /=.*/<CR>
+    vmap <LocalLeader>= :Tabularize /=.*/<CR>
 
     " colon
-    nmap <Leader>a: :Tabularize /:<CR>
-    nmap <LocalLeader>a: :Tabularize /:<CR>
-    vmap <Leader>a: :Tabularize /:<CR>
-    vmap <LocalLeader>a: :Tabularize /:<CR>
+    nmap <Leader>a: :Tabularize /:.*/<CR>
+    nmap <LocalLeader>a: :Tabularize /:.*/<CR>
+    vmap <Leader>a: :Tabularize /:.*/<CR>
+    vmap <LocalLeader>a: :Tabularize /:.*/<CR>
 
   " ******************************************************************
   "  Snippits
