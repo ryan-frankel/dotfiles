@@ -27,15 +27,19 @@ function basic_tools() {
 # FUNCTION FOR INSTALLING NODE + RELATED
 # ###################################################################
 install_node() {
-	ech "- NVM..."
-  if [ ! -d "$NVM_DIR" ]; then
-    curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &> /dev/null;
-    export NVM_DIR="/home/rfrankel/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    nvm install node &> /dev/null 
-    nvm use node &> /dev/null
-    nvm alias default node &> /dev/null
-    npm install -g --silent node-gyp &> /dev/null
+	#ech "- NVM..."
+  #if [ ! -d "$NVM_DIR" ]; then
+    #curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &> /dev/null;
+    #export NVM_DIR="/home/rfrankel/.nvm"
+    #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    #nvm install node &> /dev/null 
+    #nvm use node &> /dev/null
+    #nvm alias default node &> /dev/null
+    #npm install -g --silent node-gyp &> /dev/null
+  #fi
+  ech "- n (for Node)..."
+  if [ ! -d "$N_PREFIX"  ]; then
+    curl -L https://git.io/n-install | bash
   fi
 }
 
