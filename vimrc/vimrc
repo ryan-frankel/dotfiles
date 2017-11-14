@@ -22,6 +22,7 @@ set showcmd
 set backspace=indent,eol,start "backspace
 set number "Line Numbers
 set ignorecase "Case insensitive search
+set encoding=utf-8
 
 " ******************************************************************
 "  Vundle
