@@ -263,7 +263,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>263 243 958 451 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>163 29 1277 848 0 0 2560 1417 </string>
+	<string>1281 29 1277 1388 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>336 45 1102 825 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_FB332444-8143-47D0-8BF6-9A8DB384594D</key>
@@ -1740,7 +1740,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>F6912AD5-8FDB-42B0-A8F0-24CA84FDB3BD</string>
 	<key>NoSyncLastTipTime</key>
-	<real>528912436.39609402</real>
+	<real>531687044.15355003</real>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
@@ -1757,6 +1757,25 @@
 		<string>0006</string>
 		<string>0007</string>
 		<string>0008</string>
+		<string>0009</string>
+		<string>0010</string>
+		<string>0011</string>
+		<string>0012</string>
+		<string>0013</string>
+		<string>0014</string>
+		<string>0015</string>
+		<string>0016</string>
+		<string>0017</string>
+		<string>0018</string>
+		<string>0019</string>
+		<string>0020</string>
+		<string>0021</string>
+		<string>0022</string>
+		<string>0023</string>
+		<string>0024</string>
+		<string>0025</string>
+		<string>0026</string>
+		<string>0027</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -1773,7 +1792,7 @@
 	<key>PasteFromClipboard</key>
 	<false/>
 	<key>PasteTabToStringTabStopSize</key>
-	<integer>2</integer>
+	<integer>3</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -1808,7 +1827,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/rfrankel/dotfiles/iterm2</string>
+	<string>~/dotfiles/iterm2</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -1828,7 +1847,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-09-29T15:08:07Z</date>
+	<date>2017-10-06T14:09:29Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
