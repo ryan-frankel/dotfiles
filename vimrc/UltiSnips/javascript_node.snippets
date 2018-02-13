@@ -9,7 +9,7 @@ module.exports = $1;
 endsnippet
 
 snippet re
-var ${2:name} = require('$2');
+const ${2:name} = require('$2');
 endsnippet
 
 snippet get
@@ -31,9 +31,7 @@ ${1:router}.${2:get}('${3:route}', function(req, res) {
 endsnippet
 
 snippet router_define
-var express = require('express');
-var router  = express.Router();
-var logger  = require('../logger.js');
+const router = require('express').Router();
 
 $1
 
@@ -48,9 +46,9 @@ app.use('${1}', ${2});
 endsnippet
 
 snippet server
-var server = app.listen(${1:port}, function(err) {
+const server = app.listen(${1:port}, function(err) {
   if (err) { return ${2}; }
-  logger.info("${3:=== SERVER STARTED ===}");
+  console.log("${3:=== SERVER STARTED ===}");
 }); // server
 endsnippet
 
@@ -81,7 +79,15 @@ app.use(bodyParser.urlencoded({
 endsnippet
 
 snippet log
-logger.info(${1});
+console.log(${1});
+endsnippet
+
+snippet cl
+console.log($1);
+endsnippet
+
+snippet c
+console.log($1);
 endsnippet
 
 snippet loge
@@ -137,10 +143,10 @@ module.exports = logger;
 endsnippet
 
 snippet model_define
-var mongoose = require('mongoose');
-var Schema   = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema   = mongoose.Schema;
 
-var $1Schema = new Schema({
+const $1Schema = new Schema({
   $0
 }); // $1
 
