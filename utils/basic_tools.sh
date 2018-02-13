@@ -27,16 +27,6 @@ function basic_tools() {
 # FUNCTION FOR INSTALLING NODE + RELATED
 # ###################################################################
 install_node() {
-	#ech "- NVM..."
-  #if [ ! -d "$NVM_DIR" ]; then
-    #curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &> /dev/null;
-    #export NVM_DIR="/home/rfrankel/.nvm"
-    #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    #nvm install node &> /dev/null 
-    #nvm use node &> /dev/null
-    #nvm alias default node &> /dev/null
-    #npm install -g --silent node-gyp &> /dev/null
-  #fi
   ech "- n (for Node)..."
   if [ ! -d "$N_PREFIX"  ]; then
     curl -L https://git.io/n-install | bash
@@ -51,15 +41,6 @@ install_cli() {
     mkdir ~/code
     git clone --quiet https://github.com/rupa/z.git ~/code/z &> /dev/null
   fi
-
-  # INSTALL GIT LFS
-  #ech "- Git LFS..."
-  #if islinux; then
-    #hash git-lfs >/dev/null 2>&1 || {
-      #curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash &> /dev/null
-      #sudo apt-get install git-lfs -y &>/dev/null 
-    #}
-  #fi
 
   # GITCONFIG SYMLINK
   rm -rf ~/.gitconfig
@@ -107,10 +88,6 @@ update_vimrc() {
   fi
   rm ~/.vim/color/wombat256mod.vim
   cp ~/dotfiles/vimrc/colors/wombat256mod.vim ~/.vim/colors/wombat256mod.vim
-
-	#if [ ! -f ~/.vim/colors/wombat256mod.vim ]; then
-   #curl --silent -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
-	#fi
 
 	# Install bundles
 	ech "- Install bundles..."
