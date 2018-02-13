@@ -8,6 +8,7 @@ alias da='mosh rfrankel@datingadvice.com'
 alias dc='mosh rfrankel@dealcrunch.com'
 
 alias rf='mosh rfrankel@rf.passprotect.me'
+alias rfssh='ssh rfrankel@rf.passprotect.me'
 alias td='mosh rfrankel@thedrizzle.org'
 alias dbd='mosh rfrankel@23.253.238.205'
 alias rfd='mosh rfrankel@165.227.106.79'
