@@ -13,6 +13,7 @@ alias qaland='mosh rfrankel@qa.land'
 alias qatown='mosh rfrankel@qa.town'
 alias noodle='mosh rfrankel@noodleball.in'
 alias rainmk='mosh rfrankel@192.241.143.25'
+alias juice='mosh rfrankel@159.65.183.90'
 
 alias rf='mosh rfrankel@159.65.183.90'
 alias rfssh='ssh rfrankel@159.65.183.90'
