@@ -22,15 +22,18 @@ alias tmux="tmux -2"
 
 # LS ALIASES
 # #########################################
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  alias ll='ls -alFh'
-  alias la='ls -lah'
-  alias l='ls -lFh'
-else
-  alias ll='ls -alFh --group-directories-first'
-  alias la='ls -lah --group-directories-first'
-  alias l='ls -lFh --group-directories-first'
-fi
+case "$OSTYPE" in
+  darwin*) 
+    alias ll='ls -alFh'
+    alias la='ls -lah'
+    alias l='ls -lFh'
+    ;;
+  *)
+    alias ll='ls -alFh --group-directories-first'
+    alias la='ls -lah --group-directories-first'
+    alias l='ls -lFh --group-directories-first'
+    ;;
+esac
 
 # GREP
 # #########################################
