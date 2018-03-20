@@ -1,9 +1,9 @@
 # SITES
 # #########################################
 alias bc='mosh rfrankel@166.78.243.119'
-alias ha='mosh rfrankel@23.253.111.148'
-alias hassh='ssh rfrankel@23.253.111.148'
-alias cr='mosh rfrankel@166.78.159.169'
+alias ha='mosh rfrankel@69.16.249.15'
+alias hassh='ssh rfrankel@69.16.249.15'
+alias cr='mosh rfrankel@64.91.229.108'
 alias pr='mosh rfrankel@166.78.123.101'
 alias da='mosh rfrankel@209.59.129.135'
 alias dc='mosh rfrankel@104.239.165.198'
