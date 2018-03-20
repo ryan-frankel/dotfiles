@@ -146,3 +146,7 @@ alias dim="docker images"
 # #########################################
 alias monsoon="docker-compose run monsoon php monsoon.php"
 alias monsoonOld='php ~/monsoon-php/monsoon.php'
+
+# GAMES 
+# #########################################
+alias 2048="~/dotfiles/games/bash2048/bash2048.sh"
