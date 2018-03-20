@@ -261,9 +261,9 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>263 243 958 451 0 0 1440 877 </string>
+	<string>720 555 796 473 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1281 30 1277 1387 0 0 2560 1417 </string>
+	<string>1280 30 1277 1387 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>336 45 1102 825 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_FB332444-8143-47D0-8BF6-9A8DB384594D</key>
@@ -1740,7 +1740,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>F6912AD5-8FDB-42B0-A8F0-24CA84FDB3BD</string>
 	<key>NoSyncLastTipTime</key>
-	<real>537815417.09555304</real>
+	<real>538336514.72882104</real>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
@@ -1816,6 +1816,10 @@
 		<string>0065</string>
 		<string>0066</string>
 		<string>0067</string>
+		<string>0068</string>
+		<string>0069</string>
+		<string>0070</string>
+		<string>0071</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -1938,6 +1942,8 @@
 	<string>/-+\~_.</string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
