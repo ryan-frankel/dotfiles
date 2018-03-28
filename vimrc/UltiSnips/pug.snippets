@@ -1,0 +1,39 @@
+snippet doc
+doctype html
+endsnippet
+
+snippet html
+html(lang='en')
+endsnippet
+
+snippet layout_define
+doctype html
+html(lang='en')
+    title ${1}
+    meta(name='robots', content='noindex, nofollow, noarchive')
+
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    body
+      #bodyWrapper
+        #main-content
+          block content
+
+      script(src='/javascripts/main.js')
+endsnippet
+
+snippet if
+if (${1})
+  ${0}
+endsnippet
+
+snippet in
+for ${1} in ${2}
+  ${0}
+endsnippet
+
+snippet /
+// *****************************************************
+// $1
+// *****************************************************$2
+endsnippet

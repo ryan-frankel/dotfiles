@@ -1,242 +1,190 @@
+# vim: set ft=sh:
+
 { # this ensures the entire script is downloaded #
 
-# ###################################################################
-# ###################################################################
-# MAIN
-# ###################################################################
-# ###################################################################
-tools="curl build-essential git bc dtrx ncdu htop trash-cli silversearcher-ag" 
-mactools="curl build-essential git bc dtrx ncdu htop trash-cli the_silver_searcher"
-# Add mutt for email
+  # Source the utility functions
+  if [ -d ~/dotfiles ]; then
+    source ~/dotfiles/utils/utils.sh
+    source ~/dotfiles/utils/install_bashrc.sh
+    source ~/dotfiles/utils/basic_tools.sh
+    source ~/dotfiles/utils/compile_vim.sh
+    source ~/dotfiles/utils/compile_cmake.sh
+    source ~/dotfiles/utils/compile_ycm.sh
+  fi
 
-function main() {
-	clear
-  define_colors
-  banner
+  # ###################################################################
+  # MAIN
+  # ###################################################################
+  function main() {
+    clear
+    define_colors
+    banner
 
-  ech "\nSetting Up..." 2
-  ech "----------------------------------------------------------------------------" 2
-  install_setup
+    ech "\nSetting Up..." 2
+    ech "----------------------------------------------------------------------------" 2
 
-	ech "\nInstalling Node..." 2
-  ech "----------------------------------------------------------------------------" 2
-	install_node
+    # We need certain functions to run in this file, then we grab the others
+    basic_setup
 
-	ech "\nInstalling CLI..." 2
-  ech "----------------------------------------------------------------------------" 2
-	install_cli
-
-	ech "\nInstalling bash..." 2
-  ech "----------------------------------------------------------------------------" 2
-	install_bash
-
-	ech "\nInstalling vim..." 2
-  ech "----------------------------------------------------------------------------" 2
-	install_vim
-
-  ech "\nExecuting bash..." 2
-	exec bash
-
-	ech "\nInstall completed.\n\n" 2
-}
-
-# DEFINE BANNER
-# ###################################################################
-function banner() {
-  echo -e "${DARKGRAY}"
-  echo -e ".8888b                            dP                dP             dP       "
-  echo -e "88   '                            88                88             88       "
-  echo -e "88aaa  88d888b. .d8888b. 88d888b. 88  .dP  .d8888b. 88    .d8888b. 88d888b. "
-  echo -e "88     88'  '88 88'  '88 88'  '88 88888'   88ooood8 88    Y8ooooo. 88'  '88 "
-  echo -e "88     88       88.  .88 88    88 88  '8b. 88.  ... 88          88 88    88 "
-  echo -e "dP     dP       '88888P8 dP    dP dP   'YP '88888P' dP 88 '88888P' dP    dP "
-  echo -e "----------------------------------------------------------------------------"
-  echo -e "${CURSOR}"
-}
-
-# DEFINE COLORS
-# ###################################################################
-function define_colors {
-  GREEN="\033[38;05;70m"
-  PURPLE="\033[38;05;93m"
-  LIGHTPURPLE="\033[38;05;105m"
-  LIGHTGRAY="\033[38;05;248m"
-  DARKGRAY="\033[38;05;236m"
-  CURSOR="\033[00m";
-  CURSOR="${LIGHTGRAY}"
-}
-
-# SETUP, GIT, ADD THE REPO
-# ###################################################################
-function install_setup() {
-  define_colors
-
-  if isosx; then
-    which -s brew
-    if [[ $? != 0 ]]; then
-      ech "- Installing Homebrew..."
-      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    # Source the utility functions
+    if [ -d ~/dotfiles ]; then
+      source ~/dotfiles/utils/utils.sh
+      source ~/dotfiles/utils/install_bashrc.sh
+      source ~/dotfiles/utils/basic_tools.sh
+      source ~/dotfiles/utils/compile_vim.sh
+      source ~/dotfiles/utils/compile_cmake.sh
+      source ~/dotfiles/utils/compile_ycm.sh
     fi
 
-    ech "- Install Tools..."
-    brew install --quieter $mactools &> /dev/null
-  fi
+    ech "\nInstalling bash..." 2
+    ech "----------------------------------------------------------------------------" 2
+    install_bashrc
 
-  # LINUX BASICS
-  # #############################################################
-  if islinux; then
-    ech "- APT update..."
-    sudo apt-get update &> /dev/null
+    ech "\nInstall completed.\n\n" 2
+    ech "Please run 'source ~/.bashrc'\n\n" 2
 
-    ech "- Install Tools.."
-    sudo apt-get install $tools -y
-  fi
+    update_vimrc
+  }
 
-  # GET REPO
-  # #############################################################
-	if [ ! -d ~/dotfiles ]; then
-		ech "- Cloning dotfiles..."
-		git clone --quiet https://github.com/ryan-frankel/dotfiles ~/dotfiles
-		cd ~/dotfiles
-	else
-		ech "- Pulling dotfiles..."
-		cd ~/dotfiles
-		git pull --quiet origin master 
-	fi
-}
+  # ###################################################################
+  # ###################################################################
+  # MUST EXIST IN HERE BECAUSE OF INITAL DOWNLOAD
+  # ###################################################################
+  # ###################################################################
 
-# FUNCTION FOR INSTALLING NODE + RELATED
-# ###################################################################
-install_node() {
-	ech "- NVM..."
-  if [ ! -d "$NVM_DIR" ]; then
-    curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &> /dev/null;
-    export NVM_DIR="/home/rfrankel/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    nvm install node &> /dev/null 
-    nvm use node &> /dev/null
-    nvm alias default node &> /dev/null
-    npm install -g --silent node-gyp &> /dev/null
-  fi
+  # SETUP, GIT, ADD THE REPO
+  # ###################################################################
+  function basic_setup() {
+    tools="curl build-essential git bc dtrx ncdu htop trash-cli tmux bash-completion" 
+    # silversearcher-ag
+    mactools="curl build-essential git bc dtrx ncdu htop trash-cli the_silver_searcher tmux vim"
 
-}
+    define_colors
 
-# FUNCTION FOR COMMAND LINE 
-# ###################################################################
-install_cli() {
-	ech "- Cloning z..."
-  if [ ! -d ~/code/z ]; then
-    git clone --quiet https://github.com/rupa/z.git ~/code/z &> /dev/null
-  fi
+    if isosx; then
+      which -s brew
+      if [[ $? != 0 ]]; then
+        ech "- Installing Homebrew..."
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      fi
 
-  # INSTALL GIT LFS
-  ech "- Git LFS..."
-  if islinux; then
-    hash git-lfs >/dev/null 2>&1 || {
-      curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash &> /dev/null
-      sudo apt-get install git-lfs -y &>/dev/null 
-    }
-  fi
+      ech "- Install Tools..."
+      brew install --quieter $mactools &> /dev/null
 
-  # GITCONFIG SYMLINK
-  rm -rf ~/.gitconfig
-  ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
+      ech "- Install iTerm2 Profile..."
+      # Specify the preferences directory
+      defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/dotfiles/iterm2"
+      # Tell iTerm2 to use the custom preferences in the directory
+      defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+    fi
 
-  # INSTALL MUTT
-	mkdir -p ~/.mutt
-  rm -rf ~/.mutt/muttrc
-  ln -s ~/dotfiles/mutt/muttrc ~/.mutt/muttrc
-}
+    # LINUX BASICS
+    # #############################################################
+    if islinux; then
+      ech "- APT update..."
+      sudo apt-get update
 
-# FUNCTION FOR INSTALLING BASH
-# ###################################################################
-function install_bash() {
-	#DELETE EXISTING .bashrc IF THERE IS ONE
-	ech "- Delete existing..."
-	rm -rf ~/.bashrc &> /dev/null
-	rm -rf ~/.bash_profile &> /dev/null
+      ech "- Install Tools.."
+      sudo apt-get install $tools -y
+    fi
 
-	#SYM LINK NEW .bashrc FILE
-	ech "- Create new symlinks..."
-	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bashrc
-	ln -s ~/dotfiles/bashrc/bashrc.sh ~/.bash_profile
+    # GET REPO
+    # #############################################################
+    if [ ! -d ~/dotfiles ]; then
+      ech "- Cloning dotfiles..."
+      git clone --quiet https://github.com/ryan-frankel/dotfiles ~/dotfiles
+      cd ~/dotfiles
+    else
+      ech "- Pulling dotfiles..."
+      cd ~/dotfiles
+      git pull --quiet origin master 
+    fi
+  }
 
-	#RELOAD .bashrc
-  ech "- Reload bashrc..."
-  source ~/.bashrc
-}
+  # DEFINE BANNER
+  # ###################################################################
+  function banner() {
+    echo -e "${DARKGRAY}"
+    echo -e ".8888b                            dP                dP             dP       "
+    echo -e "88   '                            88                88             88       "
+    echo -e "88aaa  88d888b. .d8888b. 88d888b. 88  .dP  .d8888b. 88    .d8888b. 88d888b. "
+    echo -e "88     88'  '88 88'  '88 88'  '88 88888'   88ooood8 88    Y8ooooo. 88'  '88 "
+    echo -e "88     88       88.  .88 88    88 88  '8b. 88.  ... 88          88 88    88 "
+    echo -e "dP     dP       '88888P8 dP    dP dP   'YP '88888P' dP 88 '88888P' dP    dP "
+    echo -e "----------------------------------------------------------------------------"
+    echo -e "${CURSOR}"
+  }
 
-# FUNCTION FOR INSTALLING VIM
-# ###################################################################
-install_vim() {
-	# Delete Existing
-	ech "- Delete existing..."
-	rm -rf ~/.vimrc
-	rm -rf ~/.vim/snippets
+  # DEFINE COLORS
+  # ###################################################################
+  function define_colors {
+    GREEN="\033[38;05;70m"
+    PURPLE="\033[38;05;93m"
+    LIGHTPURPLE="\033[38;05;105m"
+    LIGHTGRAY="\033[38;05;248m"
+    DARKGRAY="\033[38;05;236m"
+    CURSOR="\033[00m";
+    CURSOR="${LIGHTGRAY}"
+  }
 
-	# Symlink New
-	ech "- New symlinks..."
-	ln -s ~/dotfiles/vimrc/vimrc ~/.vimrc
-  if [ -d ~/dotfiles/vimrc/snippets ]; then
-  	ln -s ~/dotfiles/vimrc/snippets ~/.vim/snippets 
-  fi
+  # FUNCTION FOR ECHO WITH COLOR OPTION
+  # ###################################################################
+  function ech() {
+    if [ -z "$2" ]; then
+      echo -e " ${GREEN}$1${CURSOR}";
+    else
+      echo -e "${CURSOR}$1${CURSOR}";
+    fi
+  }
 
-	# Install Vundle if Needed
-	ech "- Install curl, vim, and vundle..."
-  if islinux; then
-  	sudo apt-get -qq install vim -y &> /dev/null
-  fi
-  if isosx; then
-    brew reinstall --quieter vim
-  fi
-	if [ ! -d ~/.vim/bundle/vundle/ ]; then
-	 git clone --quiet https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle &> /dev/null
-	fi
+  # FUNCTION TO TEST FOR OSX/LINUX/ETC
+  # ###################################################################
+  function isosx() {
+    if [[ $OSTYPE == *"darwin"* ]]; then
+      return 0; # true
+    else
+      return 1; # false
+    fi
+  }
 
-	# Create colors directory
-	ech "- Create colors directory..."
-	if [ ! -d ~/.vim/colors ]; then
-	 mkdir ~/.vim/colors
-	fi
+  function islinux() {
+    if [[ $OSTYPE == *"linux"* ]]; then
+      return 0; # true
+    else
+      return 1; # false
+    fi
+  }
 
-	# Download VIM theme
-	ech "- Downloading theme..."
-	if [ ! -f ~/.vim/colors/wombat256mod.vim ]; then
-	 curl --silent -L http://www.vim.org/scripts/download_script.php?src_id=13400 > ~/.vim/colors/wombat256mod.vim
-	fi
-
-	# Install bundles
-	ech "- Install bundles..."
-	vim - -i NONE -c VundleUpdate -c quitall >& /dev/null
-} #install_vim()
-
-# FUNCTION FOR ECHO WITH COLOR OPTION
-# ###################################################################
-function ech() {
-	if [ -z "$2" ]; then
-		echo -e " ${GREEN}$1${CURSOR}";
-	else
-		echo -e "${CURSOR}$1${CURSOR}";
-	fi
-}
-
-# FUNCTION TO TEST FOR OSX/LINUX/ETC
-# ###################################################################
-function isosx() {
-  if [[ $OSTYPE == *"darwin"* ]]; then
-    return 0; # true
+  # MAIN CLI Function
+  # ###################################################################
+  # At bottom so all functions are defined when this is run
+  if [ "$1" == "--help" ]; then
+    echo "vim - compile vim and install all bundles"
+    echo "updatevim - Updates vim bundles and vimrc"
+    echo "cmake - install new version of cmake"
+    echo "ycm - install youcompleteme"
+    echo "tools - install basic tools"
+    echo "all - INSTALL ALL THE ABOVE"
+  elif [ "$1" == "updatevim" ]; then
+    update_vimrc
+  elif [ "$1" == "vim" ]; then
+    compile_vim
+    update_vimrc
+  elif [ "$1" == "cmake" ]; then
+    compile_cmake
+  elif [ "$1" == "ycm" ]; then
+    compile_ycm
+  elif [ "$1" == "tools" ]; then
+    basic_tools
+  elif [ "$1" == "all" ]; then
+    basic_tools
+    compile_cmake
+    compile_vim
+    update_vimrc
+    compile_ycm
   else
-    return 1; # false
+    main
   fi
-}
 
-function islinux() {
-  if [[ $OSTYPE == *"linux"* ]]; then
-    return 0; # true
-  else
-    return 1; # false
-  fi
-}
 
-main
 } # this ensures the entire script is downloaded #

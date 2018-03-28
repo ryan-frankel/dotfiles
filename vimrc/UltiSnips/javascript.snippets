@@ -1,0 +1,50 @@
+priority -50
+
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+snippet /
+/* ******************************************************************
+ * ${1}
+ * *****************************************************************/
+endsnippet
+
+snippet fun "function (fun)" w
+function $1($2) {
+	$0
+} // $1
+endsnippet
+
+snippet if "if (condition) { ... }"
+if ($1) {
+  ${0}
+} // if
+endsnippet
+
+snippet ife "if (condition) { ... } else { ... }"
+if ($1) {
+  ${0}
+} else {
+  $2 
+} // if; else
+endsnippet
+
+snippet ter
+${1:/* condition */} ? ${2:/* if true */} : ${0:/* if false */}
+endsnippet
+
+snippet for
+for (var ${1:i} = 0, ${2:len} = ${3:Things.length}; $1 < $2; $1++) {
+  ${0}
+} // for
+endsnippet
+
+snippet fori
+for (var ${1:prop} in ${2:object}) {
+  ${0}
+} // for
+endsnippet
+
+snippet con
+console.log($1);
+endsnippet 

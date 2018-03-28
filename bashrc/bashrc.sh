@@ -62,8 +62,8 @@ fi
 
 # Node Version Manager
 # ###################################################################
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # GIT PROMPT
 # ###################################################################
@@ -76,3 +76,15 @@ source ~/code/z/z.sh
 # FUNCTIONS
 # ###################################################################
 source ~/dotfiles/bashrc/functions.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/rfrankel/google-cloud-sdk/path.bash.inc ]; then
+  source '/Users/rfrankel/google-cloud-sdk/path.bash.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/rfrankel/google-cloud-sdk/completion.bash.inc ]; then
+  source '/Users/rfrankel/google-cloud-sdk/completion.bash.inc'
+fi
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
