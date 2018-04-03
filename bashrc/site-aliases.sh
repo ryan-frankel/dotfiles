@@ -1,6 +1,6 @@
 # SITES
 # #########################################
-alias bc='mosh rfrankel@166.78.243.119'
+alias bc='mosh rfrankel@50.28.104.211'
 alias ha='mosh rfrankel@69.16.249.15'
 alias hassh='ssh rfrankel@69.16.249.15'
 alias cr='mosh rfrankel@64.91.229.108'
@@ -8,13 +8,14 @@ alias pr='mosh rfrankel@166.78.123.101'
 alias da='mosh rfrankel@209.59.129.135'
 alias dc='mosh rfrankel@104.239.165.198'
 alias disavow='mosh rfrankel@165.227.78.247'
-alias qazone='mosh rfrankel@qa.zone'
+alias qazone='mosh rfrankel@64.91.233.2'
 alias qaland='mosh rfrankel@qa.land'
 alias qatown='mosh rfrankel@qa.town'
 alias noodle='mosh rfrankel@noodleball.in'
 alias rainmk='mosh rfrankel@192.241.143.25'
 alias juice='mosh rfrankel@167.99.89.191'
 alias dn='mosh rfrankel@64.91.233.2'
+alias dnssh='ssh rfrankel@64.91.233.2'
 
 alias rf='mosh rfrankel@159.65.183.90'
 alias rfssh='ssh rfrankel@159.65.183.90'
