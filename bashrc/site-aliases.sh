@@ -16,6 +16,7 @@ alias rainmk='mosh rfrankel@192.241.143.25'
 alias juice='mosh rfrankel@167.99.89.191'
 alias dn='mosh rfrankel@64.91.233.2'
 alias dnssh='ssh rfrankel@64.91.233.2'
+alias db='mosh rfrankel@166.78.123.224'
 
 alias rf='mosh rfrankel@159.65.183.90'
 alias rfssh='ssh rfrankel@159.65.183.90'
