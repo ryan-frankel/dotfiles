@@ -143,6 +143,8 @@ alias drit="docker run -it"
 alias dps="docker ps"
 alias dim="docker images"
 
+alias stopandremove="dstop && drm"
+
 # MONSOON
 # #########################################
 alias monsoon="docker-compose run monsoon php monsoon.php"
@@ -151,3 +153,6 @@ alias monsoonOld='php ~/monsoon-php/monsoon.php'
 # GAMES 
 # #########################################
 alias 2048="~/dotfiles/games/bash2048/bash2048.sh"
+
+dstop() { docker stop $(docker ps -aq); }
+drm() { docker rm $(docker ps -a -q); }
