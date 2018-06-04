@@ -21,7 +21,7 @@ alias qazone='mosh rfrankel@64.91.233.2'
 alias qaland='mosh rfrankel@qa.land'
 alias qatown='mosh rfrankel@qa.town'
 alias noodle='mosh rfrankel@noodleball.in'
-alias rainmk='mosh rfrankel@192.241.143.25'
+alias rainmk='mosh rfrankel@64.91.241.174'
 alias juice='mosh rfrankel@167.99.89.191'
 
 alias rf='mosh rfrankel@159.65.183.90'
