@@ -70,43 +70,14 @@ alias gplb='git pull origin $(current-branch)'
 # SERVICES, LOGIN, ETC ALIASES
 # #########################################
 alias netstat='netstat -plutn'
-alias ra='sudo service apache2 reload' 
-alias rv='sudo service varnish reload' 
-alias cron='ssh 50.56.174.184'
-alias coupons='ssh 166.78.136.18'
-alias da='mosh datingadvice.com'
-alias pr='mosh printaholic.com'
-alias bc='mosh 166.78.243.119'
-alias ha='mosh hostingadvice.com'
-alias cr='mosh cardrates.com'
-alias db='mosh digitalbrands.com'
-alias wd='ssh weirddads@weirddads.com'
-alias dc='mosh dealcrunch.com'
-alias dc-old='mosh 162.242.144.214'
-alias docs='mosh docentuser@db-docs.com'
-alias ro='mosh http://169.55.197.105/'
-alias sd-dev='mosh doppleruser@159.203.73.119'
-alias pullrm='git subtree pull --prefix=plugins/rain-maker git@github.com:digital-brands/rain-maker.git master'
-alias pushrm='git subtree push --prefix=plugins/rain-maker git@github.com:digital-brands/rain-maker.git master'
-#alias update='sudo apt-get update && sudo apt-get upgrade -y && cd ~/bashrc && gplm && cd - && cd ~/vimrc/ && gplm && vim -c PluginCLean -c q -c q && vim -c PluginInstall -c q -c q && cd -'
 alias update='sudo apt-get update && sudo apt-get upgrade -y'
-alias less-upgrade='sudo npm install -g less@1.7.4'
-alias less-downgrade='sudo npm install -g less@1.3.3'
 alias doit='sudo $(history -p \!\!)'
-alias ex='exit';
-alias setperm='sudo chgrp -R www-data public_html/ && sudo chmod -R g+w public_html/ && sudo find public_html/ -type d -exec sudo chmod g+s {} \; && sudo chown -R www-data public_html/ && sudo find public_html/ -path "*/functions/scripts/*" -exec chown db-dev {} \; && sudo find public_html/ -path "*/functions/scripts/*" -exec chgrp db-dev {} \;';
-alias setdbdev='sudo find public_html/ -path "*/functions/scripts/*" -exec chown db-dev {} \; && sudo find public_html/ -path "*/functions/scripts/*" -exec chgrp db-dev {} \;'
-alias purge='curl -X PURGE $1';
-alias ni='git commit -m "New Images"';
 alias snippets='vim ~/.vim/bundle/vim-snippets/UltiSnips/';
 alias vimrc='vim ~/vimrc/.vimrc';
-alias tmux-reload='tmux source-file ~/.tmux.conf';
 alias weather='curl http://wttr.in/32601';
-alias www-data='sudo chown www-data * && sudo chgrp www-data *';
-alias logs="cd $WP_DIR && cd ../../logs/ && ll"
 alias ctags-gen="ctags -R -f .git/tags ."
 alias w3tc="wp plugin toggle w3-total-cache"
-
+alias getip="curl icanhazip.com"
 
 if [ -n "$THEME_DIR" ];
     then alias warm="cd ${THEME_DIR}functions/warmer/&& ./build-sitemaps-and-warm-cache.sh && cd -";
