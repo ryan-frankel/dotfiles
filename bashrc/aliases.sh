@@ -145,6 +145,8 @@ alias dim="docker images"
 
 alias stopandremove="dstop && drm"
 
+alias dl='docker-compose logs -f'
+
 # MONSOON
 # #########################################
 alias monsoon="docker-compose run monsoon php monsoon.php"
