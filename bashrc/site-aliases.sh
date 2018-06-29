@@ -17,11 +17,11 @@ alias db='mosh rfrankel@166.78.123.224'
 alias dbssh='ssh rfrankel@64.91.232.2'
 
 alias disavow='mosh rfrankel@165.227.78.247'
-alias qazone='mosh rfrankel@64.91.233.2'
+alias qazone='mosh rfrankel@'
 alias qaland='mosh rfrankel@qa.land'
 alias qatown='mosh rfrankel@qa.town'
 alias noodle='mosh rfrankel@noodleball.in'
-alias rainmk='mosh rfrankel@192.241.143.25'
+alias rainmk='mosh rfrankel@64.91.241.174'
 alias juice='mosh rfrankel@167.99.89.191'
 
 alias rf='mosh rfrankel@159.65.183.90'
