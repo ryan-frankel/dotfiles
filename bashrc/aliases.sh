@@ -106,7 +106,7 @@ alias www-data='sudo chown www-data * && sudo chgrp www-data *';
 alias logs="cd $WP_DIR && cd ../../logs/ && ll"
 alias ctags-gen="ctags -R -f .git/tags ."
 alias w3tc="wp plugin toggle w3-total-cache"
-
+alias ipget="curl icanhazip.com"
 
 if [ -n "$THEME_DIR" ];
     then alias warm="cd ${THEME_DIR}functions/warmer/&& ./build-sitemaps-and-warm-cache.sh && cd -";
