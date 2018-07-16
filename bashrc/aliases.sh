@@ -77,11 +77,8 @@ alias vimrc='vim ~/vimrc/.vimrc';
 alias weather='curl http://wttr.in/32601';
 alias ctags-gen="ctags -R -f .git/tags ."
 alias w3tc="wp plugin toggle w3-total-cache"
-<<<<<<< HEAD
 alias ipget="curl icanhazip.com"
-=======
 alias getip="curl icanhazip.com"
->>>>>>> aff8fc98ea3276fdb2ac7e2ba75461a332437b78
 
 if [ -n "$THEME_DIR" ];
     then alias warm="cd ${THEME_DIR}functions/warmer/&& ./build-sitemaps-and-warm-cache.sh && cd -";
