@@ -66,6 +66,14 @@ alias gplm='git pull origin master'
 alias gpb='git push origin $(current-branch)'
 # Pull Current Branch
 alias gplb='git pull origin $(current-branch)'
+# Get to the top of a git tree
+cdg () {
+  TEMP_PWD=`pwd`
+  while ! [ -d .git ]; do
+  cd ..
+  done
+  OLDPWD=$TEMP_PWD
+}
 
 # SERVICES, LOGIN, ETC ALIASES
 # #########################################
