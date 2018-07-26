@@ -74,6 +74,15 @@ cdg () {
   done
   OLDPWD=$TEMP_PWD
 }
+cdt () {
+  TEMP_PWD=`pwd`
+  while ! [ -d .git ]; do
+  cd ..
+  done
+  cd ./tasks
+  OLDPWD=$TEMP_PWD
+}
+
 
 # SERVICES, LOGIN, ETC ALIASES
 # #########################################
