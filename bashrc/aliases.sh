@@ -66,6 +66,23 @@ alias gplm='git pull origin master'
 alias gpb='git push origin $(current-branch)'
 # Pull Current Branch
 alias gplb='git pull origin $(current-branch)'
+# Get to the top of a git tree
+cdg () {
+  TEMP_PWD=`pwd`
+  while ! [ -d .git ]; do
+  cd ..
+  done
+  OLDPWD=$TEMP_PWD
+}
+cdt () {
+  TEMP_PWD=`pwd`
+  while ! [ -d .git ]; do
+  cd ..
+  done
+  cd ./tasks
+  OLDPWD=$TEMP_PWD
+}
+
 
 # SERVICES, LOGIN, ETC ALIASES
 # #########################################
@@ -77,6 +94,7 @@ alias vimrc='vim ~/vimrc/.vimrc';
 alias weather='curl http://wttr.in/32601';
 alias ctags-gen="ctags -R -f .git/tags ."
 alias w3tc="wp plugin toggle w3-total-cache"
+alias ipget="curl icanhazip.com"
 alias getip="curl icanhazip.com"
 
 if [ -n "$THEME_DIR" ];
@@ -115,6 +133,8 @@ alias dps="docker ps"
 alias dim="docker images"
 
 alias stopandremove="dstop && drm"
+
+alias dl='docker-compose logs -f'
 
 # MONSOON
 # #########################################
