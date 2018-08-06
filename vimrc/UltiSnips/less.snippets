@@ -60,12 +60,34 @@ snippet m
 margin: $1;
 endsnippet
 
+snippet mt
+margin-top: $1${2:px};
+endsnippet
+
+snippet mb
+margin-bottom: $1${2:px};
+endsnippet
+
+snippet ml 
+margin-left: $1${2:px};
+endsnippet
+
+snippet mr
+margin-right: $1${2:px};
+endsnippet
+
 snippet p
 padding: $1;
 endsnippet
 
 snippet bo
 border$1: $2px solid @$3;
+endsnippet
+
+snippet &.
+&.$1 {
+	$0
+} // &.$1 
 endsnippet
 
 snippet ho
@@ -120,7 +142,7 @@ h2 {
 endsnippet
 
 snippet h3
-h1 {
+h3 {
 	$1
 } // h3
 endsnippet
@@ -141,4 +163,56 @@ snippet h6
 h6 {
 	$1
 } // h6
+endsnippet
+
+snippet bu
+button {
+	$1
+} // button
+endsnippet
+
+snippet fo
+form {
+
+} // form
+endsnippet
+
+snippet a
+a {
+	$1
+} // a
+endsnippet
+
+snippet footer 
+footer {
+	$1
+} // footer
+endsnippet
+
+snippet import
+@import "$1";
+endsnippet
+
+snippet ul
+ul {
+	$1
+} // ul
+endsnippet
+
+snippet li
+li {
+	$1
+} // li
+endsnippet
+
+snippet body
+body {
+	$1
+} // body
+endsnippet
+
+snippet textarea
+textarea {
+	$1
+} // textarea
 endsnippet
