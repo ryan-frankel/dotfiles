@@ -25,7 +25,7 @@ alias tmux="tmux -2"
 alias ll='ls -alFh --group-directories-first'
 alias la='ls -lah --group-directories-first'
 alias l='ls -lFh --group-directories-first'
-=======
+
 case "$OSTYPE" in
   darwin*) 
     alias ll='ls -alFh'
@@ -70,6 +70,7 @@ alias gplm='git pull origin master'
 alias gpb='git push origin $(current-branch)'
 # Pull Current Branch
 alias gplb='git pull origin $(current-branch)'
+
 # Get to the top of a git tree
 cdg () {
   TEMP_PWD=`pwd`
@@ -78,7 +79,8 @@ cdg () {
   done
   OLDPWD=$TEMP_PWD
 }
-cdt () {
+
+cdtasks () {
   TEMP_PWD=`pwd`
   while ! [ -d .git ]; do
   cd ..
