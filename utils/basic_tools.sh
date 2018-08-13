@@ -31,8 +31,6 @@ install_node() {
   if [ ! -d "$N_PREFIX"  ]; then
     curl -L https://git.io/n-install | bash
   fi
-
-  npm install -g jshint;
 }
 
 # FUNCTION FOR COMMAND LINE 
