@@ -158,6 +158,7 @@ Bundle 'gmarik/vundle'
   "  Functional
   " ******************************************************************
   Bundle 'jiangmiao/auto-pairs'
+  Bundle 'tpope/vim-surround'
   Bundle 'scrooloose/nerdtree.git'
     " NERDTree
     let NERDTreeMinimalUI = 1
