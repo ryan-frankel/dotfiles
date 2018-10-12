@@ -52,6 +52,10 @@ const server = app.listen(${1:port}, function(err) {
 }); // server
 endsnippet
 
+snippet err
+if (err) { console.error(err); }
+endsnippet
+
 snippet errc
 if (err) { return ${1:callback}(err); }
 endsnippet
