@@ -100,8 +100,14 @@ alias vimrc='vim ~/vimrc/.vimrc';
 alias weather='curl http://wttr.in/32601';
 alias ctags-gen="ctags -R -f .git/tags ."
 alias w3tc="wp plugin toggle w3-total-cache"
-alias ipget="curl icanhazip.com"
-alias getip="curl icanhazip.com"
+alias ipget="curl -s icanhazip.com"
+alias getip="curl -s icanhazip.com"
+
+# Gets the scp path for a file
+getscp () {
+  { echo $(getip); echo ":"; echo $(readlink -f $1); } | tr -d "\n"
+}
+
 
 if [ -n "$THEME_DIR" ];
     then alias warm="cd ${THEME_DIR}functions/warmer/&& ./build-sitemaps-and-warm-cache.sh && cd -";
