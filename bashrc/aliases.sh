@@ -45,6 +45,11 @@ alias grep='grep --color=auto'
 alias hg='history | grep'
 alias gh='history | grep'
 
+# #####################################################
+# Googler
+# #####################################################
+alias g='googler'
+
 # GIT ALIASES
 # #########################################
 alias current-branch='git rev-parse --abbrev-ref HEAD'
