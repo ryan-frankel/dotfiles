@@ -261,9 +261,9 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>720 555 796 473 0 0 2560 1417 </string>
+	<string>217 818 958 451 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1280 30 1277 1387 0 0 2560 1417 </string>
+	<string>307 31 1130 846 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>336 45 1102 825 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_FB332444-8143-47D0-8BF6-9A8DB384594D</key>
@@ -1899,7 +1899,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowNewOutputIndicator</key>
 	<true/>
 	<key>ShowPaneTitles</key>
