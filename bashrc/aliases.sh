@@ -151,7 +151,7 @@ alias dim="docker images"
 
 alias stopandremove="dstop && drm"
 
-alias dl='docker-compose logs -f'
+alias dcl='docker-compose logs -f'
 
 # MONSOON
 # #########################################
