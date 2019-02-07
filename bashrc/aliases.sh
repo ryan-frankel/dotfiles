@@ -99,7 +99,7 @@ cdtasks () {
 # SERVICES, LOGIN, ETC ALIASES
 # #########################################
 alias netstat='netstat -plutn'
-alias update='sudo apt-get update && sudo apt-get upgrade -y && cd ~/dotfiles && git pull origin master && ./index.html'
+alias update='sudo apt update && sudo apt upgrade -y && cd ~/dotfiles && git pull origin master && ./index.html'
 alias doit='sudo $(history -p \!\!)'
 alias snippets='vim ~/.vim/bundle/vim-snippets/UltiSnips/';
 alias vimrc='vim ~/vimrc/.vimrc';
