@@ -67,6 +67,7 @@ alias gamp='function _gamp() { gam "$1"; gpb; };_gamp'
 alias gc='git checkout'
 alias gcb='git checkout -b'
 alias grm='git rm $(git ls-files --deleted)  '
+alias gd='git diff'
 # Push Master
 alias gpm='git push origin master'
 # Pull Master
