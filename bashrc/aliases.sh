@@ -67,6 +67,7 @@ alias gamp='function _gamp() { gam "$1"; gpb; };_gamp'
 alias gc='git checkout'
 alias gcb='git checkout -b'
 alias grm='git rm $(git ls-files --deleted)  '
+alias gd='git diff'
 # Push Master
 alias gpm='git push origin master'
 # Pull Master
@@ -98,7 +99,7 @@ cdtasks () {
 # SERVICES, LOGIN, ETC ALIASES
 # #########################################
 alias netstat='netstat -plutn'
-alias update='sudo apt-get update && sudo apt-get upgrade -y && cd ~/dotfiles && git pull origin master && ./index.html'
+alias update='sudo apt update && sudo apt upgrade -y && cd ~/dotfiles && git pull origin master && ./index.html'
 alias doit='sudo $(history -p \!\!)'
 alias snippets='vim ~/.vim/bundle/vim-snippets/UltiSnips/';
 alias vimrc='vim ~/vimrc/.vimrc';
@@ -151,7 +152,7 @@ alias dim="docker images"
 
 alias stopandremove="dstop && drm"
 
-alias dl='docker-compose logs -f'
+alias dcl='docker-compose logs -f'
 
 # MONSOON
 # #########################################
