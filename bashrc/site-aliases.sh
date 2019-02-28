@@ -27,9 +27,9 @@ alias juice='mosh rfrankel@167.99.89.191'
 alias prospector='mosh rfrankel@165.227.188.74'
 alias fourOhFour='mosh rfrankel@159.65.45.67'
 
-alias rf='mosh rfrankel@159.65.183.90'
+alias rf='mosh rfrankel@45.55.97.87'
 alias rfssh='ssh rfrankel@159.65.183.90'
-alias td='mosh rfrankel@159.203.99.208'
+alias td='mosh rfrankel@159.203.151.178'
 alias dbd='mosh rfrankel@23.253.238.205'
 alias rfd='mosh rfrankel@165.227.106.79'
 
