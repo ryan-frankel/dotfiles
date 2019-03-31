@@ -45,6 +45,11 @@ alias grep='grep --color=auto'
 alias hg='history | grep'
 alias gh='history | grep'
 
+# #####################################################
+# Googler
+# #####################################################
+alias g='googler'
+
 # GIT ALIASES
 # #########################################
 alias current-branch='git rev-parse --abbrev-ref HEAD'
@@ -62,6 +67,7 @@ alias gamp='function _gamp() { gam "$1"; gpb; };_gamp'
 alias gc='git checkout'
 alias gcb='git checkout -b'
 alias grm='git rm $(git ls-files --deleted)  '
+alias gd='git diff'
 # Push Master
 alias gpm='git push origin master'
 # Pull Master
@@ -93,15 +99,21 @@ cdtasks () {
 # SERVICES, LOGIN, ETC ALIASES
 # #########################################
 alias netstat='netstat -plutn'
-alias update='sudo apt-get update && sudo apt-get upgrade -y && cd ~/dotfiles && git pull origin master && ./index.html'
+alias update='sudo apt update && sudo apt upgrade -y && cd ~/dotfiles && git pull origin master && ./index.html'
 alias doit='sudo $(history -p \!\!)'
 alias snippets='vim ~/.vim/bundle/vim-snippets/UltiSnips/';
 alias vimrc='vim ~/vimrc/.vimrc';
 alias weather='curl http://wttr.in/32601';
 alias ctags-gen="ctags -R -f .git/tags ."
 alias w3tc="wp plugin toggle w3-total-cache"
-alias ipget="curl icanhazip.com"
-alias getip="curl icanhazip.com"
+alias ipget="curl -s icanhazip.com"
+alias getip="curl -s icanhazip.com"
+
+# Gets the scp path for a file
+getscp () {
+  { echo $(getip); echo ":"; echo $(readlink -f $1); } | tr -d "\n"
+}
+
 
 if [ -n "$THEME_DIR" ];
     then alias warm="cd ${THEME_DIR}functions/warmer/&& ./build-sitemaps-and-warm-cache.sh && cd -";
@@ -140,7 +152,7 @@ alias dim="docker images"
 
 alias stopandremove="dstop && drm"
 
-alias dl='docker-compose logs -f'
+alias dcl='docker-compose logs -f'
 
 # MONSOON
 # #########################################
