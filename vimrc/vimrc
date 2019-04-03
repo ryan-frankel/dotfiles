@@ -82,9 +82,9 @@ imap <LocalLeader>; <Esc>A;
 nmap <LocalLeader>; <Esc>A;
 nmap <Leader>; <Esc>A;
 " Add { at end-of-line
-imap <LocalLeader>[ <Esc>A {<CR>
-nmap <LocalLeader>[ <Esc>A {<CR>
-nmap <Leader>[ <Esc>A {<CR>
+"imap <LocalLeader>[ <Esc>A {<CR>
+"nmap <LocalLeader>[ <Esc>A {<CR>
+"nmap <Leader>[ <Esc>A {<CR>
 " Tab 
 imap <LocalLeader>t <Esc>gti
 nmap <LocalLeader>t gt
@@ -105,6 +105,9 @@ vmap <Leader>p :set paste!<CR>
 map <LocalLeader><Tab> :NERDTreeToggle<CR>
 nmap <Leader><Tab> :NERDTreeToggle<CR>
 vmap <Leader><Tab> :NERDTreeToggle<CR>
+
+" Ctags
+"nnoremap <silent><LocalLeader>] <C-w><C-]><C-w>T
 
 " ******************************************************************
 "  Splits
@@ -155,6 +158,7 @@ Bundle 'gmarik/vundle'
   "  Functional
   " ******************************************************************
   Bundle 'jiangmiao/auto-pairs'
+  Bundle 'tpope/vim-surround'
   Bundle 'scrooloose/nerdtree.git'
     " NERDTree
     let NERDTreeMinimalUI = 1
@@ -170,7 +174,7 @@ Bundle 'gmarik/vundle'
     exec "hi NERDTreeClosable ctermfg=" . s:NTDirColor
     let g:NERDTreeDirArrowExpandable="▹"
     let g:NERDTreeDirArrowCollapsible="▿"
-
+  Bundle 'EvanDotPro/nerdtree-chmod'
   Bundle 'scrooloose/nerdcommenter.git'
     nnoremap <Leader>c            : call NERDComment(0,"toggle")<CR>
     nnoremap <LocalLeader>c       : call NERDComment(0,"toggle")<CR>
@@ -231,11 +235,18 @@ Bundle 'gmarik/vundle'
   Bundle 'sheerun/vim-polyglot'
     set conceallevel=0
   Bundle 'scrooloose/syntastic.git'
-  Bundle 'robmiller/vim-movar'
-    " Select and log snippet
-    imap <LocalLeader>l <Esc>vavyocon<LocalLeader><Space><Esc>p$i
-    nmap <Leader>l vavyocon<LocalLeader><Space><Esc>p$
-    nmap <LocalLeader>l vavyocon<LocalLeader><Space><Esc>p$
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+  "Bundle 'robmiller/vim-movar'
+    "" Select and log snippet
+    "imap <LocalLeader>l <Esc>vavyocon<LocalLeader><Space><Esc>p$i
+    "nmap <Leader>l vavyocon<LocalLeader><Space><Esc>p$
+    "nmap <LocalLeader>l vavyocon<LocalLeader><Space><Esc>p$
 
   " ******************************************************************
   "  Lightline
@@ -323,9 +334,18 @@ Bundle 'gmarik/vundle'
     let g:UltiSnipsJumpForwardTrigger  = "<tab>"
     let g:UltiSnipsJumpBackwardTrigger = "<c-tab>"
 
+  " ******************************************************************
+  "  Searching
+  " ******************************************************************
+  Bundle 'gabesoft/vim-ags'
+    autocmd FileType agsv nnoremap <buffer> t
+      \ :exec 'tab split ' . ags#filePath(line('.'))<CR>
+    nnoremap <LocalLeader>s :Ags<Space>
+
 " ******************************************************************
 "  Open NerdTree on Enter
 " ******************************************************************
+filetype off
 filetype plugin indent on     " required! 
 function! StartUp()
  if 0 == argc()
