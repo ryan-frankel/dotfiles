@@ -8,6 +8,7 @@ function compile_ycm() {
 
   # Install node
   install_node
+
   # Compile YCM
   cd ~/.vim/bundle/YouCompleteMe
   ./install.py --tern-completer 
