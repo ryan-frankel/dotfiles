@@ -16,6 +16,7 @@ alias dnssh='ssh rfrankel@64.91.233.2'
 alias db='mosh rfrankel@178.128.147.0'
 alias dbssh='ssh rfrankel@178.128.147.0'
 alias crpreview='mosh rfrankel@cardratespreview.com'
+alias wfh='mosh rfrankel@142.93.195.132'
 
 alias disavow='mosh rfrankel@165.227.78.247'
 alias qazone='mosh rfrankel@'
