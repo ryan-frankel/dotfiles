@@ -22,6 +22,10 @@ alias tmux="tmux -2"
 
 # LS ALIASES
 # #########################################
+alias ll='ls -alFh --group-directories-first'
+alias la='ls -lah --group-directories-first'
+alias l='ls -lFh --group-directories-first'
+
 case "$OSTYPE" in
   darwin*) 
     alias ll='ls -alFh'
@@ -41,6 +45,11 @@ alias grep='grep --color=auto'
 alias hg='history | grep'
 alias gh='history | grep'
 
+# #####################################################
+# Googler
+# #####################################################
+alias g='googler'
+
 # GIT ALIASES
 # #########################################
 alias current-branch='git rev-parse --abbrev-ref HEAD'
@@ -58,6 +67,7 @@ alias gamp='function _gamp() { gam "$1"; gpb; };_gamp'
 alias gc='git checkout'
 alias gcb='git checkout -b'
 alias grm='git rm $(git ls-files --deleted)  '
+alias gd='git diff'
 # Push Master
 alias gpm='git push origin master'
 # Pull Master
@@ -67,18 +77,48 @@ alias gpb='git push origin $(current-branch)'
 # Pull Current Branch
 alias gplb='git pull origin $(current-branch)'
 
+# Get to the top of a git tree
+cdg () {
+  TEMP_PWD=`pwd`
+  while ! [ -d .git ]; do
+  cd ..
+  done
+  OLDPWD=$TEMP_PWD
+}
+
+cdtasks () {
+  TEMP_PWD=`pwd`
+  while ! [ -d .git ]; do
+  cd ..
+  done
+  cd ./tasks
+  OLDPWD=$TEMP_PWD
+}
+
+
 # SERVICES, LOGIN, ETC ALIASES
 # #########################################
 alias netstat='netstat -plutn'
-alias update='sudo apt-get update && sudo apt-get upgrade -y'
+alias update='sudo apt update && sudo apt upgrade -y && cd ~/dotfiles && git pull origin master && ./index.html'
 alias doit='sudo $(history -p \!\!)'
 alias snippets='vim ~/.vim/bundle/vim-snippets/UltiSnips/';
 alias vimrc='vim ~/vimrc/.vimrc';
 alias weather='curl http://wttr.in/32601';
 alias ctags-gen="ctags -R -f .git/tags ."
 alias w3tc="wp plugin toggle w3-total-cache"
+<<<<<<< HEAD
 alias getip="curl icanhazip.com"
 alias ct="sudo crontab -e -udb-admin"
+=======
+alias ipget="curl -s icanhazip.com"
+alias getip="curl -s icanhazip.com"
+
+# Gets the scp path for a file
+getscp () {
+  { echo $(getip); echo ":"; echo $(readlink -f $1); } | tr -d "\n"
+}
+
+>>>>>>> a4b7e0137ac2c115ba3ea3720dc6173fd9800b10
 
 if [ -n "$THEME_DIR" ];
     then alias warm="cd ${THEME_DIR}functions/warmer/&& ./build-sitemaps-and-warm-cache.sh && cd -";
@@ -116,6 +156,8 @@ alias dps="docker ps"
 alias dim="docker images"
 
 alias stopandremove="dstop && drm"
+
+alias dcl='docker-compose logs -f'
 
 # MONSOON
 # #########################################
