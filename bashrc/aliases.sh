@@ -106,12 +106,9 @@ alias vimrc='vim ~/vimrc/.vimrc';
 alias weather='curl http://wttr.in/32601';
 alias ctags-gen="ctags -R -f .git/tags ."
 alias w3tc="wp plugin toggle w3-total-cache"
-<<<<<<< HEAD
-alias getip="curl icanhazip.com"
-alias ct="sudo crontab -e -udb-admin"
-=======
 alias ipget="curl -s icanhazip.com"
 alias getip="curl -s icanhazip.com"
+alias ct="sudo crontab -e -udb-admin"
 
 # Gets the scp path for a file
 getscp () {
