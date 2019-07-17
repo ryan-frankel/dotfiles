@@ -104,7 +104,7 @@ alias doit='sudo $(history -p \!\!)'
 alias snippets='vim ~/.vim/bundle/vim-snippets/UltiSnips/';
 alias vimrc='vim ~/vimrc/.vimrc';
 alias weather='curl http://wttr.in/32601';
-alias ctags-gen="ctags -R -f .git/tags ."
+alias ctagsGen="ctags -R -f .git/tags ."
 alias w3tc="wp plugin toggle w3-total-cache"
 alias ipget="curl -s icanhazip.com"
 alias getip="curl -s icanhazip.com"
@@ -114,8 +114,6 @@ alias ct="sudo crontab -e -udb-admin"
 getscp () {
   { echo $(getip); echo ":"; echo $(readlink -f $1); } | tr -d "\n"
 }
-
->>>>>>> a4b7e0137ac2c115ba3ea3720dc6173fd9800b10
 
 if [ -n "$THEME_DIR" ];
     then alias warm="cd ${THEME_DIR}functions/warmer/&& ./build-sitemaps-and-warm-cache.sh && cd -";
