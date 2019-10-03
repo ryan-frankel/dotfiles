@@ -19,7 +19,7 @@ alias crpreview='mosh rfrankel@cardratespreview.com'
 alias wfh='mosh rfrankel@142.93.195.132'
 alias hr='mosh rfrankel@50.28.106.148'
 
-alias disavow='mosh rfrankel@165.227.78.247'
+alias disavow='mosh rfrankel@167.99.113.200'
 alias qazone='mosh rfrankel@qa.zone'
 alias qaland='mosh rfrankel@qa.land'
 alias qatown='mosh rfrankel@qa.town'
