@@ -18,6 +18,12 @@ snippet # "ID"
 } // $1
 endsnippet
 
+snippet button
+button {
+	$0
+} // button
+endsnippet
+
 snippet im "import"
 @import "$0";
 endsnippet
@@ -122,6 +128,12 @@ snippet ho
 } // &:hover
 endsnippet
 
+snippet vi
+&:visited {
+
+} // &:visited
+endsnippet
+
 snippet center
 position : absolute;
 margin   : auto;
@@ -203,10 +215,34 @@ form {
 } // form
 endsnippet
 
+snippet form
+form {
+	$1
+} // form
+endsnippet
+
+snippet fieldset
+fieldset {
+	$0
+} // fieldset
+endsnippet
+
 snippet a
 a {
 	$1
 } // a
+endsnippet
+
+snippet nav
+nav {
+	$1
+} // nav
+endsnippet
+
+snippet table
+table {
+	$1
+} // table
 endsnippet
 
 snippet footer 
