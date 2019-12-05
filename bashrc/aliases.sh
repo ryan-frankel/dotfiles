@@ -7,6 +7,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias c='clear'
 alias h='history'
+alias updatesAvailable='sudo /etc/update-motd.d/90-updates-available'
 
 # Z
 # #########################################
