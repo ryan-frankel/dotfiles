@@ -28,14 +28,14 @@ snippet <a
 <a href='$1'>$0</a>
 endsnippet
 
-snippet cf
-<?php cf_the_img(['width' => $1, 'height' => $2, 'alt' => '$3']) ?>
+snippet cf "cf_the_img"
+<?php cf_the_img(['width' => $1, 'height' => $2, 'alt' => '$3']); ?>
 endsnippet
 
-snippet cfi
-<?php cf_the_img(['image' => '$1', 'width' => $2, 'height' => $3, 'alt' => $4]) ?>
+snippet cfi "cf_the_img with image attr"
+<?php cf_the_img(['image' => '$1', 'width' => $2, 'height' => $3, 'alt' => '$4']); ?>
 endsnippet
 
-snippet cfa
-<?php cf_the_img(['attach' => get_field('$1', '$2'), 'width' => $3, 'height' => $4, 'alt' => $5]) ?>
+snippet cfa "cf_the_img with get_field"
+<?php cf_the_img(['attach' => get_field('$1', '$2'), 'width' => $3, 'height' => $4, 'alt' => '$5']); ?>
 endsnippet
