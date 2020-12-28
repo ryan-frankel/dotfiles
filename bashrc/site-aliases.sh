@@ -28,7 +28,7 @@ alias noodle='mosh rfrankel@noodleball.in'
 alias rainmk='mosh rfrankel@64.91.241.174'
 alias juice='mosh rfrankel@167.99.89.191'
 alias prospector='mosh rfrankel@174.138.50.107'
-alias fourOhFour='mosh rfrankel@159.65.45.67'
+alias fourOhFour='mosh rfrankel@161.35.7.165'
 
 alias rf='mosh rfrankel@45.55.97.87'
 alias rfssh='ssh rfrankel@45.55.97.87'
