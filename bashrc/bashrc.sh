@@ -39,6 +39,10 @@ if [ -f ~/dotfiles/bashrc/site-aliases.sh ]; then
   source ~/dotfiles/bashrc/site-aliases.sh
 fi
 
+# DIRENV
+# ###################################################################
+eval "$(direnv hook bash)"
+
 # BASH COMPLETION
 # ###################################################################
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
