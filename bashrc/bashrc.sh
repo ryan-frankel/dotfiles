@@ -69,6 +69,16 @@ fi
 # ###################################################################
 source ~/dotfiles/bashrc/git-prompt.sh
 
+# GIT
+# ###################################################################
+GIT_PROFILE=~/.git_profile
+if [ -f "$GIT_PROFILE" ]; then
+  source $GIT_PROFILE
+else 
+  echo "NO GIT PROFILE FOUND. (~/.git_profile)"
+fi
+
+
 # z
 # ###################################################################
 source ~/code/z/z.sh
