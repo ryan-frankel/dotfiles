@@ -20,7 +20,7 @@ ERROR=false
 GIT_PROFILE=~/dotfiles/.git_profile
 if [ -f $GIT_PROFILE ]; then
   source $GIT_PROFILE
-  printf "Found and sourced: ${PROFILE}\n"
+  printf "Found and sourced: ${GIT_PROFILE}\n"
 else
   printf "No .git_profile found!\n"
 fi
