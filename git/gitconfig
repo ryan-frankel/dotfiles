@@ -18,3 +18,5 @@
   ;changed = green
   ;untracked = cyan
 [credential]
+[safe]
+	directory = /home/datingadvice
