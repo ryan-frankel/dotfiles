@@ -18,3 +18,9 @@
   ;changed = green
   ;untracked = cyan
 [credential]
+[safe]
+	directory = /home/hostingreport
+	directory = /home/datingnews
+	directory = /home/datingadvice
+	directory = /home/cardrates
+	directory = /home/badcredit
