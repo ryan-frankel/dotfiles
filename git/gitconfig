@@ -19,4 +19,10 @@
   ;untracked = cyan
 [credential]
 [safe]
+	directory = /home/badcredit
+	directory = /home/cardrates
 	directory = /home/datingadvice
+	directory = /home/datingnews
+  directory = /home/hostingadvice
+	directory = /home/hostingreport
+	directory = /home/digitalbrands
