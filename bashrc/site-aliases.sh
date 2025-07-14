@@ -2,8 +2,8 @@
 # #########################################
 alias bc='mosh rfrankel@50.28.106.87'
 alias bcssh='ssh rfrankel@50.28.106.87'
-alias ha='mosh rfrankel@69.167.152.76'
-alias hassh='ssh rfrankel@69.167.152.76'
+alias ha='mosh rfrankel@209.59.129.12'
+alias hassh='ssh rfrankel@209.59.129.12'
 alias cr='mosh rfrankel@67.43.9.201'
 alias crssh='ssh rfrankel@67.43.9.201'
 alias pr='mosh rfrankel@166.78.123.101'
